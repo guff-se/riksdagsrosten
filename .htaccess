@@ -1,0 +1,13 @@
+RewriteEngine On
+
+## REDIRECT if not www ###
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^riksdagsrosten.se [NC]
+RewriteRule ^(.*)$ http://www.riksdagsrosten.se/$1 [L,R=301]
+
+## routing ##
+# ta bort kommentar nedan när bloggen skall installeras
+RewriteRule ^(blogg) - [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/)?$ index.php?page=$1&id=$2&more=$3 [NC]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/)?$ index.php?page=$1&id=$2 [NC]
+RewriteRule ^([a-zA-Z0-9_-]+)(/)?$ index.php?page=$1 [NC]
