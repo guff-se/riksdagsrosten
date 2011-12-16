@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "RiksdagsrÃ¶sten admin"
+AuthUserFile /home/dropbox/Dropbox/www-shared/www.riksdagsrosten.se/admin/.htpasswd
+Require valid-user
+

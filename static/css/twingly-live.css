@@ -1,0 +1,47 @@
+html, body {
+    background-color: #fff;
+    color: #111;
+    font-family: helvetica, arial, sans-serif;
+}
+.twinglylive {
+    background: transparent;
+}
+#pagecontent {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.header {
+    margin: 20px 0 0 0;
+}
+.streamname, .tolist, #tabcontainer, #facebooklogin, #bottomlink, #commentform, #useravatar, #commentformFooter, .writeAComment {
+    display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+#tab_livestream {
+    padding: 0;
+}
+.tab_container {
+    background: transparent;
+    margin-top: 30px;
+}
+a {
+    color: #111;
+}
+.post {
+    border: 0;
+    font-size: 100%;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+.post .meta {
+    font-weight: normal;
+}
+/*.post .meta a:hover {
+    color: #aaa;
+}
+.post .meta a.sourcelink {
+    color: #ddd;
+}*/

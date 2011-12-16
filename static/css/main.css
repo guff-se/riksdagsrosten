@@ -1,0 +1,1044 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+	font-family: Arial;
+	line-height: 1.3em;
+	-webkit-text-size-adjust:none;
+}
+body p {
+	margin-bottom: 1em;
+}
+.clearer {
+	clear: both;
+	font-size: 1px;
+	text-indent: -9999px;
+	height: 1px;
+}
+#wrapper {
+	width: 960px;
+	margin: 0px auto 30px auto;
+}
+h3 {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+	margin: 0px 10px 5px 10px;
+}
+#header {
+	padding: 25px 0px 0px 15px;
+	border-bottom: 3px solid #111;
+	margin-bottom: 10px;
+}
+#logo {
+	float: left;
+}
+#logo a {
+	display: block;
+	background-image: url('http://riksdagsrosten.se/static/images/riksdagsrosten-320.png');
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	width: 320px;
+	height: 83px;
+	margin-top: 10px;
+}
+#nav-1 {
+	padding-top: 32px;
+	margin-bottom: -2px;
+	float: right;
+}
+#nav-1 li {
+	float: left;
+	margin-right: 10px;
+}
+#nav-1 li a {
+	display: block;
+	padding: 10px 20px;
+	color: #e1e1e1;
+	background-color: #111;
+	text-decoration: none;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#nav-1 li.facebook a {
+	background-color: #3b5998;
+	color: #fff;
+	background-image: url('../images/facebook-f.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 40px;
+	background-position: 14px 7px;
+}
+
+#nav-1 li a:hover {
+	color: #fff;
+}
+#main {
+	float: left;
+	width: 600px;
+}
+#main.start {
+	width: 960px;
+	margin-top: 10px;
+}
+
+
+
+h1 {
+	font-size: 30px;
+	line-height: 50px;
+	font-weight: bold;
+	margin: 0px 10px 5px 10px;
+}
+h1 span.logo-parti {
+	padding-right: 40px;
+}
+#sidebar {
+	width: 345px;
+	float: right;
+}
+#footer {
+	margin-top: 30px;
+	border-top: 3px solid #111;
+	padding: 5px;
+}
+.votes {
+	width: 250px;
+	/*padding: 7px 7px 5px 7px;*/
+	/*padding: 7px 5px 5px 4px;*/
+	/*border: 1px solid #999;*/
+	margin: 10px auto 10px auto;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	overflow: hidden;
+	background: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+.votes.none {
+	background: -moz-linear-gradient(-90deg,#e1e1e1,#999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#999));
+}
+#list .votes {
+	width: 220px;
+}
+.column-8 .votes {
+	width: 180px;
+}
+
+.votes .choosen {
+	float: left;
+	background-color: #459534;
+	padding: 3px;
+	margin: -3px;
+	/*padding: 4px 3px 3px 10px;
+	margin: -4px -10px -3px -3px;*/
+	padding: 6px 0px 3px 0px;
+	margin: -4px 0px -3px 0px;
+	line-height: 22px;
+	-webkit-border-top-left-radius: 25px;
+	-webkit-border-bottom-left-radius: 25px;
+	-moz-border-radius-topleft: 25px;
+	-moz-border-radius-bottomleft: 25px;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+	background: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+        background: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+        text-indent: 8px;
+}
+
+.votes .yes {
+	float: left;
+	background-color: #459534;
+	padding: 3px;
+	margin: -3px;
+	/*padding: 4px 3px 3px 10px;
+	margin: -4px -10px -3px -3px;*/
+	padding: 6px 0px 3px 0px;
+	margin: -4px 0px -3px 0px;
+	line-height: 22px;
+	-webkit-border-top-left-radius: 25px;
+	-webkit-border-bottom-left-radius: 25px;
+	-moz-border-radius-topleft: 25px;
+	-moz-border-radius-bottomleft: 25px;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+	background: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+        background: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+        text-indent: 8px;
+}
+.votes .no {
+	float: right;
+	background-color: #e22832;
+	text-align: right;
+	/*padding: 4px 10px 3px 3px;
+	margin: -4px -3px -3px -10px;*/
+	padding: 6px 0px 3px 0px;
+	margin: -4px 0px -3px 0px;
+	line-height: 22px;
+	-webkit-border-top-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
+	-moz-border-radius-topright: 25px;
+	-moz-border-radius-bottomright: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+/*#list .votes .no, #list .votes .yes {
+	text-indent: -999px;
+	line-height: 10px;
+	text-align: left;
+}*/
+#data-box .group {
+	background-color: #e1e1e1;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+#data-box .group h5 {
+	font-weight: bold;
+	font-size: 18px;
+}
+#data-box .group .count {
+	text-align: right;
+}
+#data-box .group .count b {
+	font-weight: bold;
+}
+#list ul {
+	background-color: #eae4d9;
+	padding: 10px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+#list ul li {
+	margin-bottom: 10px;
+}
+#list ul li a { 
+	display: block;
+	/*background-color: #eae4d9;
+	padding: 20px;*/
+	color: #222;
+	text-decoration: none;
+	background-color: #fff;
+	padding: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px #999;
+}
+#slider ul li a { 
+	height: 264px;
+}
+#list ul li a:hover {
+	box-shadow: 0px 1px 3px #666;
+}
+#list ul li a h6 {
+	font-weight: bold;
+	font-size: 18px;
+	margin-bottom: 15px;
+	line-height: 1.2em;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed #999;
+}
+#list ul li a .meta {
+	font-size: 12px;
+	font-weight: bold;
+}
+#list ul li a .meta b {
+	font-weight: normal;
+}
+#list ul li a .description {
+	font-size: 13px;
+	line-height: 1.4em;
+	color: #333;
+}
+#list ul li a .left {
+	width: 320px;
+	float: left;
+}
+#list ul li a .right {
+	float: right;
+	padding-top: 20px;
+}
+#leave-vote .button {
+	font-size: 30px;
+	display: block;
+	padding: 20px 60px;
+	text-decoration: none;
+}
+#leave-vote .yes {
+	float: left;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+		background: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+  background: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+}
+#leave-vote .no {
+	float: left;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+#leave-vote .active {
+	float: left;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background: -moz-linear-gradient(-90deg,#e1e1e1,#666);
+        background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#666));
+}
+
+
+#leave-vote .next {
+	float: left;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #222;
+	background: -moz-linear-gradient(-90deg,#e1e1e1,#666);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#666));
+  padding: 20px 5px;
+}
+
+
+.profile {
+}
+.profile .procent, .parti .procent {
+	display: block;
+	font-size: 70px;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+.profile .description, .parti .description {
+	color: #666;
+}
+.inner {
+	background-color: #fff;
+	padding: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 1px 2px 3px #999;
+}
+#profile-overview .inner .left {
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+#profile-overview .inner img {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	height: 50px;
+	display: block;
+}
+#profile-overview .inner h3 {
+	font-size: 30px;
+	line-height: 50px;
+	margin-bottom: 0px;
+}
+#profile-overview .inner span {
+	font-size: 25px;
+	line-height: 50px;
+	float: left;
+	color: #999;
+}
+#profile-overview .inner span.logout {
+	line-height: 45px;
+	float: right;
+}
+#profile-overview .inner span.logout a {
+	background-color: #111;
+	color: #e1e1e1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-size: 16px;
+	text-decoration: none;
+	margin-right: 15px;
+}
+#profile-overview .inner span.logout a:hover {
+	color: #fff;
+}
+
+#profile-name {
+	float:left;
+}
+.profile .fb-like {
+	margin-top:14px;
+	margin-left:2px;
+	float:left;
+}
+
+#parti-name {
+	float:left;
+}
+.parti .fb-like {
+	margin-top:14px;
+	margin-left:2px;
+	float:left;
+}
+
+.column-3, .column-8 {
+	background-color: #eae4d9;
+	padding: 10px 10px 10px 0px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.column {
+	float: left;
+	text-align: center;
+	background-color: #fff;
+	padding: 10px;
+	margin-left: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 1px 2px 3px #999;
+}
+.column-3 .column {
+	width: 207px;
+	height: 276px;
+}
+.column-3 .column span {
+	display: block;
+}
+.column-3 .column.inactive .procent {
+	color: #ccc;
+}
+.column-3 .column.inactive h3, .column-3 .column.inactive .description {
+	color: #999;
+}
+.column-image {
+	display: block;
+	height: 276px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.column-8 .column {
+	width: 207px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+.column-8 .clearer {
+	margin-bottom: -10px;
+}
+.column-8 .column a {
+	display: block;
+	color: #111;
+	min-height: 130px;
+	text-decoration: none;
+}
+.column-8 .column .logo-parti {
+	text-indent: -9999px;
+	background-position: center center;
+}
+.column-8 .column .procent {
+	display: block;
+	text-align: center;
+	font-size: 60px;
+	line-height: 80px;
+	font-weight: bold;
+}
+.column-8 .column span {
+	display: block;
+	font-size: 15px;
+	color: #222;
+}
+
+.column-8 .column h3 {
+	display: block;
+	margin: 10px 0px;
+}
+.logo-parti {
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 35px;
+}
+
+
+
+.singular-vote-list {
+	background-color: #eae4d9;
+	padding: 10px 10px 10px 10px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.singular-vote-list ul {
+	margin-top: -10px;
+}
+.singular-vote-list ul li a {
+	display: block;
+	background-color: #fff;
+	padding: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top: 10px;
+	color: #111;
+	text-decoration: none;
+	box-shadow: 1px 2px 3px #999;
+}
+
+.singular-vote-list ul li .answer {
+	float: right;
+	background-color: #ccc;
+	padding: 3px 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	min-width: 25px;
+	text-align: center;
+	font-size: 14px;
+}
+.singular-vote-list ul li .title {
+	font-size: 15px;
+	line-height: 25px;
+	padding-left: 5px;
+}
+.singular-vote-list ul li .yes {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+	background: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+	background: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+}
+.singular-vote-list ul li .no {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+.singular-vote-list ul li .franvarande {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #222;
+	background: -moz-linear-gradient(-90deg,#e1e1e1,#999);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#999));
+}
+#main.profile, #main.profil, #main.ledamoter-lista, #main.parti {
+	width: 960px;
+	float: none;
+}
+
+
+
+.box-frame {
+	background-color: #eae4d9;
+	padding: 10px 10px 10px 10px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.box-frame ul {
+	margin-top: -10px;
+}
+.box-frame ul li a {
+	display: block;
+	background-color: #fff;
+	padding: 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top: 10px;
+	color: #111;
+	text-decoration: none;
+	box-shadow: 1px 2px 3px #999;
+}
+.box-frame.grid-3 {
+	padding: 10px 10px 10px 0px;
+}
+.box-frame.grid-3 ul li {
+	width: 306px;
+	float: left;
+	margin-left: 10px;
+}
+.box-frame.ledamotlista ul li a {
+	background-repeat: no-repeat;
+	background-position: 260px 20px;
+}
+#all.box-frame.grid-3 ul li a {
+	border: 5px solid #fff;
+}
+#all.box-frame.grid-3 ul li.franvarande a {
+	border: 5px solid #ccc;
+}
+#all.box-frame.grid-3 ul li.nej a {
+	border: 5px solid #f5a9a9;
+}
+#all.box-frame.grid-3 ul li.ja a {
+	border: 5px solid #a9f5a9;
+	
+}
+
+#all.box-frame.toplist ul li a .result {
+	font-size: 30px;
+	float: right;
+	line-height: 60px;
+}
+.box-frame ul li a .name {
+	display: block;
+	float: left;
+	font-size: 15px;
+	line-height: 60px;
+	font-weight: bold;
+	padding-left: 3px;
+}
+#all.box-frame ul li a .name {
+	width: 185px; /* 170 */
+	height: 66px;
+	overflow: hidden;
+}
+.box-frame ul li a .vote {
+	display: none; /*TEMP, annars block*/
+	width: 30px;
+	float: right;
+	font-size: 15px;
+	line-height: 60px;
+	font-weight: bold;
+	overflow: hidden;
+}
+.box-frame ul li .rank {
+	display: block;
+	width: 30px;
+	float: left;
+	font-size: 35px;
+	line-height: 70px;
+	font-weight: bold;
+	height: 60px;
+	overflow: hidden;
+	padding-left: 5px;
+}
+.box-frame.ranked ul li a {
+	margin-left: 40px;
+}
+.box-frame.ranked ul li a .result {
+	display: block;
+	float: right;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 10px;
+}
+.box-frame ul li a img {
+	display: block;
+	float: left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+
+
+
+.show-more-button {
+	margin: 10px 0px;
+	display: block;
+	padding: 10px 0px;
+	background-color: #666;
+	text-align: center;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	background: -moz-linear-gradient(-90deg,#999,#333);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#333));
+}
+.show-more-button:active {
+	margin-top: 11px;
+	margin-bottom: 9px;
+}
+
+
+
+
+.s {
+	background-image: url('../images/socialdemokraterna.png');
+}
+.m {
+	background-image: url('../images/moderaterna.png');
+}
+.mp {
+	background-image: url('../images/miljopartiet.png');
+}
+.v {
+	background-image: url('../images/vansterpartiet.png');
+}
+.sd {
+	background-image: url('../images/sverigedemokraterna.png');
+}
+.kd {
+	background-image: url('../images/kristdemokraterna.png');
+}
+.fp {
+	background-image: url('../images/folkpartiet.png');
+}
+.c {
+	background-image: url('../images/centerpartiet.png');
+}
+
+.box-stroke {
+	border: 3px solid #EAE4D9;
+	border-radius: 15px;
+	padding: 15px;
+}
+.box-stroke p {
+	color: #999;
+}
+.box-stroke h4 {
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+	margin-bottom: 8px;
+}
+
+
+#slider-content {
+	height: 285px;
+}
+#slider ul li a {
+	width: 580px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#slider-content li {
+	margin: 10px 0px 10px 0px;
+}
+#slider-nav-container {
+	float: left;
+	padding: 0px 18px 10px 18px;
+	background-color: #EAE4D9;
+	-webkit-border-bottom-right-radius: 15px;
+-webkit-border-bottom-left-radius: 15px;
+-moz-border-radius-bottomright: 15px;
+-moz-border-radius-bottomleft: 15px;
+border-bottom-right-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+#slider-nav a {
+	display: block;
+	text-indent: -999px;
+	background-image: url(../images/slider-button.png);
+	width: 18px;
+	height: 19px;
+	float: left;
+	margin-right: 5px;
+	opacity: 0.5;
+}
+#slider-nav .activeSlide {
+	opacity: 1;
+}
+#slider-more {
+	float: right;
+	padding: 10px;
+}
+#slider-more a {
+	color: #333;
+}
+
+
+
+
+
+
+.notice {
+	background-color: #fee;
+	float:right;
+	padding: 10px;
+	width:500px;
+	border: 1px dashed #ccc;
+	font-size: 14px;
+	line-height: 1.3em;
+	color: #333;
+}
+
+.notice strong {
+	font-weight: bold;
+}
+
+/* WORK IN PROGRESS */
+#work-in-progress {
+    width: 100%;
+    padding: 3px 0px 3px 0px;
+    background-color: #111;
+}
+#work-in-progress p {
+    font-family: Arial;
+    font-size: 13px;
+    line-height: 2.9em;
+    color: #CCC;
+    width: 915px;
+    margin: 0px auto;
+    padding-left: 45px;
+    background-image: url('http://riksdagsrosten.se/24hbc-30.png');
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+#work-in-progress img {
+    margin-right: 5px;
+}
+#work-in-progress a {
+    color: #CCC;
+}
+#work-in-progress strong {
+	font-weight: bold;
+    color: #e1e1e1;
+}
+
+
+.box-frame .twingly_widget {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-color: #fff;
+	font-size: 14px;
+	box-shadow: 1px 2px 3px #999;
+}
+.box-frame .twingly_widget a {
+	color: #000;
+}
+.box-frame .twingly_no_results ul {
+	display: none;
+}
+.box-frame .twingly_widget a.twingly_item_rss:hover {
+	text-decoration: none;
+}
+.box-frame .twingly_widget .twingly_item_websitename a {
+	color: #818181;
+	font-size: 11px;
+}
+.box-frame .twingly_logo {
+	margin-right: 6px;
+}
+.box-frame .twingly_item {
+	padding: 6px 6px 5px 6px;
+}
+.box-frame .twingly_item:last-child {
+	border-bottom: 0px;
+}
+.box-frame .twingly_header {
+	background: none;
+}
+.twingly_widget #get_this_widget_content_0, .twingly_widget .twingly_get_widget, .twingly_widget .twingly_footer, .twingly_widget .twingly_header {
+	display: none;
+}
+
+
+
+
+
+
+
+/* FIRST */
+#first {
+	padding-top: 30px;
+	margin-bottom: -65px; /*TEMP*/
+	padding-bottom: 65px;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	border-top: 4px solid #222;
+}
+#first .w960 {
+	width: 960px;
+	margin: 0px auto;
+}
+#first .logo {
+	float: left;
+	background-image: url(http://www.riksdagsrosten.se/static/images/riksdagsrosten-320.png);
+	width: 320px;
+	height: 83px;
+	text-indent: -9999px;
+	margin-bottom: 250px;
+}
+#shortcuts {
+	float: right;
+}
+#shortcuts li {
+	display: inline;
+	margin-left: 20px;
+}
+#shortcuts li a {
+	color: #999;
+	font-family: 'Open Sans', sans-serif;
+	text-decoration: none;
+	font-size: 20px;
+}
+#shortcuts li a:hover {
+	color: #555;
+}
+#features {
+	background-color: #EAE4D9;
+}
+#features .item {
+	float: left;
+	width: 31%;
+	margin-right: 2%;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+#features .item img {
+	background-color: #d7d1c6;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px inset, white 0px -1px 1px inset;
+}
+#mentions {
+	padding: 20px 0px;
+	background-color: #222;
+	color: #fff;
+}
+#mentions h4 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	line-height: 50px;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	float: left;
+	width: 650px;
+}
+#mentions .social {
+	float: right;
+	background-color: #333;
+	display: compact;
+	width: 180px;
+	overflow: hidden;
+	padding: 8px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px; 
+	margin-top: 3px;
+}
+#mentions .social iframe {
+	float: left;
+}
+iframe.twitter-follow-button {
+	width: 80px !important;
+}
+#mentions #tweets li {
+	width: 48%;
+	float: left;
+	font-size: 14px;
+	border-bottom: 1px solid #333;
+	margin-right: 2%;
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+	color: #ccc;
+}
+#mentions a {
+	color: #fff;
+}
+#mentions .author {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+#mentions img {
+	width: 70px;
+	height: 70px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float: left;
+	margin-right: 10px;
+}
+#site-info {
+	margin: 40px 0px 30px 0px;
+	color: #888;
+	font-size: 13px;
+}
+#site-info strong, #site-info a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+#site-info .left {
+	float: left;
+}
+#site-info .right {
+	float: right;
+}
+#site-info li {
+	display: inline;
+	margin-left: 30px;
+}
+#signup {
+	background-color: #fff;
+	padding: 15px;
+	width: 300px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	position: relative;
+	top: -120px;
+	float: left;
+	margin-bottom: -120px;
+}
+#signup a {
+	display: block;
+	background-image: url('../images/facebook-f.png');
+	background-repeat: no-repeat;
+	background-color: #3B5998;
+	background-position: 15px 12px;
+	width: 260px;
+	color: #fff;
+	padding: 17px 0px 20px 40px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 13px;
+	margin-bottom: 10px;
+}
+#signup iframe {
+	margin-left: 10px;
+}
+#skip-signup {
+	padding-top: 35px;
+	clear: both;
+	/*width: 600px;
+	float: right;*/
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: #333;
+	line-height: 1.3em;
+}
+#skip-signup a {
+	color: #111;
+	text-decoration: none;
+	font-weight: bold;
+}
+.screenshot {
+	position: relative;
+	top: -280px;
+	left: 50px;
+	margin-bottom: -300px;
+}
