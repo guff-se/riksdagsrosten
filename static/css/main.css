@@ -862,7 +862,7 @@ border-bottom-left-radius: 15px;
 	-webkit-font-smoothing: antialiased;
 	border-top: 4px solid #222;
 }
-#first .w960 {
+.w960 {
 	width: 960px;
 	margin: 0px auto;
 }

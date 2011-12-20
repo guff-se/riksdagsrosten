@@ -19,7 +19,7 @@ $PARTISYMBOL["folkpartiet"]="FP";
 
 //error_reporting();
 ini_set('display_errors','On');
-session_set_cookie_params('43200');
+session_set_cookie_params('1036800');
 session_start();
 
 function slug($string) {

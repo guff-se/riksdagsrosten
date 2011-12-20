@@ -67,10 +67,6 @@ footer, header, hgroup, menu, nav, section {
 
 /* =Structure
 ----------------------------------------------- */
-
-body {
-	padding: 0 2em;
-}
 #page {
 	margin: 2em auto;
 	max-width: 1000px;
@@ -316,7 +312,7 @@ body {
 
 body, input, textarea {
 	color: #373737;
-	font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 15px Arial, "Helvetica Neue", Helvetica, sans-serif;
 	font-weight: 300;
 	line-height: 1.625;
 }

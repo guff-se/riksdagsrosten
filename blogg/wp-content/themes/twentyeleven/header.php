@@ -129,7 +129,7 @@ if(isset($_SESSION["user_id"])) {
 	</script>
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css" />
 	<link href="/static/css/reset.css" media="screen" rel="stylesheet" type="text/css" />
-	<link href="/static/css/main.css?v=2" media="screen" rel="stylesheet" type="text/css" />
+	<link href="/static/css/main.css?v=3" media="screen" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="/static/js/jquery.cycle.all.js"></script>
 	<script type="text/javascript">
@@ -157,8 +157,6 @@ if(isset($_SESSION["user_id"])) {
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 
-<link href="/static/css/main.css?v=2" media="screen" rel="stylesheet" type="text/css" />
-
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -181,7 +179,7 @@ if(isset($_SESSION["user_id"])) {
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="/blogg/wp-content/themes/twentyeleven/style.css?v=2" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
