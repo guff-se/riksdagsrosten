@@ -17,7 +17,7 @@
 		</script>
 	<?}?>
 
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>Riksdagsrösten<?
     if(isset($HEADER['title']))
 		print(" | ".$HEADER['title']);
@@ -111,7 +111,6 @@
 				fx:         'scrollLeft',
 		        timeout:     3000,
 		        pager:      '#slider-nav',
-		        pagerEvent: 'mouseover',
 		        fastOnEvent: true
 		    });
 		});
