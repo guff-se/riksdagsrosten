@@ -7,11 +7,15 @@
 
 class Database {
 
-    private $username = "riksdagsrosten";
-    private $password = "rrwww01";
-    private $host     = "127.0.0.1";
-    private $database = "riksdagsrosten";
+    //private $username = "riksdagsrosten";
+    //private $password = "rrwww01";
+    //private $host     = "127.0.0.1";
+    //private $database = "riksdagsrosten";
 
+    private $username = "rr02";
+    private $password = "rr0212345";
+    private $host     = "localhost";
+    private $database = "rr02";
 
     /** Constructor **/
     function Database() {
