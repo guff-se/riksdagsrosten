@@ -1,8 +1,7 @@
 <?php
-$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Voteringar.*, Organ.* FROM Utskottsforslag, Voteringar, Organ 
-        WHERE Utskottsforslag.dok_id = Voteringar.dok_id 
-        AND Utskottsforslag.status = 1
-        AND Voteringar.punkt = 1
+$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
+        WHERE Utskottsforslag.status = 0
+        AND Utskottsforslag.punkt = 1
         AND Organ.organ = Utskottsforslag.organ
         ORDER BY Utskottsforslag.publicerad DESC LIMIT 1");
 

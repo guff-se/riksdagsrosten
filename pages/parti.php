@@ -4,7 +4,7 @@ if(!isset($partiet))
 	die("<script>Location.replace('/');</script>");
 $result = $db->executeSQL("select franvaro, roster_tot, roster_piska, piska from Parti where symbol='$partiet'","SELECT");
 $narvaro = 100-$result->franvaro;
-$piska = $result->piska;
+$piska = round($result->piska,2)*100;
 $roster_tot = $result->roster_tot;
 $roster_ejpiska = $result->roster_tot-$result->roster_piska;
 
@@ -12,7 +12,8 @@ $ledamoter = $db->executeSQLRows("select * from Ledamoter where parti='$partiet'
 $antal = $db->executeSQL("select count(*) as total from Ledamoter where parti='$partiet'", "SELECT");
 if(isset($USER)) {
 	$match = $db->executeSQL("select * from PartiMatch where user_id = '$USER->id' && parti = '$partiet'","SELECT");
-	$match->procent=round($match->procent,2)*100;
+	if(isset($match->procent))
+		$matchprocent=round($match->procent,2)*100;
 }
 
 $HEADER['title']=$PARTI[$partiet];
@@ -23,7 +24,7 @@ include_once("includes/header.php");
 ?>
 <div id="content">
 	<div id="main" class="parti">
-			<div id="parti-name"><h1><span class="logo-parti <?=strtolower($partiet)?>"><?=$PARTI[$partiet]?></span></h1></div>
+			<div id="parti-name"><h1 class="single-row"><span class="logo-parti <?=strtolower($partiet)?>"><?=$PARTI[$partiet]?></span></h1></div>
 			<div class="fb-like" data-href="http://www.riksdagsrosten.se<?=$_SERVER['REQUEST_URI']?>" data-send="true" data-width="520" 
 				data-show-faces="false"></div>
 			<div class="clearer">&nbsp;</div>
@@ -36,12 +37,12 @@ include_once("includes/header.php");
 				</div>
 				<div class="column<?php if(!isset($USER)) { echo ' inactive'; } ?>">
 					<h3>Likhet</h3>
-					<?php if(isset($USER)) { ?>
-						<span class="procent"><?=$match->procent?>%</span>
-						<span class="description">Vid <?=$match->procent?>% av omröstningarna har du röstat som majoriteten av <?=$PARTI[$partiet]?>s ledamöter.</span>
+					<?php if(isset($USER) && isset($matchprocent)) { ?>
+						<span class="procent"><?=$matchprocent?>%</span>
+						<span class="description">Vid <?=$matchprocent?>% av omröstningarna har du röstat som majoriteten av <?=$PARTI[$partiet]?>s ledamöter.</span>
 					<?php }else{ ?>
 						<span class="procent">?</span>
-						<span class="description">Du måste <a href="http://www.riksdagsrosten.se/login/">logga in</a> för att se hur du röstat i förhållande till <?=$PARTI[$partiet]?>.</span>
+						<span class="description">Du måste <a href="/login/">logga in</a> och börja rösta för att se din likhet med <?=$PARTI[$partiet]?>.</span>
 					<?php } ?>
 				</div>
 				<div class="column">

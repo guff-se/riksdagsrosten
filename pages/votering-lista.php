@@ -1,6 +1,6 @@
 <?php
 if($page=="pop")
-	$sort = "ORDER BY Voteringar.folket_ja+Voteringar.folket_nej DESC LIMIT 50";
+	$sort = "ORDER BY Utskottsforslag.folket_ja+Utskottsforslag.folket_nej DESC LIMIT 50";
 else if($page=="kategori" && isset($_GET["id"])) {
 	$kid = $_GET["id"];
 	$sort = "AND Utskottsforslag.organ='$kid' ORDER BY Utskottsforslag.publicerad DESC LIMIT 50";
@@ -10,10 +10,10 @@ else if($page=="kategori" && isset($_GET["id"])) {
 else
 	$sort = "ORDER BY Utskottsforslag.publicerad DESC LIMIT 50";
 
-$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Voteringar.*, Organ.* FROM Utskottsforslag, Voteringar, Organ
-        WHERE Utskottsforslag.dok_id = Voteringar.dok_id
-        AND Utskottsforslag.status = 1
-        AND Voteringar.punkt = 1
+$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ
+        WHERE Utskottsforslag.status = 0
+        AND Utskottsforslag.punkt = 1
+        AND Utskottsforslag.votering_id != ''
         AND Utskottsforslag.organ = Organ.organ
         $sort");
 
@@ -68,9 +68,11 @@ include_once("includes/header.php");
 <?php
 if(isset($result)) {
 foreach($result as $v) {
+    
+    if($v->roster_ja != 0 && $v->roster_nej != 0) {
 	$ja_procent=round($v->roster_ja/($v->roster_ja+$v->roster_nej),2)*100;
 	$nej_procent=round($v->roster_nej/($v->roster_ja+$v->roster_nej),2)*100;
-        
+     }
         if($v->folket_nej == "") {
            $v->folket_nej = 0; 
         }
@@ -84,19 +86,25 @@ foreach($result as $v) {
 						<h6><?=$v->titel?></h6>
 						<div class="left">
 							<p class="description"><? echo strip_tags(substr($v->bik,0,250));?>&hellip;</p>
-							<div class="meta">Voteringsdag: <b><?=$v->publicerad ?></b><br/>Kategori: <b><?=$v->beskrivning; ?></b></div>
+                                                            <div class="meta">Voteringsdag: <b><?=str_replace(" 00:00:00","",$v->beslut_datum); ?></b><br/>Kategori: <b><?=$v->beskrivning; ?></b></div>
 						</div>
 						<div class="right">
 							<div>Folket</div>
-							<div class="votes">
-								<div class="yes" style="width:<?=$folket_ja_procent; ?>%;"><?=$v->folket_ja; ?>st</div>
-								<div class="no" style="width:<? print(100-$folket_ja_procent); ?>%;"><?=$v->folket_nej; ?>st</div>
+							<div class="votes<?php if($folket_ja_procent + $folket_nej_procent == 0) {echo' none';} ?>">
+								<div class="yes" style="width:<?=$folket_ja_procent; ?>%;"></div>
+								<div class="no" style="width:<? print(100-$folket_ja_procent); ?>%;"></div>
+								<div class="clearer">&nbsp;</div>
+								<div class="yes-count"><?=$v->folket_ja; ?>&nbsp;st</div>
+								<div class="no-count"><?=$v->folket_nej; ?>&nbsp;st</div>
 								<div class="clearer">&nbsp;</div>
 							</div>
 							<div>Riksdagen</div>
 							<div class="votes">
-								<div class="yes" style="width:<?=$ja_procent?>%;"><?=$v->roster_ja?>st</div>
-								<div class="no" style="width:<? print(100-$ja_procent)?>%;"><?=$v->roster_nej?>st</div>
+								<div class="yes" style="width:<?=$ja_procent?>%;"></div>
+								<div class="no" style="width:<? print(100-$ja_procent)?>%;"></div>
+								<div class="clearer">&nbsp;</div>
+								<div class="yes-count"><?=$v->roster_ja?>&nbsp;st</div>
+								<div class="no-count"><?=$v->roster_nej?>&nbsp;st</div>
 								<div class="clearer">&nbsp;</div>
 							</div>
 						</div>
@@ -113,11 +121,31 @@ foreach($result as $v) {
 		</div>
 	</div>
 	<div id="sidebar">
-		<iframe width="345" height="600" src="http://live.twingly.com/riksdagsrosten?css=http://riksdagsrosten.se/static/css/twingly-live.css" style="border:0;outline:0" frameborder="0" scrolling="no"></iframe>
+		<!--<iframe width="345" height="600" src="http://live.twingly.com/riksdagsrosten?css=http://riksdagsrosten.se/static/css/twingly-live.css" style="border:0;outline:0" frameborder="0" scrolling="no"></iframe>
 		<div>
 			<a class="FlattrButton" style="display:none;" href="http://riksdagsrosten.se/"></a>
 			<noscript><a href="http://flattr.com/thing/427951/Riksdagsrosten" target="_blank">
 			<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+		</div>-->
+		<br />
+		<br />
+		<div class="box-stroke" style="padding:10px;">	
+				<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Friksdagsrosten&amp;width=292&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23FFF&amp;stream=false&amp;header=false&amp;appId=124823437606237" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:258px;" allowTransparency="true"></iframe>
+		</div>
+		<br/>
+		<div class="box-stroke">	
+				<h4 style="background-image: url(/static/images/landning-se.png);">F&ouml;lj Sveriges riksdag</h3>
+				<p style="border-bottom: 2px solid #EAE4D9;padding-bottom:15px;">
+					Vi lyfter fram de senaste omr&ouml;stningarna fr&aring;n Riksdagen och g&ouml;r det enkelt f&ouml;r dig att h&auml;nga med.
+				</p>
+				<h4 style="background-image: url(/static/images/landning-hitta.png);">Hitta din representant</h3>
+				<p style="border-bottom: 2px solid #EAE4D9;padding-bottom:15px;">
+					Genom dina r&ouml;star kan vi matcha ihop dig med de Riksdagsledam&ouml;ter som r&ouml;star som du.
+				</p>
+				<h4 style="background-image: url(/static/images/landning-tyck.png);">Tyck till / Påverka</h3>
+				<p style="margin-bottom:5px;">
+					Vi sammanst&auml;ller dina &aring;sikter och kontaktar din Riksdagsledamot f&ouml;r att p&aring;verka beslut.
+				</p>
 		</div>
 	</div>
 	<div class="clearer">&nbsp;</div>

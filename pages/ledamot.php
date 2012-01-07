@@ -8,10 +8,9 @@ if(preg_match('/_/',$_GET['id'])) {
 $result = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE id = ".$_GET['id']);
 $l = $result[0];
 
-$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Voteringar.*, Organ.* FROM Utskottsforslag, Voteringar, Organ 
-        WHERE Utskottsforslag.dok_id = Voteringar.dok_id 
-        AND Utskottsforslag.status = 1
-        AND Voteringar.punkt = 1
+$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
+        WHERE Utskottsforslag.status = 0
+        AND Utskottsforslag.punkt = 1
         AND Organ.organ = Utskottsforslag.organ
         ORDER BY Utskottsforslag.publicerad DESC");
 
@@ -46,7 +45,7 @@ include_once("includes/header.php");
 ?>
 <div id="content">
 	<div id="main" class="profile">
-			<div id="profile-name"><h1><?=$l->tilltalsnamn?> <?=$l->efternamn?> <span class="logo-parti <?=strtolower($l->parti)?>">(<?=$l->parti?>)</span></h1></div>
+			<div id="profile-name"><h1 class="single-row"><?=$l->tilltalsnamn?> <?=$l->efternamn?> <span class="logo-parti <?=strtolower($l->parti)?>">(<?=$l->parti?>)</span></h1></div>
 			<div class="fb-like" data-href="http://www.riksdagsrosten.se<?=$_SERVER['REQUEST_URI']?>" data-send="true" data-width="520" 
 				data-show-faces="false"></div>
 			<div class="clearer">&nbsp;</div>
@@ -63,7 +62,7 @@ include_once("includes/header.php");
 						<span class="description">Baserat på de <?php print($match->roster_lika + $match->roster_olika);?> omröstningar ni båda röstat i har ni svarat likadant på <?=$match->procent;?>% av dem.<!--<?php // echo $match->points; ?>% av de X omröstningarna har du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> röstat likadant.--></span>
 					<?php } else{ ?>
 						<span class="procent">?</span>
-						<span class="description">Du måste logga in för att se hur pass lika du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> har röstat.</span>
+						<span class="description">Du måste <a href="/login/">logga in</a> för att se hur pass lika du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> har röstat.</span>
 					<?php } ?>
 					
 				</div>
@@ -122,5 +121,19 @@ include_once("includes/header.php");
 					</div>
 				</div>
 				<div class="clearer">&nbsp;</div>
+				<div class="box-frame" style="margin-top:15px;color:#444;">
+					<img style="position:relative;top:2px;margin-right:7px;" src="/static/images/twitter-icon.png" width="30"/><a href="http://twitter.com/riksdagsrosten" target="_blank" style="color: #444;font-weight:bold;text-decoration:none;"><?=$l->tilltalsnamn?> <?=$l->efternamn?></a><b>:</b> <span id="last-tweet"></span>
+				</div>
+<script type="text/javascript">
+$(document).ready(function(){
+var username='riksdagsrosten';
+var format='json';
+var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?';
+
+	$.getJSON(url,function(tweet){
+		$("#last-tweet").html(tweet[0].text);
+	});
+});
+</script>
 			</div>
 </div>
