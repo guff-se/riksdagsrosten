@@ -10,12 +10,10 @@
 	    }, 1);
 	  }
 	  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/fbc518803b472ead5b21ddade8336d7e12f394a3.1.js');
-	</script>
 	<?if(isset($USER)) {?>
-		<script type="text/javascript">
-		  _kmq.push(['identify', '<?="$USER->tilltalsnamn"?> <?="$USER->efternamn"?> (<?="$USER->facebook_id"?>)']);
-		</script>
+		_kmq.push(['identify', '<?="$USER->tilltalsnamn"?> <?="$USER->efternamn"?> (<?="$USER->facebook_id"?>)']);
 	<?}?>
+	</script>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>Riksdagsrösten<?

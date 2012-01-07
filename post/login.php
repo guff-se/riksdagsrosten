@@ -55,7 +55,26 @@
             	$db->executeSQL("UPDATE Users SET senasteinloggning = now(), oauth='" . $params['access_token'] . "', email = '" . 
 					$user_profile->email . "' WHERE id = " . $resultLogin->id, "UPDATE");
             	$_SESSION['user_id'] = $resultLogin->id;
-				header("Location: http://".$_SERVER["HTTP_HOST"]);	
+?>
+<html>
+<head>
+	<script type="text/javascript">
+	  var _kmq = _kmq || [];
+	  function _kms(u){
+	    setTimeout(function(){
+	      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+	      s.src = u; f.parentNode.insertBefore(s, f);
+	    }, 1);
+	  }
+		_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/fbc518803b472ead5b21ddade8336d7e12f394a3.1.js');
+		_kmq.push(['identify', '<?="$user_profile->first_name"?> <?="$user_profile->last_name"?> (<?="$user_profile->id"?>)']);
+		_kmq.push(['record', 'logged in']);
+		location.replace("http://<?=$_SERVER["HTTP_HOST"]?>");
+	</script>
+</head>
+</html>
+
+<?
 			
         	} else {
             	$db->executeSQL("INSERT INTO Users (id,oauth,tilltalsnamn,efternamn,facebook_id,email,senasteinloggning)
@@ -79,7 +98,7 @@
 					_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/fbc518803b472ead5b21ddade8336d7e12f394a3.1.js');
 					_kmq.push(['identify', '<?="$user_profile->first_name"?> <?="$user_profile->last_name"?> (<?="$user_profile->id"?>)']);
 					_kmq.push(['record', 'signed up']);
-					location.replace("http://".$_SERVER["HTTP_HOST"]);
+					location.replace("http://<?=$_SERVER["HTTP_HOST"]?>");
 				</script>
 			</head>
 			</html>

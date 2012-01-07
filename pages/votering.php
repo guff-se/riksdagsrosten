@@ -8,32 +8,34 @@ else
 
 if(isset($USER)) {
 //logged in stuff //
- $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE votering_id in (select votering_id from Voteringar where dok_id = '".$dokID."' AND punkt = 1) AND user_id = '$USER->id'");
+ $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE votering_id in (select votering_id from Utskottsforslag where dok_id = '".$dokID."' AND punkt = 1) AND user_id = '$USER->id'");
  $din_rost=$din_rost_result[0];
 }
 
-$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Voteringar.* FROM Utskottsforslag, Voteringar 
-        WHERE Utskottsforslag.dok_id = Voteringar.dok_id AND Utskottsforslag.dok_id = '$dokID'");
+$result = $db->executeSQLRows("SELECT * FROM Utskottsforslag WHERE Utskottsforslag.dok_id = '$dokID' AND status = 0 AND punkt = 1");
+
+$resultKommande = $db->executeSQLRows("SELECT * FROM Utskottsforslag WHERE Utskottsforslag.dok_id = '$dokID' AND status = 5 AND punkt = 1");
+
+$k=$resultKommande[0];
 $v=$result[0];
 
-$ja_procent=round($v->roster_ja/($v->roster_ja+$v->roster_nej),2)*100;
-$ja_fill_procent=$v->roster_ja/($v->roster_ja+$v->roster_nej)*100;
-$nej_fill_procent=$v->roster_nej/($v->roster_ja+$v->roster_nej)*100;
-$nej_procent=round($v->roster_nej/($v->roster_ja+$v->roster_nej),2)*100;
-
-
-$folket_tot=$v->folket_ja+$v->folket_nej;
-if($folket_tot) {
-	$folket_ja_procent=round($v->folket_ja/($folket_tot),2)*100;
-	$folket_nej_procent=round($v->folket_nej/($folket_tot),2)*100;
+if(!isset($v->status)) {
+    $v = $k;
 }
 
-$folket_total = $v->folket_ja + $v->folket_nej;
 
-$result2 = $db->executeSQLRows("SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster 
+
+if($v->status == 0) {
+ $ja_procent=round($v->roster_ja/($v->roster_ja+$v->roster_nej),2)*100;
+ $ja_fill_procent=$v->roster_ja/($v->roster_ja+$v->roster_nej)*100;
+ $nej_fill_procent=$v->roster_nej/($v->roster_ja+$v->roster_nej)*100;
+ $nej_procent=round($v->roster_nej/($v->roster_ja+$v->roster_nej),2)*100;
+ 
+ 
+ $result2 = $db->executeSQLRows("SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster 
         WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND PartiRoster.punkt=1");
 
-foreach($result2 as $pr){
+  foreach($result2 as $pr){
 	$temptotal=$pr->roster_ja+$pr->roster_nej;
 	$parti[$pr->parti]['ja']=$pr->roster_ja;
 	$parti[$pr->parti]['nej']=$pr->roster_nej;
@@ -43,7 +45,20 @@ foreach($result2 as $pr){
 	}
 	$parti[$pr->parti]['avstar']=$pr->roster_avstar;
 	$parti[$pr->parti]['franvarande']=$pr->roster_franvarande;
+   }
+ 
+ 
 }
+
+$folket_tot=$v->folket_ja+$v->folket_nej;
+if($folket_tot) {
+	$folket_ja_procent=round($v->folket_ja/($folket_tot),2)*100;
+	$folket_nej_procent=round($v->folket_nej/($folket_tot),2)*100;
+}
+
+$folket_total = $v->folket_ja + $v->folket_nej;
+
+
 $HEADER['title'] ="$v->titel";
 $HEADER['description'] ="$v->bik";
 $HEADER['type']="riksdagsrosten:bill";
@@ -58,7 +73,14 @@ include_once("includes/header.php");
 			<h1><?php echo $v->titel; ?></h1>
 		</div>
             <span>
-              <?php echo nl2br($v->bik); ?>
+              
+              <?php if($v->status == 0 )  
+                  echo nl2br($v->bik);  
+                    else 
+                  echo "<iframe width=960 height=600 src=http://data.riksdagen.se/dokument/".$dokID."/></iframe>Summering av förslag kommer snart!";  
+                    
+                  echo "<br><br>Läs om förslaget <a href=\"http://data.riksdagen.se/dokument/".$dokID."/ \"> här </a>";
+               ?>
             </span>
             
             <br>
@@ -72,9 +94,7 @@ include_once("includes/header.php");
 	</div>
 	<div id="sidebar">
 		<div id="leave-vote">
-                        <?php if(isset($USER)) { ?>
-			<h4><?php if(isset($din_rost->rost)) { echo "Du röstande ".$din_rost->rost; }else{ "Du har inte röstat ännu!"; } ?></h4>
-                        
+                        <?php if(isset($USER)) { ?>                        
                         <?php 
                             $ja_active = '';
                             $nej_active = '';
@@ -85,11 +105,9 @@ include_once("includes/header.php");
                         ?>
                         
 			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				id="log_vote"
-				class="button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Ja">Ja</a>
+				class="log_vote button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Ja">Ja</a>
 			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				id="log_vote"
-				class="button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Nej">Nej</a>
+				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Nej">Nej</a>
 			<a class="button next" href="#" title="Nästa fråga">&#8227;</a>
 			<div class="clearer">&nbsp;</div>
                         <?php } ?>
@@ -100,8 +118,11 @@ include_once("includes/header.php");
 
 <? if($folket_tot) {?>
 				<div class="votes">
-					<div class="yes" style="width:<?=$folket_ja_procent; ?>%;"><?=$v->folket_ja; ?>&nbsp;st</div>
-					<div class="no" style="width:<? print(100-$folket_ja_procent); ?>%;"><?=$v->folket_nej; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$folket_ja_procent; ?>%;"></div>
+					<div class="no" style="width:<? print(100-$folket_ja_procent); ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$v->folket_ja; ?>&nbsp;st</div>
+					<div class="no-count"><?=$v->folket_nej; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 <? } else { ?>
@@ -109,24 +130,35 @@ Ingen har röstat i denna fråga.
 <? } ?>
 				<div class="count">Antal röster: <b><?=$folket_total; ?> st</b></div>
 			</div>
+                    
+<? if ($v->votering_id != "") { ?>
 			<div class="group">
 				<h5>Ledamöter i riksdagen</h5>
 				<div class="votes">
-					<div class="yes" style="width:<?=$ja_fill_procent?>%;"><?=$v->roster_ja?>&nbsp;st</div>
-					<div class="no" style="width:<?=$nej_fill_procent?>%;"><?=$v->roster_nej?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$ja_fill_procent?>%;"></div>
+					<div class="no" style="width:<?=$nej_fill_procent?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$v->roster_ja?>&nbsp;st</div>
+					<div class="no-count"><?=$v->roster_nej?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 				<div class="count">Avstod: <b><?=$v->roster_avstar; ?> st</b>, Frånvarande: <b><?=$v->roster_franvarande; ?> st</b></div>
 			</div>
+<? } ?>
 		</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
+        
+<? if ($v->votering_id != "") { ?>
 	<div class="column-8">
 		<div class="column">
 			<h3 class="logo-parti s">Socialdemokraterna</h3>
 			<div class="votes<?php if($parti["S"]["ja_procent"] + $parti["S"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["S"]["ja_procent"]; ?>%;"><?=$parti["S"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["S"]["nej_procent"]; ?>%;"><?=$parti["S"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["S"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["S"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["S"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["S"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["S"]["avstar"]; ?> st</b></span>
@@ -135,8 +167,11 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti m">Moderaterna</h3>
 			<div class="votes<?php if($parti["M"]["ja_procent"] + $parti["M"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["M"]["ja_procent"]; ?>%;"><?=$parti["M"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["M"]["nej_procent"]; ?>%;"><?=$parti["M"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["M"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["M"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["M"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["M"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["M"]["avstar"]; ?> st</b></span>
@@ -145,8 +180,11 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti mp">Miljöpartiet</h3>
 			<div class="votes<?php if($parti["MP"]["ja_procent"] + $parti["MP"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["MP"]["ja_procent"]; ?>%;"><?=$parti["MP"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["MP"]["nej_procent"]; ?>%;"><?=$parti["MP"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["MP"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["MP"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["MP"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["MP"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["MP"]["avstar"]; ?> st</b></span>
@@ -155,8 +193,11 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti kd">Kristdemokraterna</h3>
 			<div class="votes<?php if($parti["KD"]["ja_procent"] + $parti["KD"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["KD"]["ja_procent"]; ?>%;"><?=$parti["KD"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["KD"]["nej_procent"]; ?>%;"><?=$parti["KD"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["KD"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["KD"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["KD"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["KD"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["KD"]["avstar"]; ?> st</b></span>
@@ -165,8 +206,11 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti sd">Sverigedemokraterna</h3>
 			<div class="votes<?php if($parti["SD"]["ja_procent"] + $parti["SD"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["SD"]["ja_procent"]; ?>%;"><?=$parti["SD"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["SD"]["nej_procent"]; ?>%;"><?=$parti["SD"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["SD"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["SD"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["SD"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["SD"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["SD"]["avstar"]; ?> st</b></span>
@@ -175,8 +219,11 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti fp">Folkpartiet</h3>
 			<div class="votes<?php if($parti["FP"]["ja_procent"] + $parti["FP"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["FP"]["ja_procent"]; ?>%;"><?=$parti["FP"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["FP"]["nej_procent"]; ?>%;"><?=$parti["FP"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["FP"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["FP"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["FP"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["FP"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["FP"]["avstar"]; ?> st</b></span>
@@ -185,18 +232,37 @@ Ingen har röstat i denna fråga.
 		<div class="column">
 			<h3 class="logo-parti c">Centerpartiet</h3>
 			<div class="votes<?php if($parti["C"]["ja_procent"] + $parti["C"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["C"]["ja_procent"]; ?>%;"><?=$parti["C"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["C"]["nej_procent"]; ?>%;"><?=$parti["C"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["C"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["C"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["C"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["C"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["C"]["avstar"]; ?> st</b></span>
 			<span>Frånvarande: <b><?=$parti["C"]["franvarande"]; ?> st</b></span>
 		</div>
+		<!--<div class="column">
+			<h3 class="logo-parti c">Centerpartiet</h3>
+			<div class="votes">
+					<div class="yes" style="width:94%;"></div>
+					<div class="no" style="width:6%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count">15&nbsp;st</div>
+					<div class="no-count">1&nbsp;st</div>
+					<div class="clearer">&nbsp;</div>
+				</div>
+			<span>Avstod: <b>0 st</b></span>
+			<span>Frånvarande: <b>7 st</b></span>
+		</div>-->
 		<div class="column">
 			<h3 class="logo-parti v">Vänsterpartiet</h3>
 			<div class="votes<?php if($parti["V"]["ja_procent"] + $parti["V"]["nej_procent"] == 0) {echo' none';} ?>">
-					<div class="yes" style="width:<?=$parti["V"]["ja_procent"]; ?>%;"><?=$parti["V"]["ja"]; ?>&nbsp;st</div>
-					<div class="no" style="width:<?=$parti["V"]["nej_procent"]; ?>%;"><?=$parti["V"]["nej"]; ?>&nbsp;st&nbsp;</div>
+					<div class="yes" style="width:<?=$parti["V"]["ja_procent"]; ?>%;"></div>
+					<div class="no" style="width:<?=$parti["V"]["nej_procent"]; ?>%;"></div>
+					<div class="clearer">&nbsp;</div>
+					<div class="yes-count"><?=$parti["V"]["ja"]; ?>&nbsp;st</div>
+					<div class="no-count"><?=$parti["V"]["nej"]; ?>&nbsp;st</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["V"]["avstar"]; ?> st</b></span>
@@ -204,7 +270,10 @@ Ingen har röstat i denna fråga.
 		</div>
 		<div class="clearer">&nbsp;</div>
 	</div>
+        <? } ?>
 <div>
+    
+<?if ($v->votering_id != "") { ?>
 <?if(isset($_GET["more"])) {?>
 	<a class="show-more-button" href="/votering/<?=$v->dok_id?>">Göm samtliga röster</a>
 <div id="all" class="box-frame grid-3">
@@ -237,11 +306,15 @@ if(isset($result))
 <?
 } // slut på röst_typer
 ?>
+        
 </div>
 <?} else {?>
 	<div><a class="show-more-button" href="/votering/<?=$v->dok_id?>/1#all">Visa samtliga röster</a></div>
 <?}?>
-                    <div id="disqus_thread"></div>
+        
+<?}?>
+
+         <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'riksdagsrosten';
 
