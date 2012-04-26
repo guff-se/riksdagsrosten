@@ -1,5 +1,5 @@
 <?
-$HEADER['title'] = "Om";
+$HEADER['title'] = "Live";
 $HEADER['type']="article";
 
 include_once("includes/header.php");

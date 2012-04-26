@@ -88,6 +88,9 @@ else if($page == "om") {
 else if($page == "live") {
         include 'pages/live.php';
 }
+else if($page == "valkommen") {
+        include 'pages/valkommen.php';
+}
 else if($page == "ledamot") {
         if(isset($_GET['id'])){
            include 'pages/ledamot.php';

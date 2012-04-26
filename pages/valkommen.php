@@ -1,22 +1,32 @@
 <?
-$HEADER['title'] = "Om";
+$HEADER['title'] = "Välkommen";
 $HEADER['type']="article";
 
 include_once("includes/header.php");
 ?>
 <br/>
-<h3 style="margin-left:0px;">Välkommen!</h3>
-
-<p>På riksdagsrosten.se kan du se hur våra riksdagsledamöter har röstat i tidigare omröstningar i riksdagen. Du får se statistik och kommentarer, så att du kan följa upp de frågor du är intresserad av.</p>
-<p>
-Du kan sedan själv gå in och välja vad du skulle röstat i de olika frågorna. Baserat på detta paras du ihop med den riksdagsledamot som röstar mest som dig.
-</p>
-Dessutom kan du rösta i kommande frågor. Inför varje kommande omröstning kommer sedan rösterna ifrån riksdagsrosten.se att sammanställas och skickas till våra riksdagsledamöter, så att de får veta vad just deras väljare verkligen tycker!
-<p>
-<p>
-Vi tycker att riksdagsledamöterna skall representera folkets röst - din röst.
-</p>
-
-<p>Vi som står bakom projektet är  <a href="http://guff.se">Gustaf Josefsson</a> (<a href="http://twitter.com/guff_se">@guff_se</a>), <a href="http://www.joakimgreen.com/">Joakim Green</a> (<a href="http://twitter.com/joakimgreen">@joakimgreen</a>) och <a href="http://labyrint.com">Johan Sandén</a> (<a href="http://twitter.com/sounden">@sounden</a>)</p>
-
-<p><a href="http://www.flickr.com/photos/mfalkvidd/6302763092/">Bild</a></p>
+<div id="welcome">
+<!--<div class="alert alert-success"><strong>Yay!</strong> Användarkonto skapat med lyckat resultat.</div>-->
+<!--<h1>Välkommen!</h1>
+<p>Vad roligt att du vill vara med och revolutionera svensk politik!</p>-->
+<h3>Vill du ha en öppen eller stängd profil?</h3>
+<ul class="clearfix">
+<li class="twoway first-child">
+<ul>
+		<li class="fb-no"><strong>Facebook</strong> <span>Inget kommer att publiceras på Facebook utan att du tillfrågas först.</span>
+		</li>
+		<li class="friends-no"><strong>Vänner</strong> <span>Din profil är stängd och ingen kan se hur du har röstat.</span></li>
+	</ul>
+<a class="btn btn-large" href="#">Stängd profil</a>
+</li>
+<li class="twoway">
+	<ul>
+		<li class="fb"><strong>Facebook</strong> <span>Din aktivitet kommer att synas på din Facebook-profil.</span>
+		</li>
+		<li class="friends"><strong>Vänner</strong> <span>Möjlighet att skapa widgets och låta dina vänner ta del av dina röster.</span></li>
+	</ul>
+<a class="btn btn-large btn-primary"  href="#">Öppen profil</a>
+</li>
+</ul>
+<div class="clearer">&nbsp;</div>
+</div>

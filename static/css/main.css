@@ -7,6 +7,9 @@ body {
 	line-height: 1.3em;
 	-webkit-text-size-adjust:none;
 }
+strong, b {
+	font-weight: bold;
+}
 body p {
 	margin-bottom: 1em;
 }
@@ -22,6 +25,7 @@ body p {
 }
 a {
 	color: #222;
+	text-decoration: none;
 }
 /*.dsq-brlink {
 	display: none;
@@ -395,8 +399,9 @@ h1.single-row {
 #profile-overview .inner span.logout {
 	line-height: 45px;
 	float: right;
+	margin-right: 5px;
 }
-#profile-overview .inner span.logout a {
+/*#profile-overview .inner span.logout a {
 	background-color: #111;
 	color: #e1e1e1;
 	-webkit-border-radius: 5px;
@@ -409,7 +414,7 @@ h1.single-row {
 }
 #profile-overview .inner span.logout a:hover {
 	color: #fff;
-}
+}*/
 
 #profile-name {
 	float:left;
@@ -1056,9 +1061,6 @@ box-shadow:            0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset;
 }​
 
 
-
-
-
 /* FIRST */
 #first {
 	padding-top: 30px;
@@ -1071,6 +1073,9 @@ box-shadow:            0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset;
 .w960 {
 	width: 960px;
 	margin: 0px auto;
+}
+#first .w960 {
+	margin: 40px auto 0px auto;
 }
 #first .logo {
 	float: left;
@@ -1249,3 +1254,60 @@ iframe.twitter-follow-button {
 	left: 50px;
 	margin-bottom: -300px;
 }
+
+
+
+#welcome .twoway {
+	width: 48%;
+	display: block;
+	float: right;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+#welcome .twoway.first-child {
+	float: left;
+	border-right: 1px solid #ccc;
+}
+#welcome ul {
+	width: 80%;
+	margin: 0px auto 20px auto;
+}
+#welcome li {
+	font-size: 14px;
+	color: #999;
+}
+#welcome ul li a.btn {
+	margin: 0px auto;
+	width: 80%;
+	display: block;
+	margin-bottom: 30px;
+}
+
+#welcome h3 {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+#welcome li ul li {
+	padding-left: 75px;
+	height: 60px;
+	background-repeat: no-repeat;
+	margin-top: 20px;
+}
+#welcome li.fb-no {
+	background-image: url(../images/fb-no.png);
+}
+#welcome li.fb {
+	background-image: url(../images/fb.png);
+}
+
+#welcome li.friends-no {
+	background-image: url(../images/friends-no.png);
+}
+#welcome li.friends {
+	background-image: url(../images/friends.png);
+}
+
+
+
