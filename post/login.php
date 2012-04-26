@@ -98,7 +98,7 @@
 					_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/fbc518803b472ead5b21ddade8336d7e12f394a3.1.js');
 					_kmq.push(['identify', '<?="$user_profile->first_name"?> <?="$user_profile->last_name"?> (<?="$user_profile->id"?>)']);
 					_kmq.push(['record', 'signed up']);
-					location.replace("http://<?=$_SERVER["HTTP_HOST"]?>/profil");
+					location.replace("http://<?=$_SERVER["HTTP_HOST"]?>/");
 				</script>
 			</head>
 			</html>

@@ -111,7 +111,7 @@
 		$(function() {
 		    $('#slider-content').cycle({
 				fx:         'scrollLeft',
-		        timeout:     3000,
+		        timeout:     5000,
 		        pager:      '#slider-nav',
 		        fastOnEvent: true
 		    });
