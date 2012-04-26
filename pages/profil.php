@@ -10,8 +10,7 @@ if(!isset($USER)) {
 $result = $db->executeSQL("SELECT count(*) as roster FROM UserRoster WHERE user_id = '$USER->id'", "SELECT");
 $USER->roster=$result->roster;
 
-$roster = $db->executeSQLRows("SELECT * from Utskottsforslag, UserRoster WHERE Utskottsforslag.votering_id = UserRoster.utskottsforslag_id AND UserRoster.user_id = '$USER->id' ORDER BY UserRoster.id DESC LIMIT 8");
-
+$roster = $db->executeSQLRows("SELECT Utskottsforslag.dok_id, Utskottsforslag.titel, Utskottsforslag.rubrik, UserRoster.* FROM Utskottsforslag, UserRoster WHERE Utskottsforslag.id = UserRoster.utskottsforslag_id AND UserRoster.user_id = '$USER->id' ORDER BY UserRoster.id DESC LIMIT 8");
 
 $ledamoter = $db->executeSQLRows("select * from LedamotMatch, Ledamoter where LedamotMatch.intressent_id = Ledamoter.intressent_id and LedamotMatch.user_id = '$USER->id' order by points desc limit 5");
 
@@ -76,10 +75,6 @@ $i++;
 		<div class="singular-vote-list">
 				<ul>
                                     <?php if(isset($roster)) { ?>
-				<!--
-				<?php print_r($roster); ?>
-				-->
-
                                      <?php foreach($roster as $rost) { ?>
                                     <li>
                                         <a href="/votering/<?=$rost->dok_id; ?>/">
