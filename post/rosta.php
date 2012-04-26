@@ -37,15 +37,17 @@ if ($user && $vid) {
         }
 		// Facebook Open Graph
 
+if($user->publik) {
 		$graph_url = "https://graph.facebook.com/me/riksdagsrosten:vote_on?method=post&access_token=" .
 					$_SESSION['access_token'] . "&vote=" . $rost . "&bill=" . $_SERVER['HTTP_REFERER'];
      	$fb_out = json_decode(file_get_contents($graph_url));
-
-		// uppdatera UserRoster
        	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
-//       	$sql = "insert into UserRoster set rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
         $db->executeSQL($sql,"UPDATE");
-
+}
+else {
+      	$sql = "insert into UserRoster set rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
+        $db->executeSQL($sql,"UPDATE");
+}
 		// uppdatera voteringar //
 		$push_sql = "
               UPDATE Utskottsforslag 

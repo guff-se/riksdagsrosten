@@ -49,7 +49,9 @@
 		$graph_url = "https://graph.facebook.com/me?access_token=" . $params['access_token'];
 		$user_profile = json_decode(file_get_contents($graph_url));
      
-     	if (isset($user_profile->id)) {
+
+     	if (isset($user_profile->id)) { // ******* LOG IN OLD USER ********
+	
         	$resultLogin = $db->executeSQL("SELECT * FROM Users WHERE facebook_id = " . $user_profile->id, "SELECT");
 			if (isset($resultLogin->id)) {
             	$db->executeSQL("UPDATE Users SET senasteinloggning = now(), oauth='" . $params['access_token'] . "', email = '" . 
@@ -76,7 +78,7 @@
 
 <?
 			
-        	} else {
+    	} else { // ****** REGISTER NEW USER  *****
             	$db->executeSQL("INSERT INTO Users (id,oauth,tilltalsnamn,efternamn,facebook_id,email,senasteinloggning)
                 	VALUES ('','" . $params['access_token'] . "','" . $user_profile->first_name . "','" . $user_profile->last_name . "'," .
 					$user_profile->id . ",'" . $user_profile->email . "',now())", "INSERT");
@@ -98,7 +100,7 @@
 					_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/fbc518803b472ead5b21ddade8336d7e12f394a3.1.js');
 					_kmq.push(['identify', '<?="$user_profile->first_name"?> <?="$user_profile->last_name"?> (<?="$user_profile->id"?>)']);
 					_kmq.push(['record', 'signed up']);
-					location.replace("http://<?=$_SERVER["HTTP_HOST"]?>/");
+					location.replace("http://<?=$_SERVER["HTTP_HOST"]?>/valkommen");
 				</script>
 			</head>
 			</html>

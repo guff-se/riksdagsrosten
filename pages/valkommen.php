@@ -17,7 +17,7 @@ include_once("includes/header.php");
 		</li>
 		<li class="friends-no"><strong>Vänner</strong> <span>Din profil är stängd och ingen kan se hur du har röstat.</span></li>
 	</ul>
-<a class="btn btn-large" href="#">Stängd profil</a>
+<a class="btn btn-large" href="/">Stängd profil</a>
 </li>
 <li class="twoway">
 	<ul>
@@ -25,7 +25,7 @@ include_once("includes/header.php");
 		</li>
 		<li class="friends"><strong>Vänner</strong> <span>Möjlighet att skapa widgets och låta dina vänner ta del av dina röster.</span></li>
 	</ul>
-<a class="btn btn-large btn-primary"  href="#">Öppen profil</a>
+<a class="btn btn-large btn-primary"  href="/post/edit.php?publik=1">Öppen profil</a>
 </li>
 </ul>
 <div class="clearer">&nbsp;</div>
