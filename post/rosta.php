@@ -18,12 +18,14 @@ ini_set('display_errors','On');
 	$db=new Database();
 	$db->connectSQL();
 	
-$user = $_SESSION["user_id"];
+	if(isset($_SESSION["user_id"])) {
+		$USER = $db->executeSQL("select * from Users where id='".$_SESSION["user_id"]."'","SELECT");
+	}
 $vid = $_GET["vid"];
 $rost = $_GET["rost"];
 
-if ($user && $vid) {
-	$result=$db->executeSQL("select id from UserRoster where user_id='$user' and utskottsforslag_id='$vid'", "SELECT");
+if ($USER && $vid) {
+	$result=$db->executeSQL("select id from UserRoster where user_id='$user->id' and utskottsforslag_id='$vid'", "SELECT");
 
 	if(isset($result)) {
 			$sql = "delete from UserRoster WHERE id='$result->id'";
@@ -41,11 +43,11 @@ if($user->publik) {
 		$graph_url = "https://graph.facebook.com/me/riksdagsrosten:vote_on?method=post&access_token=" .
 					$_SESSION['access_token'] . "&vote=" . $rost . "&bill=" . $_SERVER['HTTP_REFERER'];
      	$fb_out = json_decode(file_get_contents($graph_url));
-       	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
+       	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', utskottsforslag_id='$vid', user_id='$user->id'";              
         $db->executeSQL($sql,"UPDATE");
 }
 else {
-      	$sql = "insert into UserRoster set rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
+      	$sql = "insert into UserRoster set rost='$rost', utskottsforslag_id='$vid', user_id='$user->id'";              
         $db->executeSQL($sql,"UPDATE");
 }
 		// uppdatera voteringar //
@@ -59,7 +61,7 @@ else {
 
 		// pusha update to User
 		
-		$result=$db->executeSQLRows("select rost,utskottsforslag_id from UserRoster where UserRoster.user_id = '$user'");
+		$result=$db->executeSQLRows("select rost,utskottsforslag_id from UserRoster where UserRoster.user_id = '$user->id'");
 		$lika=array();
 		$olika=array();
 				foreach($PARTI as $p => $bs) {
@@ -103,64 +105,64 @@ else {
 				}
 				foreach($olika as $intressent_id => $count) {
 					$result3=$db->executeSQL("select id from LedamotMatch where
-											intressent_id='$intressent_id' and user_id='$user'","SELECT");
+											intressent_id='$intressent_id' and user_id='$user->id'","SELECT");
 					if(isset($result3)) {
 						$db->executeSQL("update LedamotMatch set roster_olika=$count where
-												intressent_id='$intressent_id' and user_id='$user'","UPDATE");
+												intressent_id='$intressent_id' and user_id='$user->id'","UPDATE");
 					}
 					else {
 						$db->executeSQL("insert into LedamotMatch set roster_olika=$count,
-												intressent_id='$intressent_id', user_id='$user'","INSERT");
+												intressent_id='$intressent_id', user_id='$user->id'","INSERT");
 					}
 					print(mysql_error());
 				}
 				foreach($lika as $intressent_id => $count) {
 					$result3=$db->executeSQL("select id from LedamotMatch where
-											intressent_id='$intressent_id' and user_id='$user'","SELECT");
+											intressent_id='$intressent_id' and user_id='$user->id'","SELECT");
 					if(isset($result3)) {
 						$db->executeSQL("update LedamotMatch set roster_lika=$count where
-												intressent_id='$intressent_id' and user_id='$user'","UPDATE");
+												intressent_id='$intressent_id' and user_id='$user->id'","UPDATE");
 					}
 					else {
 						$db->executeSQL("insert into LedamotMatch set roster_lika=$count,
-												intressent_id='$intressent_id', user_id='$user'","INSERT");
+												intressent_id='$intressent_id', user_id='$user->id'","INSERT");
 					}
 					print(mysql_error());
 				}
 				
 				foreach($partier_olika as $parti => $count) {
 					$result3=$db->executeSQL("select id from PartiMatch where
-											parti='$parti' and user_id='$user'","SELECT");
+											parti='$parti' and user_id='$user->id'","SELECT");
 					if(isset($result3)) {
 						$db->executeSQL("update PartiMatch set roster_olika=$count where
-												parti='$parti' and user_id='$user'","UPDATE");
+												parti='$parti' and user_id='$user->id'","UPDATE");
 					}
 					else {
 						$db->executeSQL("insert into PartiMatch set roster_olika=$count,
-												parti='$parti', user_id='$user'","INSERT");
+												parti='$parti', user_id='$user->id'","INSERT");
 					}
 					print(mysql_error());
 				}
 				foreach($partier_lika as $parti => $count) {
 					$result3=$db->executeSQL("select id from PartiMatch where
-											parti='$parti' and user_id='$user'","SELECT");
+											parti='$parti' and user_id='$user->id'","SELECT");
 					if(isset($result3)) {
 						$db->executeSQL("update PartiMatch set roster_lika=$count where
-												parti='$parti' and user_id='$user'","UPDATE");
+												parti='$parti' and user_id='$user->id'","UPDATE");
 					}
 					else {
 						$db->executeSQL("insert into PartiMatch set roster_lika=$count,
-												parti='$parti', user_id='$user'","INSERT");
+												parti='$parti', user_id='$user->id'","INSERT");
 					}
 					print(mysql_error());
 				}
 				
 				$db->executeSQL("update LedamotMatch set points=roster_lika-roster_olika,
 									procent=roster_lika/(roster_lika+roster_olika) where
-									user_id='$user'","UPDATE");
+									user_id='$user->id'","UPDATE");
 				$db->executeSQL("update PartiMatch set points=roster_lika-roster_olika,
 									procent=roster_lika/(roster_lika+roster_olika) where
-									user_id='$user'","UPDATE");
+									user_id='$user->id'","UPDATE");
 				// Fixa matchning med parti
 			
 			
