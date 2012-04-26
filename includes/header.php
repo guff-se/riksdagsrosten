@@ -14,7 +14,7 @@ include("header-scripts.php");
   <div id="wrapper">
   	<div id="header">
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
-  		<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a></div>
+  		<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a><br/><strong>Ge ekonomiskt stöd: </strong><a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/">Insamling via Funded By Me</a></div>
   		<div id="nav-1">
   			<ul>
   				<li><a href="/votering/">Omröstningar</a></li>

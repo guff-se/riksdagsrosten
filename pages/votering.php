@@ -86,24 +86,23 @@ include_once("includes/header.php");
 	<div id="sidebar">
 		<div id="data-box">
 		
-			<div id="leave-vote">
+			<div id="leave-vote" class="clearfix">
                         <?php if(isset($USER)) { ?>                        
                         <?php 
-                            $ja_active = '';
-                            $nej_active = '';
+                            $ja_status = '';
+                            $nej_status = '';
                            if(isset($din_rost->rost)) {
-                             if(strtolower($din_rost->rost) == "nej") { $nej_active = "active"; }  
-                             if(strtolower($din_rost->rost) == "ja")  { $ja_active = "active";  }
+                             if(strtolower($din_rost->rost) == "nej") { $nej_status = "voted"; $ja_status = "not-voted"; }  
+                             if(strtolower($din_rost->rost) == "ja")  { $ja_status = "voted"; $nej_status = "not-voted";  }
                            }
                         ?>
                         
                         
                         
 			<ul id="votebuttons">
-				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="log_vote button yes <?=$nej_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja" id="voteYes">JA</a></li>
-				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\"");?> class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej" id="voteNo">NEJ</a></li>
+				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="log_vote button yes <?=$nej_status; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja" id="voteYes">JA</a></li>
+				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\"");?> class="log_vote button no <?=$ja_status; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej" id="voteNo">NEJ</a></li>
 			</ul>​
-			<div class="clearer">&nbsp;</div>
                          
                         
                         
