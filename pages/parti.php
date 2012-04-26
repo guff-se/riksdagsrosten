@@ -9,7 +9,7 @@ $roster_tot = $result->roster_tot;
 $roster_ejpiska = $result->roster_tot-$result->roster_piska;
 
 $ledamoter = $db->executeSQLRows("select * from Ledamoter where parti='$partiet' order by efternamn");
-$antal = $db->executeSQL("select count(*) as total from Ledamoter where parti='$partiet'", "SELECT");
+$antal = $db->executeSQL("SELECT count(*) AS total FROM Ledamoter WHERE parti='$partiet' AND status LIKE '%Tjänstgörande%'", "SELECT");
 if(isset($USER)) {
 	$match = $db->executeSQL("select * from PartiMatch where user_id = '$USER->id' && parti = '$partiet'","SELECT");
 	if(isset($match->procent))
