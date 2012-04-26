@@ -74,7 +74,7 @@ include_once("includes/header.php");
 </div>
 <? } ?>
 <div id="content">
-	<div id="main">
+	<div id="main" class="votering box-stroke">
 		<h1><?php echo $v->titel; ?></h1>
 		<p><i>Beslutsdatum: <?php echo $v->beslut_datum; ?></i> &nbsp;
 			<a href="http://data.riksdagen.se/dokument/<?=$dokID?>">Läs förslaget i sin helhet</a>
@@ -84,7 +84,9 @@ include_once("includes/header.php");
             </p>
 	</div>
 	<div id="sidebar">
-		<div id="leave-vote">
+		<div id="data-box">
+		
+			<div id="leave-vote">
                         <?php if(isset($USER)) { ?>                        
                         <?php 
                             $ja_active = '';
@@ -95,15 +97,29 @@ include_once("includes/header.php");
                            }
                         ?>
                         
-			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
+                        
+                        
+			<ul id="votebuttons">
+				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="log_vote button yes <?=$nej_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja" id="voteYes">JA</a></li>
+				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\"");?> class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej" id="voteNo">NEJ</a></li>
+			</ul>​
+			<div class="clearer">&nbsp;</div>
+                         
+                        
+                        
+                        
+                        
+			<!--<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
 				class="log_vote button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja">Ja</a>
 			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">Nej</a>
-			<a class="button next" href="#" title="Nästa fråga">&#8227;</a>
-			<div class="clearer">&nbsp;</div>
+				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">Nej</a>-->
+			
+			<!--<div class="clearer">&nbsp;</div>-->
+			<!--<a class="button next" href="#" title="Nästa fråga">&#8227;</a>-->
                         <?php } ?>
 		</div>
-		<div id="data-box">
+		
+		
 			<div class="group">
 				<h5>Folkets åsikt just nu</h5>
 
