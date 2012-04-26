@@ -57,7 +57,12 @@ else {
 
 if($page == "votering") {
         if(isset($_GET['id'])){
-           include 'pages/votering.php';
+			$id=$_GET['id'];
+			if($id == "kommande" || $id == "populara" || $id == "tidigare") {
+				include 'pages/votering-lista.php';
+			} else {
+           		include 'pages/votering.php';
+			}
         }else{
            include 'pages/votering-lista.php';
         }
@@ -69,13 +74,19 @@ else if($page == "pop") {
         include 'pages/votering-lista.php';
 }
 else if($page == "profil") {
-        include 'pages/profil.php';
+		if(isset($_GET['id']) && $_GET['id']=="redigera")
+			include 'pages/profil-redigera.php';
+        else
+			include 'pages/profil.php';
 }
 else if($page == "parti") {
         include 'pages/parti.php';
 }
 else if($page == "om") {
         include 'pages/om.php';
+}
+else if($page == "live") {
+        include 'pages/live.php';
 }
 else if($page == "ledamot") {
         if(isset($_GET['id'])){

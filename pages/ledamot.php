@@ -11,8 +11,9 @@ $l = $result[0];
 $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
         WHERE Utskottsforslag.status = 0
         AND Utskottsforslag.punkt = 1
+		AND Utskottsforslag.visible = 1
         AND Organ.organ = Utskottsforslag.organ
-        ORDER BY Utskottsforslag.publicerad DESC");
+        ORDER BY Utskottsforslag.beslut_datum DESC");
 
 
 $roster = array();
@@ -33,7 +34,8 @@ if(isset($USER)) {
 $match = $db->executeSQL("SELECT * from LedamotMatch
 								where intressent_id='$l->intressent_id' AND
 								user_id='$USER->id'","SELECT");
-$match->procent=round($match->procent,2)*100;
+if(is_object($match))
+	$match->procent=round($match->procent,2)*100;
 }
 
 $HEADER['title']="$l->tilltalsnamn $l->efternamn";
@@ -58,9 +60,14 @@ include_once("includes/header.php");
 				<div class="column<?php if(!isset($USER)) { echo ' inactive'; } ?>">
 					<h3>Likhet</h3>
 					<?php if(isset($USER)) { ?>
-						<span class="procent"><?=$match->procent;?>%</span>
-						<span class="description">Baserat på de <?php print($match->roster_lika + $match->roster_olika);?> omröstningar ni båda röstat i har ni svarat likadant på <?=$match->procent;?>% av dem.<!--<?php // echo $match->points; ?>% av de X omröstningarna har du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> röstat likadant.--></span>
-					<?php } else{ ?>
+						<? if(is_object($match)) {?>
+							<span class="procent"><?=$match->procent;?>%</span>
+							<span class="description">Baserat på de <?php print($match->roster_lika + $match->roster_olika);?> omröstningar ni båda röstat i har ni svarat likadant på <?=$match->procent;?>% av dem.<!--<?php // echo $match->points; ?>% av de X omröstningarna har du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> röstat likadant.--></span>
+						<?php } else{ ?>
+							<span class="procent">?</span>
+							<span class="description">Du har inte röstat i någon omröstning som <?=$l->tilltalsnamn?> <?=$l->efternamn?> har röstat i.</span>
+					<?php } 
+					} else{ ?>
 						<span class="procent">?</span>
 						<span class="description">Du måste <a href="/login/">logga in</a> för att se hur pass lika du och <?=$l->tilltalsnamn?> <?=$l->efternamn?> har röstat.</span>
 					<?php } ?>
@@ -88,7 +95,10 @@ include_once("includes/header.php");
 <?foreach($roster as $r) {?>
 							<li>
 								<a href="/votering/<?=$r->dok_id?>/">
-									<span class="title"><?php echo substr($r->titel,0,65);?></span>
+									<span class="title"><?php echo substr($r->titel,0,69);
+														if(strlen($r->titel)>69)
+															echo "...";
+														?></span>
 									<?php
 									if($r->rost == 'Ja') {
 										$answerClass = 'yes';
@@ -121,19 +131,20 @@ include_once("includes/header.php");
 					</div>
 				</div>
 				<div class="clearer">&nbsp;</div>
-				<div class="box-frame" style="margin-top:15px;color:#444;">
-					<img style="position:relative;top:2px;margin-right:7px;" src="/static/images/twitter-icon.png" width="30"/><a href="http://twitter.com/riksdagsrosten" target="_blank" style="color: #444;font-weight:bold;text-decoration:none;"><?=$l->tilltalsnamn?> <?=$l->efternamn?></a><b>:</b> <span id="last-tweet"></span>
+<?if($l->twitter) {?>
+				<div class="box-stroke" style="margin-top:15px;color:#666;padding-top:10px;">
+					<img style="position:relative;top:5px;margin-right:7px;" src="/static/images/twitter-icon.png" width="30"/><a href="http://twitter.com/<?=$l->twitter?>" target="_blank" style="color: #444;font-weight:bold;text-decoration:none;"><?=$l->tilltalsnamn?> <?=$l->efternamn?></a><b style="color:#444;font-weight:bold;">:</b> <span id="last-tweet" style="line-height:25px;"></span>
 				</div>
 <script type="text/javascript">
 $(document).ready(function(){
-var username='riksdagsrosten';
+var username='<?=$l->twitter?>';
 var format='json';
 var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?';
-
 	$.getJSON(url,function(tweet){
 		$("#last-tweet").html(tweet[0].text);
 	});
 });
 </script>
+<?}?>
 			</div>
 </div>

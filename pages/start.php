@@ -2,14 +2,16 @@
     $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
         WHERE Utskottsforslag.status = 0
         AND Utskottsforslag.punkt = 1
+        AND Utskottsforslag.visible = 1
         AND Organ.organ = Utskottsforslag.organ
         AND Utskottsforslag.votering_id != ''
-        ORDER BY Utskottsforslag.publicerad DESC LIMIT 5");
+        ORDER BY Utskottsforslag.beslut_datum DESC LIMIT 5");
 
     
         $kommandeOmrostningar = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
         WHERE Utskottsforslag.status = 5
         AND Utskottsforslag.punkt = 1
+        AND Utskottsforslag.visible = 1
         AND Organ.organ = Utskottsforslag.organ
         GROUP BY dok_id
         ORDER BY Utskottsforslag.beslut_datum ASC LIMIT 5");
@@ -21,10 +23,10 @@ $HEADER['type']="website";
 include_once("includes/header.php");
 ?>
 
-
+<br/>
 <div id="content">
-	<div id="main" class="start">		
-		<div id="list" style="width: 960px;">
+	<div id="main">		
+		<div id="list" style="width: 620px;">
 			<div id="slider">
 			<ul id="slider-content" style="-webkit-border-radius: 15px;
 -webkit-border-bottom-left-radius: 0;
@@ -93,15 +95,15 @@ border-bottom-left-radius: 0;">
 			</div>
 			</div>
 			<div class="clearer">&nbsp;</div>
-				<div style="float:left;width:65%;">
-					<h3>Senaste omröstningarna</h3>
+				<div>
+					<h3>Tidigare omröstningar</h3>
 			<div class="singular-vote-list">
 						<ul style="padding:0px;">
 				
                                                     <?php foreach ($result as $v) { ?>
                                                         <li>
                                                             <a href="/votering/<?= $v->dok_id ?>/">
-                                                                <span class="title"><?= $v->titel ?></span>
+                                                                <span class="title"><?= $v->titel ?></span> <time>&mdash; <?= str_replace(" 00:00:00","",$v->beslut_datum); ?></time></span>
                                                                 
                                                                 <div class="clearer">&nbsp;</div>
                                                             </a>
@@ -112,22 +114,24 @@ border-bottom-left-radius: 0;">
 						<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 					</div>
 				</div>
-				<div style="float:right;width:33%;">
+				<br/>
+				<div>
 					<h3>Kommande omröstningar</h3>
 			<div class="singular-vote-list">
 						<ul style="padding:0px;">
                                                     <?php foreach ($kommandeOmrostningar as $k) { ?>
                                                         <li>
                                                             <a href="/votering/<?= $k->dok_id ?>/">
-                                                                <span class="title"><?= $k->titel ?></span>
+                                                                <span class="title"><?= $k->titel ?> <time>&mdash; <?= str_replace(" 00:00:00","",$k->beslut_datum); ?></time></span>
                                                                 <div class="clearer">&nbsp;</div>
-                                                                <span class="title">Voteringsdag: <?= str_replace(" 00:00:00","",$k->beslut_datum); ?></span>
+                                                                <!---->
                                                             </a>
                                                         </li>
                                                     <?php } ?>
 
 
 						</ul>
+						<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 					</div>
 				<div class="clearer">&nbsp;</div>
 			</div>
@@ -135,21 +139,7 @@ border-bottom-left-radius: 0;">
 			<!--<a class="show-more-button" href="/votering">Visa fler omröstningar</a>-->
 		</div>
 	</div>
-	<div id="sidebar">
-		<!--<h3>Donera till Riksdagsrösten</h3>
-		<i>Vi behöver din hjälp för att utvecklas.</i>
-		<div style="margin-top:15px;margin-left:25px">
-		<iframe style="overflow:hidden;" src="http://www.fundedbyme.com/projects/2011/10/riksdagsrosten/widget/" width="240" height="600" frameborder="0" align="middle">Your browser does not support iframe</iframe>
-		<div style="float:right;margin-top:0px;margin-right:35px">
-			<a class="FlattrButton" style="display:none;" href="http://riksdagsrosten.se/"></a>
-			<noscript><a href="http://flattr.com/thing/427951/Riksdagsrosten" target="_blank">
-			<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
-		</div>
-		</div>-->
-
-		<!--<iframe width="345" height="600" src="http://live.twingly.com/riksdagsrosten?css=http://riksdagsrosten.se/static/css/twingly-live.css" style="border:0;outline:0" frameborder="0" scrolling="no"></iframe>-->
-	</div>
-	<div style="width: 320px;float: left;">
+	<div id="sidebar" style="width:320px;">
 		<div class="box-stroke">	
 				<h4 style="background-image: url(/static/images/landning-se.png);">F&ouml;lj Sveriges riksdag</h3>
 				<p style="border-bottom: 2px solid #EAE4D9;padding-bottom:15px;">
@@ -165,10 +155,14 @@ border-bottom-left-radius: 0;">
 				</p>
 		</div>
 		<br/>
-		<div class="box-stroke" style="padding:10px;">	
+		<div class="box-stroke">
+			<?php include_once("includes/blog-feed.php"); ?>
+		</div>
+		<br/>
+				<div class="box-stroke" style="padding:10px;">	
 				<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Friksdagsrosten&amp;width=292&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23FFF&amp;stream=false&amp;header=false&amp;appId=124823437606237" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:258px;" allowTransparency="true"></iframe>
 		</div>
-		</div>
+	</div>
 	
 	<div class="clearer">&nbsp;</div>
 	<!--<br/>

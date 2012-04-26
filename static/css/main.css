@@ -21,7 +21,7 @@ body p {
 	margin: 0px auto 30px auto;
 }
 a {
-	color: #16526d;
+	color: #222;
 }
 /*.dsq-brlink {
 	display: none;
@@ -53,6 +53,7 @@ h3 {
 	padding-top: 32px;
 	margin-bottom: -2px;
 	float: right;
+	margin-right: -10px;
 }
 #nav-1 li {
 	float: left;
@@ -690,8 +691,86 @@ h1.single-row {
 	margin-bottom: 9px;
 }
 
+#list #filter {
+	margin-bottom: -1px;
+}
+#list #filter li {
+	width: 30%;
+	float: left;
+	margin: 0;
+	margin-right: 1.5%;
+	margin-left: 1.5%;
+}
+#list #filter ul {
+	background: none;
+}
+#list #filter li a {
+	box-shadow: none;
+	-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+	-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+background-color: #EAE4D9;
+text-align: center;
+color: #666;
+}
+#list #filter li a:hover {
+	color: #333;
+	text-decoration: underline;
+}
+#list #filter li.active a {
+	color: #e1e1e1;
+	background-color: #111;
+	margin-top: -5px;
+	padding-top: 13px;
+	padding-bottom: 12px;
+	font-size: 20px;
+}
+#list #filter li.active a:hover {
+	color: #e1e1e1;
+	text-decoration: none;
+}
+#list #filter-sub {
+	background-color: #111;
+}
 
-
+.pagination_front {
+	text-align: center;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.pagination_front ul {
+	margin: 0;
+	padding: 0;
+	background: none;
+	background-color: #EAE4D9;
+}
+.pagination_front li {
+	width: 40px;
+	display: inline-block;
+	margin: 0px 2px;
+	color: #9c9c9c;
+}
+#list .pagination_front li a {
+	color: #ccc;
+	padding: 10px 0px;
+	display: block;
+	text-align: center;
+}
+.pagination_front li.active {
+	width: 46px;
+}
+#list .pagination_front li.active a {
+	color: #333;
+	font-weight: bold;
+	border: 3px solid #333;
+}
 
 .s {
 	background-image: url('../images/socialdemokraterna.png');
@@ -780,6 +859,9 @@ border-bottom-left-radius: 15px;
 }
 
 
+.title time {
+	color: #999;
+}
 
 
 
@@ -793,6 +875,7 @@ border-bottom-left-radius: 15px;
 	font-size: 14px;
 	line-height: 1.3em;
 	color: #333;
+	/*height: 36px;*/
 }
 
 .notice strong {

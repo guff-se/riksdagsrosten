@@ -72,8 +72,8 @@ class Pager_Sliding extends Pager_Common
         $this->_separator             = '|';
         $this->_spacesBeforeSeparator = 3;
         $this->_spacesAfterSeparator  = 3;
-        $this->_curPageSpanPre        = '<b>';
-        $this->_curPageSpanPost       = '</b>';
+        $this->_curPageSpanPre        = '<li class="active"><a>';
+        $this->_curPageSpanPost       = '</a></li>';
 
         //set custom options
         $err = $this->setOptions($options);

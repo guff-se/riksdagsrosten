@@ -1,23 +1,34 @@
 <?php
-if($page=="pop")
+if(!isset($id))
+	if(isset($_POST["id"]))
+		$id=$_POST["id"];
+	else
+		$id="tidigare";
+if($id=="populara")
 	$sort = "ORDER BY Utskottsforslag.folket_ja+Utskottsforslag.folket_nej DESC LIMIT 50";
+else if($id=="kommande")
+	$sort = "AND Utskottsforslag.status = '5'
+    ORDER BY Utskottsforslag.beslut_datum LIMIT 50";
 else if($page=="kategori" && isset($_GET["id"])) {
 	$kid = $_GET["id"];
-	$sort = "AND Utskottsforslag.organ='$kid' ORDER BY Utskottsforslag.publicerad DESC LIMIT 50";
+	$sort = "AND Utskottsforslag.organ='$kid' ORDER BY Utskottsforslag.beslut_datum DESC LIMIT 50";
 	$result = $db->executeSQL("select Beskrivning from Organ where organ='$kid'", "SELECT");
 	$kategori_namn= $result->Beskrivning;
 }
+else if($id=="tidigare") {
+	$sort = "AND Utskottsforslag.status = '0'
+    ORDER BY Utskottsforslag.beslut_datum DESC LIMIT 50";
+}
 else
-	$sort = "ORDER BY Utskottsforslag.publicerad DESC LIMIT 50";
+	die("vilka voteringar?");
 
 $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ
-        WHERE Utskottsforslag.status = 0
-        AND Utskottsforslag.punkt = 1
-        AND Utskottsforslag.votering_id != ''
+        WHERE Utskottsforslag.punkt = 1
+        AND Utskottsforslag.visible = 1
         AND Utskottsforslag.organ = Organ.organ
         $sort");
 
-$kategorier = $db->executeSQLRows("SELECT * FROM Organ ORDER BY Beskrivning");
+$kategorier = $db->executeSQLRows("SELECT * FROM Organ WHERE aktiv=1 ORDER BY Beskrivning");
 
 
 $HEADER['title']="Omröstningar";
@@ -32,8 +43,8 @@ $HEADER['title'] ="Kategorier";
 $HEADER['type']="article";
 
 include_once("includes/header.php");
-?>
 
+?>
 
 <div id="content">
 	<div id="main">
@@ -45,8 +56,29 @@ include_once("includes/header.php");
 				}
 			?>
 			</h3>
-			<div class="box-frame">
+			<div id="filter">
+			<ul>
+				<?if($id=="populara") {?>
+					<li class="active"><a href="#">Populära</a></li>
+				<?} else {?>
+					<li><a href="/votering/populara">Populära</a></li>
+				<?}
+				if($id=="tidigare") {?>
+					<li class="active"><a href="#">Tidigare</a></li>
+				<?} else {?>
+					<li><a href="/votering/tidigare">Tidigare</a></li>
+				<?}
+				if($id=="kommande") {?>
+					<li class="active"><a href="#">Kommande</a></li>
+				<?} else {?>
+					<li><a href="/votering/kommande">Kommande</a></li>
+				<? } ?>
+			</ul>
+			<div class="clearer">&nbsp;</div>
+			</div>
+			<div id="filter-sub" class="box-frame">
 			<form action="/kategori" method="get">
+				<input type="hidden" name="tab" value="<?$id?>">
 				<select style="width:100%;font-size:16px;" name="id" onchange='location.replace("/kategori/"+this.value)'>
 				<option value="">Alla kategorier</option>
 				<?foreach ($kategorier as $r) {
@@ -118,6 +150,18 @@ foreach($result as $v) {
 			<?php if(!isset($kategori_namn)) { ?>
 			<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 			<?php } ?>
+			<div class="pagination_front">
+				<ul>
+				    <li>«</li>
+				    <li class="active">
+				      <a href="#">1</a>
+				    </li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">»</a></li>
+				  </ul>
+				</div>
 		</div>
 	</div>
 	<div id="sidebar">
@@ -129,10 +173,6 @@ foreach($result as $v) {
 		</div>-->
 		<br />
 		<br />
-		<div class="box-stroke" style="padding:10px;">	
-				<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Friksdagsrosten&amp;width=292&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23FFF&amp;stream=false&amp;header=false&amp;appId=124823437606237" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:258px;" allowTransparency="true"></iframe>
-		</div>
-		<br/>
 		<div class="box-stroke">	
 				<h4 style="background-image: url(/static/images/landning-se.png);">F&ouml;lj Sveriges riksdag</h3>
 				<p style="border-bottom: 2px solid #EAE4D9;padding-bottom:15px;">
@@ -146,6 +186,10 @@ foreach($result as $v) {
 				<p style="margin-bottom:5px;">
 					Vi sammanst&auml;ller dina &aring;sikter och kontaktar din Riksdagsledamot f&ouml;r att p&aring;verka beslut.
 				</p>
+		</div>
+		<br/>
+		<div class="box-stroke" style="padding:10px;">	
+				<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Friksdagsrosten&amp;width=292&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23FFF&amp;stream=false&amp;header=false&amp;appId=124823437606237" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:258px;" allowTransparency="true"></iframe>
 		</div>
 	</div>
 	<div class="clearer">&nbsp;</div>

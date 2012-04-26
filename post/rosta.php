@@ -23,37 +23,41 @@ $vid = $_GET["vid"];
 $rost = $_GET["rost"];
 
 if ($user && $vid) {
-	$result=$db->executeSQL("select id from UserRoster where user_id='$user' and votering_id='$vid'", "SELECT");
+	$result=$db->executeSQL("select id from UserRoster where user_id='$user' and utskottsforslag_id='$vid'", "SELECT");
+
 	if(isset($result)) {
 			$sql = "delete from UserRoster WHERE id='$result->id'";
-/*			$graph_url = "https://graph.facebook.com/{$result->id}?access_token=" .
+			$graph_url = "https://graph.facebook.com/{$result->id}?access_token=" .
 						$_SESSION['access_token'];
 						
 			$opts = array('http'=>array('method'=>"DELETE",));
 			$context = stream_context_create($opts);
-			$file = file_get_contents($graph_url, false, $context);*/
+			$file = file_get_contents($graph_url, false, $context);
+			$db->executeSQL($sql,"DELETE");
         }
 		// Facebook Open Graph
 
-/*		$graph_url = "https://graph.facebook.com/me/riksdagsrosten:vote_on?method=post&access_token=" .
+		$graph_url = "https://graph.facebook.com/me/riksdagsrosten:vote_on?method=post&access_token=" .
 					$_SESSION['access_token'] . "&vote=" . $rost . "&bill=" . $_SERVER['HTTP_REFERER'];
-     	$fb_out = json_decode(file_get_contents($graph_url));*/
+     	$fb_out = json_decode(file_get_contents($graph_url));
 
 		// uppdatera UserRoster
-       	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', votering_id='$vid', user_id='$user'";              
+       	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
+//       	$sql = "insert into UserRoster set rost='$rost', utskottsforslag_id='$vid', user_id='$user'";              
         $db->executeSQL($sql,"UPDATE");
 
 		// uppdatera voteringar //
 		$push_sql = "
-              UPDATE Voteringar 
-              SET folket_nej=(select count(*) AS antal FROM UserRoster WHERE rost = 'Nej' and votering_id = '$vid'),
-              folket_ja=(select count(*) AS antal FROM UserRoster WHERE rost = 'Ja' AND votering_id = '$vid')
-              WHERE votering_id = '$vid' LIMIT 1";
+              UPDATE Utskottsforslag 
+              SET folket_nej=(select count(*) AS antal FROM UserRoster WHERE rost = 'Nej' and utskottsforslag_id = '$vid'),
+              folket_ja=(select count(*) AS antal FROM UserRoster WHERE rost = 'Ja' AND utskottsforslag_id = '$vid')
+              WHERE id = '$vid' LIMIT 1";
+
         $db->executeSQL($push_sql,"UPDATE");
 
 		// pusha update to User
 		
-		$result=$db->executeSQLRows("select rost,votering_id from UserRoster where UserRoster.user_id = '$user'");
+		$result=$db->executeSQLRows("select rost,utskottsforslag_id from UserRoster where UserRoster.user_id = '$user'");
 		$lika=array();
 		$olika=array();
 				foreach($PARTI as $p => $bs) {

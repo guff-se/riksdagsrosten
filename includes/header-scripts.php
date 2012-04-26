@@ -23,12 +23,16 @@
 		$HEADER['title'] = "Riksdagsrösten";
     ?></title>
 
-<meta property="og:url" content="http://www.riksdagsrosten.se<?=$_SERVER['REQUEST_URI']?>"/>
+<meta property="og:url" content="http://<?=$_SERVER["HTTP_HOST"]?><?=$_SERVER['REQUEST_URI']?>"/>
 
   <meta property="fb:app_id"      content="196658153744046" /> 
 <?php if(isset($HEADER['description'])) {
 	$ogDescription = strip_tags($HEADER['description']);
 	print("<meta property=\"og:description\" content=\"".$ogDescription."\" />");
+	}
+	else {
+		print("<meta property=\"og:description\"
+		          content=\"Riksdagsrösten är en websajt där man kan se tidigare och kommande voteringar i riksdagen och ge sin egen röst i dessa. Baserat på dina röster matchas du upp med riksdagsledamöter som röstar som dig. Inför varje votering kan ledamöterna sedan få rapporter om hur just deras väljare tycker att de skall rösta. Du kan också se statistik om hur partier och enskilda ledamöter röstar och hur väl de håller sig till partilinjerna.\"/>");
 	}
 ?>
 	<meta property="og:site_name" content="Riksdagsrösten"/>
@@ -42,7 +46,7 @@
 	<?if(isset($HEADER['image']))
 		print("<meta property=\"og:image\" content=\"" . $HEADER['image'] . "\"/>");
 	else
-		print("<meta property=\"og:image\" content=\"http://www.riksdagsrosten.se/icon_200.png\"/>");
+		print("<meta property=\"og:image\" content=\"http://".$_SERVER["HTTP_HOST"]."/icon_200.png\"/>");
 	?>
 	
 <?if($page=="votering" && isset($HEADER["folket_ja"]) && isset($HEADER["folket_nej"])) {?>
@@ -52,7 +56,7 @@
 	}
 ?>	
 	
-	<link rel="pingback" href="http://www.riksdagsrosten.se<?=$_SERVER['REQUEST_URI']?>" />
+	<link rel="pingback" href="http://<?=$_SERVER["HTTP_HOST"]?><?=$_SERVER['REQUEST_URI']?>" />
 	
 	<?
 	if(!isset($USER->admin)) {

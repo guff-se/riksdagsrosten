@@ -8,7 +8,7 @@ else
 
 if(isset($USER)) {
 //logged in stuff //
- $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE votering_id in (select votering_id from Utskottsforslag where dok_id = '".$dokID."' AND punkt = 1) AND user_id = '$USER->id'");
+ $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE utskottsforslag_id in (select id from Utskottsforslag where dok_id = '".$dokID."' AND punkt = 1) AND user_id = '$USER->id'");
  $din_rost=$din_rost_result[0];
 }
 
@@ -67,30 +67,21 @@ $HEADER["folket_nej"]=$v->folket_nej;
 
 include_once("includes/header.php");
 ?>
+<?if(isset($USER))
+	if($USER->type == 1) {?>
+<div id="admin">
+	<a href="/admin/visa.php?dok_id=<?= $v->dok_id ?>">Redigera votering</a>
+</div>
+<? } ?>
 <div id="content">
 	<div id="main">
-		<div id="list">
-			<h1><?php echo $v->titel; ?></h1>
-		</div>
-            <span>
-              
-              <?php if($v->status == 0 )  
-                  echo nl2br($v->bik);  
-                    else 
-                  echo "<iframe width=960 height=600 src=http://data.riksdagen.se/dokument/".$dokID."/></iframe>Summering av förslag kommer snart!";  
-                    
-                  echo "<br><br>Läs om förslaget <a href=\"http://data.riksdagen.se/dokument/".$dokID."/ \"> här </a>";
-               ?>
-            </span>
-            
-            <br>
-            <br>
-
-            <span>
-
-            </span>
-            
-            
+		<h1><?php echo $v->titel; ?></h1>
+		<p><i>Beslutsdatum: <?php echo $v->beslut_datum; ?></i> &nbsp;
+			<a href="http://data.riksdagen.se/dokument/<?=$dokID?>">Läs förslaget i sin helhet</a>
+		</p>
+            <p>
+              <?= nl2br($v->bik);?>
+            </p>
 	</div>
 	<div id="sidebar">
 		<div id="leave-vote">
@@ -105,9 +96,9 @@ include_once("includes/header.php");
                         ?>
                         
 			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				class="log_vote button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Ja">Ja</a>
+				class="log_vote button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja">Ja</a>
 			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->votering_id?>&rost=Nej">Nej</a>
+				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">Nej</a>
 			<a class="button next" href="#" title="Nästa fråga">&#8227;</a>
 			<div class="clearer">&nbsp;</div>
                         <?php } ?>

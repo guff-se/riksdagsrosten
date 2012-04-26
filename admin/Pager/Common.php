@@ -838,7 +838,7 @@ class Pager_Common
             if (array_key_exists($this->_urlVar, $this->_linkData)) {
                 $onclick = str_replace('%d', $this->_linkData[$this->_urlVar], $this->_onclick);
             }
-            return sprintf('<a href="%s"%s%s%s%s title="%s">%s</a>',
+            return sprintf('<li><a href="%s"%s%s%s%s title="%s">%s</a></li>',
                            htmlentities($this->_url . $href, ENT_COMPAT, 'UTF-8'),
                            empty($this->_classString) ? '' : ' '.$this->_classString,
                            empty($this->_attributes)  ? '' : ' '.$this->_attributes,
