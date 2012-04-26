@@ -90,7 +90,7 @@ border-bottom-left-radius: 0;">
 					</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
-				<div id="slider-more"><a href="#">Visa alla omröstningar &rarr;</a></div>
+				<div id="slider-more"><a href="/votering/">Visa alla omröstningar &rarr;</a></div>
 				<div class="clearer">&nbsp;</div>
 			</div>
 			</div>

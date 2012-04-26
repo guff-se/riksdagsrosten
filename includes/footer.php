@@ -4,19 +4,18 @@
 </div>
 <div id="mentions">
 			<div class="w960">
-				<!--<h4>Vad säger folk om Riksdagrösten?</h4>-->
 				<div class="social"><iframe src="http://www.facebook.com/plugins/like.php?app_id=196658153744046&amp;href=http://www.facebook.com/riksdagsrosten&amp;send=false&amp;layout=button_count&amp;width=1&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe><a href="https://twitter.com/riksdagsrosten" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow @riksdagsrosten</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
 				<div class="clearer">&nbsp;</div>
 				<ul id="tweets">
 					<!--<li> 
-						<img src="https://twimg0-a.akamaihd.net/profile_images/1646714838/Leonard_Forsberg_reasonably_small.jpg" />
-						<p><a class="author" href="https://twitter.com/leonardforsberg/status/131308000974614528">Leonard Forsberg:</a> <a href="#">@riksdagsrosten</a> det känns som jag sitter i Riksdagen. Toppen!</p>
+						<img src="#" />
+						<p><a class="author" href="#">Namn:</a> <a href="#">@riksdagsrosten</a></p>
 						<div class="clearer">&nbsp;</div>
 					</li>-->
 				</ul>
 				<div class="clearer">&nbsp;</div>
 				<div id="site-info">
-					<div class="left">Copyright &copy; 2011 <strong>Riksdagsrösten</strong> &mdash; Alla rättigheter förbehålls.</div>
+					<div class="left">Copyright &copy; 2012 <strong>Riksdagsrösten</strong> &mdash; Alla rättigheter förbehålls.</div>
 					<div class="right">
 						<ul>
 							<li><a href="/om">Om webbplatsen</a></li>

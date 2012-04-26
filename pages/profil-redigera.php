@@ -33,19 +33,19 @@ include_once("includes/header.php");
 
 <div id="content">
 	<div id="main" class="profil">
-		<h1>Min profil</h1>
-		<a href=/profil/redigera>Redigera</a>
-		<div id="profile-overview" class="box-frame">
+		<h1>Redigera profil</h1>
+		<!--<div id="profile-overview" class="box-frame">
 			<div class="inner">
-			<img src="https://graph.facebook.com/<?=$USER->facebook_id; ?>/picture" width="50" height="50" class="left" /><h3 class="left"><?=$USER->tilltalsnamn; ?> <?=$USER->efternamn; ?></h3> <span>(<b><?=$USER->roster; ?></b> röster)</span> <span class="logout"><a href="/logout/">Logga ut</a></span>
+			<img src="https://graph.facebook.com/<?=$USER->facebook_id; ?>/picture" width="50" height="50" class="left" /><h3 class="left"><?=$USER->tilltalsnamn; ?> <?=$USER->efternamn; ?></h3> <span>(<b><?=$USER->roster; ?></b> röster)</span><span class="logout"><a href="/logout/" class="btn btn-inverse">Logga ut</a></span>
 				<div class="clearer">&nbsp;</div>
             </div>        
 		</div>
-		<br />
+		<br />-->
 		<div class="box-frame">
 			<div class="inner">
 				Ange det parti du röstade på i senaste riksdagsvalet (2010):
 				<select>
+					<option name="">---</option>
 				<?
 				foreach($PARTI as $p => $p_namn) {
 				?>
@@ -54,9 +54,23 @@ include_once("includes/header.php");
 				</select>
 				(läs vår integritetspolicy)
 				<br/>
-            </div>        
+            </div>
+            <br />
+            <div class="inner">
+				Typ av Profil: 
+				<select>
+					<option name="">Öppen profil</option>
+					<option name="">Stängd profil</option>
+				</select>
+				<br/>
+            </div>
+            <br/>
 		</div>
 		<br />
+		<div style="text-align:center;">
+            <a href="/profil" class="btn btn-large">Avbryt</a>
+            <a href="#" class="btn btn-large btn-success">Spara</a>
+            </div>
 
 	</div>
 </div>
