@@ -1029,7 +1029,7 @@ border-radius:            120px;
  position:relative; 
 }
 
-#voteYes{
+.voteYes{
 background-color: #74B44D;
 background-image: -webkit-gradient(linear, left top, left bottom, from(#7DCD4B), to(#74B44D)); 
 background-image: -webkit-linear-gradient(top, #7DCD4B, #74B44D); 
@@ -1045,14 +1045,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#7DCD4B', EndC
 -moz-box-shadow:    0 4px 0 #2D640A, 0 1px 0 rgba(255, 255, 255, .7) inset;
 box-shadow:            0 4px 0 #2D640A, 0 1px 0 rgba(255, 255, 255, .7) inset; 
 }
-#voteYes.voted {
-}
-.not-voted {
-	background-color: #e1e1e1;
-	color: #333;
-}
-
-#voteNo{
+.voteNo{
 background-color: #B02525;
 background-image: -webkit-gradient(linear, left top, left bottom, from(#C12727), to(#B02525)); 
 background-image: -webkit-linear-gradient(top, #C12727, #B02525); 
@@ -1068,6 +1061,19 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#C12727', EndC
 -moz-box-shadow:    0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset;
 box-shadow:            0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset; 
 }​
+#votebuttons.voted-ja .voteYes, #votebuttons.voted-nej .voteNo {
+ -webkit-box-shadow:0 1px 2px #000 inset, 0 1px 0 rgba(255, 255, 255, 1);
+ -moz-box-shadow:0 1px 4px #000 inset, 0 1px 0 rgba(255, 255, 255, 1);
+ box-shadow:0 1px 4px #000 inset, 0 1px 0 rgba(255, 255, 255, 1);
+ top:4px;
+ position:relative;
+}
+#votebuttons .not-voted a {
+	background-image: #e1e1e1;
+	color: #333;
+}
+
+
 
 
 /* FIRST */
@@ -1267,7 +1273,7 @@ iframe.twitter-follow-button {
 
 
 #welcome .twoway {
-	width: 48%;
+	width: 364px;
 	display: block;
 	float: right;
 	padding-left: 1%;
@@ -1276,21 +1282,25 @@ iframe.twitter-follow-button {
 
 #welcome .twoway.first-child {
 	float: left;
+	width: 363px;
 	border-right: 1px solid #ccc;
 }
 #welcome ul {
-	width: 80%;
+	width: 770px;
 	margin: 0px auto 20px auto;
+}
+#welcome ul ul {
+	width: auto;
+	margin: 0px;
 }
 #welcome li {
 	font-size: 14px;
 	color: #999;
 }
 #welcome ul li a.btn {
-	margin: 0px auto;
+	margin: 30px auto 30px auto;
 	width: 80%;
 	display: block;
-	margin-bottom: 30px;
 }
 
 #welcome h3 {

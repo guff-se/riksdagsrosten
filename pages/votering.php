@@ -76,7 +76,7 @@ include_once("includes/header.php");
 <div id="content">
 	<div id="main" class="votering box-stroke">
 		<h1><?php echo $v->titel; ?></h1>
-		<p><i>Beslutsdatum: <?php echo $v->beslut_datum; ?></i> &nbsp;
+		<p><b>Beslutsdatum:</b> <?php echo $v->beslut_datum; ?> &nbsp;
 			<a href="http://data.riksdagen.se/dokument/<?=$dokID?>">Läs förslaget i sin helhet</a>
 		</p>
             <p>
@@ -92,16 +92,16 @@ include_once("includes/header.php");
                             $ja_status = '';
                             $nej_status = '';
                            if(isset($din_rost->rost)) {
-                             if(strtolower($din_rost->rost) == "nej") { $nej_status = "voted"; $ja_status = "not-voted"; }  
-                             if(strtolower($din_rost->rost) == "ja")  { $ja_status = "voted"; $nej_status = "not-voted";  }
+                             if(strtolower($din_rost->rost) == "nej") { $nej_status = "voted"; $ja_status = "not-voted"; $selected_vote = 'voted-nej';}  
+                             if(strtolower($din_rost->rost) == "ja")  { $ja_status = "voted"; $nej_status = "not-voted"; $selected_vote = 'voted-ja'; }
                            }
                         ?>
                         
                         
                         
-			<ul id="votebuttons">
-				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="log_vote button yes <?=$nej_status; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja" id="voteYes">JA</a></li>
-				<li><a <?php print("onclick=\"clicky.goal( '1025', '1' );\"");?> class="log_vote button no <?=$ja_status; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej" id="voteNo">NEJ</a></li>
+			<ul id="votebuttons" class="<?=$selected_vote; ?>">
+				<li class="<?=$ja_status; ?>"><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="voteYes log_vote button yes" href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja">JA</a></li>
+				<li class="<?=$nej_status; ?>"><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="voteNo log_vote button no" href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">NEJ</a></li>
 			</ul>​
                          
                         
