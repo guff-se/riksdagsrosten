@@ -5,7 +5,7 @@ if(preg_match('/_/',$_GET['id'])) {
     $_GET['id'] = $param[0];    
 }
 
-$result = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE id = ".$_GET['id']);
+$result = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE id = ".mysql_real_escape_string($_GET['id']));
 $l = $result[0];
 
 $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 

@@ -52,7 +52,7 @@ include_once("includes/header.php");
 					<option name="<?=$p?>"><?=$p_namn?></option>
 				<? }?>
 				</select>
-				(läs vår integritetspolicy)
+				(läs vår <a href="/anvandarvillkor">integritetspolicy</a>)
 				<br/>
             </div>
             <br />

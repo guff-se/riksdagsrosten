@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['id']))
-	$dokID=$_GET['id'];
+	$dokID=mysql_real_escape_string($_GET['id']);
         
         
 else
@@ -33,7 +33,7 @@ if($v->status == 0) {
  
  
  $result2 = $db->executeSQLRows("SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster 
-        WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND PartiRoster.punkt=1");
+        WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND Utskottsforslag.punkt=1");
 
   foreach($result2 as $pr){
 	$temptotal=$pr->roster_ja+$pr->roster_nej;
@@ -76,12 +76,11 @@ include_once("includes/header.php");
 <div id="content">
 	<div id="main" class="votering box-stroke">
 		<h1><?php echo $v->titel; ?></h1>
-		<p><b>Beslutsdatum:</b> <?php echo $v->beslut_datum; ?> &nbsp;
-			<a href="http://data.riksdagen.se/dokument/<?=$dokID?>">Läs förslaget i sin helhet</a>
-		</p>
+		<p><b>Beslutsdatum:</b> <?php echo $v->beslut_datum; ?></p>
             <p>
               <?= nl2br($v->bik);?>
             </p>
+        <p style="text-align:right;"><a href="http://data.riksdagen.se/dokument/<?=$dokID?>">Läs förslaget i sin helhet &rarr;</a></p>
 	</div>
 	<div id="sidebar">
 		<div id="data-box">
@@ -155,24 +154,20 @@ Ingen har röstat i denna fråga.
 	</div>
 	<div class="clearer">&nbsp;</div>
     
-    <div class="interest-groups clearfix">
-    	<div class="interest-groups-item">
+    <!--<div class="interest-groups clearfix">
+    	<div class="interest-groups-item first-child">
     		<h5>Intresseorganisationens namn</h5>
-    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    		<p>"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text." &mdash; <b>Test Testsson</b></p>
     	</div>
     	<div class="interest-groups-item">
     		<h5>Intresseorganisationens namn</h5>
-    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    		<p>"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, looked up one of the more obscure Latin words." &mdash; <b>Test Testsson</b></p>
     	</div>
     	<div class="interest-groups-item">
     		<h5>Intresseorganisationens namn</h5>
-    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    		<p>"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia." &mdash; <b>Test Testsson</b></p>
     	</div>
-    	<div class="interest-groups-item">
-    		<h5>Intresseorganisationens namn</h5>
-    		<p>Detta tycker intresseorganisationen&hellip;</p>
-    	</div>
-    </div>
+    </div>-->
     <br/>
 <? if ($v->votering_id != "") { ?>
 	<div class="column-8">
@@ -297,6 +292,48 @@ Ingen har röstat i denna fråga.
 	</div>
         <? } ?>
 <div>
+<br/>
+<!--	<div id="organisations" class="column-16 clearfix">
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="votes">
+				<div class="org-vote-yes">Ja</div>
+			</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="votes">
+				<div class="org-vote-no">Nej</div>
+			</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="votes">
+				<div class="org-vote-avstod">Avstår</div>
+			</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="org-vote-na">N/A</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="votes">
+				<div class="org-vote-no">Nej</div>
+			</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="votes">
+				<div class="org-vote-avstod">Avstår</div>
+			</div>
+		</div>
+		<div class="column">
+			<h3>Organisation</h3>
+			<div class="org-vote-na">N/A</div>
+		</div>
+	</div>-->
+
     
 <?if ($v->votering_id != "") { ?>
 <?if(isset($_GET["more"])) {?>
@@ -339,7 +376,27 @@ if(isset($result))
         
 <?}?>
 
+		<script type="text/javascript">
+            //Observe that tw_url is used only
+//for testing.
+var tw_url = "http://www.dagensmedia.se/nyheter/dig/article3464812.ece";
+var tw_language = "swedish";
+var tw_useToolTip = false;
+        </script>
+
+		<div id="discussion" class="box-stroke clearfix">
          <div id="disqus_thread"></div>
+          <div id="twingly_thread">
+            <div id="tw_link_widget">
+                <a href="http://www.twingly.com/">
+                    Twingly Blogsearch
+                </a>
+            </div>
+        </div>
+         </div>
+         
+         <script type="text/javascript" src="http://eu.widgetdata.twingly.com/scripts/widget/twingly.widget.2.0.3.min.js">
+        </script>
 <script type="text/javascript">
     var disqus_shortname = 'riksdagsrosten';
 

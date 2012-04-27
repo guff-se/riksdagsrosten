@@ -1,5 +1,5 @@
 <?php
-$partiet=$PARTISYMBOL[strtolower($_GET['id'])];
+$partiet=$PARTISYMBOL[strtolower(mysql_real_escape_string($_GET['id']))];
 if(!isset($partiet))
 	die("<script>Location.replace('/');</script>");
 $result = $db->executeSQL("select franvaro, roster_tot, roster_piska, piska from Parti where symbol='$partiet'","SELECT");

@@ -14,7 +14,7 @@ ini_set('display_errors','On');
 $user = $_SESSION["user_id"];
 
 if(isset($_GET["publik"])){
-	$db->executeSQL("UPDATE Users set publik=".$_GET["publik"]." where id=$user","UPDATE");
+	$db->executeSQL("UPDATE Users set publik=".mysql_real_escape_string($_GET["publik"])." where id=$user","UPDATE");
 	header("Location: /");	
 }
 else

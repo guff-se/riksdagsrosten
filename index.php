@@ -107,6 +107,9 @@ else if($page == "login") {
 else if($page == "logout") {
         include 'post/logout.php';
 }
+else if($page == "anvandarvillkor") {
+        include 'pages/anvandarvillkor.php';
+}
 else if($page == "start") {
 		$_SESSION['OINLOGGAD']=TRUE;
         include 'pages/start.php';

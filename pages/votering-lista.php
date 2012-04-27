@@ -10,7 +10,7 @@ else if($id=="kommande")
 	$sort = "AND Utskottsforslag.status = '5'
     ORDER BY Utskottsforslag.beslut_datum LIMIT 50";
 else if($page=="kategori" && isset($_GET["id"])) {
-	$kid = $_GET["id"];
+	$kid = mysql_real_escape_string($_GET["id"]);
 	$sort = "AND Utskottsforslag.organ='$kid' ORDER BY Utskottsforslag.beslut_datum DESC LIMIT 50";
 	$result = $db->executeSQL("select Beskrivning from Organ where organ='$kid'", "SELECT");
 	$kategori_namn= $result->Beskrivning;

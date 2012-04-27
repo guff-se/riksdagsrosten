@@ -18,8 +18,8 @@
 					<div class="left">Copyright &copy; 2012 <strong>Riksdagsrösten</strong> &mdash; Alla rättigheter förbehålls.</div>
 					<div class="right">
 						<ul>
+							<li><a href="/anvandarvillkor">Användarvillkor</a></li>
 							<li><a href="/om">Om webbplatsen</a></li>
-							<!--<li><a href="#">Användarvillkor</a></li>-->
 						</ul>
 					 </div>
 					<div class="clearer">&nbsp;</div>
