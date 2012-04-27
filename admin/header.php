@@ -36,7 +36,7 @@
         $(document).ready(function() {
          
          
-         alert("HEJ");  
+         //alert("HEJ");  
          
            $("#sok").bind('on','click', function() {
              

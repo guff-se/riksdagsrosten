@@ -105,7 +105,7 @@ include_once("includes/header.php");
 <? } else { ?>
 		<div id="vote-not-logged-in">
 			<p>Du behöver logga in för att kunna rösta.</p>
-		 	<a href="#" class="btn btn-large btn-inverse">Logga in</a>
+		 	<a href="/login" class="btn btn-large btn-inverse">Logga in</a>
 		</div>
 <? } ?>
 		
