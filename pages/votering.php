@@ -73,7 +73,7 @@ include_once("includes/header.php");
 	<a href="/admin/visa.php?dok_id=<?= $v->dok_id ?>">Redigera votering</a>
 </div>
 <? } ?>
-<div id="content">
+<div id="content" style="margin-top:20px;">
 	<div id="main" class="votering box-stroke">
 		<h1><?php echo $v->titel; ?></h1>
 		<p><b>Beslutsdatum:</b> <?php echo $v->beslut_datum; ?></p>

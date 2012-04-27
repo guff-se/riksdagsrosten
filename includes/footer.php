@@ -15,7 +15,13 @@
 				</ul>
 				<div class="clearer">&nbsp;</div>
 				<div id="site-info">
-					<div class="left">Copyright &copy; 2012 <strong>Riksdagsrösten</strong> &mdash; Alla rättigheter förbehålls.</div>
+					<div class="left">
+					<div>
+						<!--<div id="fb-root"></div><script src="http://connect.facebook.net/sv_SE/all.js#appId=196658153744046&xfbml=1"></script><fb:facepile></fb:facepile>-->
+						<iframe src="http://www.facebook.com/plugins/facepile.php?app_id=196658153744046&colorscheme=dark&max_rows=2&size=medium" scrolling="no" frameborder="0" style="border:none;overflow:hidden; width:500px; height:47px;" allowTransparency="true"></iframe>
+					</div>
+					<br/>Copyright &copy; 2012 <strong>Riksdagsrösten</strong> &mdash; Alla rättigheter förbehålls.
+					</div>
 					<div class="right">
 						<ul>
 							<li><a href="/anvandarvillkor">Användarvillkor</a></li>

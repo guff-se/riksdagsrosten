@@ -12,19 +12,27 @@ include("header-scripts.php");
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
   <div id="wrapper">
+  	<!--<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a> <strong>Ge ekonomiskt stöd: </strong><a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/">Insamling via Funded By Me</a></div>-->
   	<div id="header">
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
-  		<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a><br/><strong>Ge ekonomiskt stöd: </strong><a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/">Insamling via Funded By Me</a></div>
+  		<?php if(isset($_SESSION['user_id'])) { ?>
+                                    
+                                   <div id="promotion" style="opacity:0;visibility:hidden;"><a href="/login">Logga in med Facebook</a></div>
+
+                                <?php }else{ ?>
+                                   <div id="promotion"><a href="/login">Logga in med Facebook</a></div>
+
+                                <?php } ?>
+ 
   		<div id="nav-1">
   			<ul>
   				<li><a href="/votering/">Omröstningar</a></li>
   				<li><a href="/ledamot/">Ledamöter & partier</a></li>
-  				<li><a href="/om/">Om</a></li>
   				<li><a href="/blogg/">Blogg</a></li>
                                 
                                 <?php if(isset($_SESSION['user_id'])) { ?>
                                     
-                                   <li><a href="/profil/">Min sida</a></li>
+                                   <li><a href="/profil/">Min profil</a></li>
 
                                 <?php }else{ ?>
                                    <li class="facebook"><a href="/login/">Logga in</a></li>

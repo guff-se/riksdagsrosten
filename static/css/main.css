@@ -6,6 +6,7 @@ body {
 	font-family: Arial;
 	line-height: 1.3em;
 	-webkit-text-size-adjust:none;
+	border-top: 4px solid #222;
 }
 strong, b {
 	font-weight: bold;
@@ -40,8 +41,9 @@ h3 {
 }
 #header {
 	padding: 25px 0px 0px 15px;
-	border-bottom: 3px solid #111;
+	border-bottom: 3px solid #EFEFEF;
 	margin-bottom: 10px;
+	padding-bottom: 30px;
 }
 #logo {
 	float: left;
@@ -55,7 +57,7 @@ h3 {
 	height: 83px;
 	margin-top: 10px;
 }
-#nav-1 {
+/*#nav-1 {
 	padding-top: 32px;
 	margin-bottom: -2px;
 	float: right;
@@ -89,7 +91,26 @@ h3 {
 }
 #nav-1 li a:hover {
 	color: #fff;
+}*/
+#nav-1 {
+	float: right;
 }
+#nav-1 li {
+	display: inline;
+	margin-left: 20px;
+}
+#nav-1 li a {
+	color: #999;
+	font-family: 'Open Sans', sans-serif;
+	text-decoration: none;
+	font-size: 20px;
+}
+#nav-1 li a:hover {
+	color: #555;
+}
+
+
+
 #main {
 	float: left;
 	width: 600px;
@@ -937,13 +958,13 @@ border-bottom-left-radius: 15px;
 
 .notice {
 	background-color: #fee;
-	float:right;
 	padding: 10px;
-	width:500px;
 	border: 1px dashed #ccc;
 	font-size: 14px;
 	line-height: 1.3em;
 	color: #333;
+	margin-bottom: 15px;
+	margin-top: 15px;
 	/*height: 36px;*/
 }
 .notice a {
@@ -1117,7 +1138,9 @@ box-shadow:            0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset;
 }
 #votebuttons .not-voted a {
 	background-image: #e1e1e1;
-	color: #333;
+	/*color: #333;
+	text-indent: -999em;*/
+	opacity: 0.3;
 }
 
 .interest-groups {
@@ -1256,12 +1279,58 @@ margin: 10px auto 10px auto;
 	background-image: url('../images/vote-buttons.png');
 	background-repeat: no-repeat;
 	background-position: top center;
-	height: 135px;
+	height: 120px;
 	text-align: center;
 	font-size: 13px;
 	padding-top: 30px;
 }
 
+#promotion {
+	float: right;
+	background-color: #fff;
+	padding: 10px 20px 10px 20px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+#promotion a {
+	display: block;
+	background-image: url('../images/facebook-f.png');
+	background-repeat: no-repeat;
+	background-color: #3B5998;
+	background-position: 15px 12px;
+	width: 260px;
+	color: #fff;
+	padding: 17px 0px 20px 40px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 13px;
+	font-family: Arial,'Open Sans';
+}
+#promotion a:hover {
+	opacity: 0.9;
+	display: block;
+	background-image: url('../images/facebook-f.png');
+	background-repeat: no-repeat;
+	background-color: #3B5998;
+	background-position: 15px 12px;
+	width: 260px;
+	color: #fff;
+	padding: 17px 0px 20px 40px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 13px;
+	font-family: Arial,'Open Sans';
+}
 
 
 
@@ -1272,12 +1341,11 @@ margin: 10px auto 10px auto;
 
 /* FIRST */
 #first {
-	padding-top: 30px;
 	margin-bottom: -65px; /*TEMP*/
 	padding-bottom: 65px;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
-	border-top: 4px solid #222;
+	/*border-top: 4px solid #222;*/
 }
 .w960 {
 	width: 960px;

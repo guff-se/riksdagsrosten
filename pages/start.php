@@ -103,7 +103,7 @@ border-bottom-left-radius: 0;">
                                                     <?php foreach ($result as $v) { ?>
                                                         <li>
                                                             <a href="/votering/<?= $v->dok_id ?>/">
-                                                                <span class="title"><?= $v->titel ?></span> <time>&mdash; <?= str_replace(" 00:00:00","",$v->beslut_datum); ?></time></span>
+                                                                <span class="title"><?= $v->titel ?> <time>&mdash; <?= str_replace(" 00:00:00","",$v->beslut_datum); ?></time></span>
                                                                 
                                                                 <div class="clearer">&nbsp;</div>
                                                             </a>

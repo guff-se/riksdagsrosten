@@ -73,6 +73,9 @@ else if($page == "kategori") {
 else if($page == "pop") {
         include 'pages/votering-lista.php';
 }
+else if($page == "meck") {
+        include 'pages/profil-meck.php';
+}
 else if($page == "profil") {
 		if(isset($_GET['id']) && $_GET['id']=="redigera")
 			include 'pages/profil-redigera.php';
@@ -116,6 +119,9 @@ else if($page == "start") {
 }
 else if($page == "landning") {
         include 'pages/landning.php';
+}
+else {
+		include 'error-docs/404.php';
 }
 
 

@@ -35,7 +35,7 @@ include_once("includes/header.php");
 		<h1>Min profil</h1>
 		<div id="profile-overview" class="box-frame">
 			<div class="inner">
-			<img src="https://graph.facebook.com/<?=$USER->facebook_id; ?>/picture" width="50" height="50" class="left" /><h3 class="left"><?=$USER->tilltalsnamn; ?> <?=$USER->efternamn; ?></h3> <span>(<b><?=$USER->roster; ?></b> röster)</span> <span class="logout"><a href="/profil/redigera" class="btn btn-large btn-inverse">Redigera</a></span>
+			<img src="https://graph.facebook.com/<?=$USER->facebook_id; ?>/picture" width="50" height="50" class="left" /><h3 class="left" style="font-weight:600;"><?=$USER->tilltalsnamn; ?> <?=$USER->efternamn; ?></h3> <span>(<b><?=$USER->roster; ?></b> röster)</span> <span class="logout"><a href="/profil/redigera" class="btn btn-large">Inställningar</a> <a href="/logout" class="btn btn-large btn-inverse">Logga ut</a></span>
 				<div class="clearer">&nbsp;</div>
             </div>        
 		</div>

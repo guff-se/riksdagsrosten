@@ -36,12 +36,21 @@
         $(document).ready(function() {
          
          
-         //alert("HEJ");  
-         
-           $("#sok").bind('on','click', function() {
+         $("#titel").keyup(function(event) {
+             if(event.keyCode == 13) 
+                   $("#sok").click();
+         });
              
-           });
-     
+         
+         
+         $("#sok").click(function() {
+             
+             var keyword = $("#titel").val();
+               
+             document.location.href = "/admin/search.php?text="+keyword;
+
+         });
+          
         });
        
     </script>
@@ -58,8 +67,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/admin">Voteringar</a></li>
-              <li><input type="text" style="margin-top:7px; margin-left: 300px;"></li>
-              <li class="" id="sok"><a href="#">Sök</a></li>
+              <li><input type="text" id="titel" name="titel" value="<? if( isset($_GET['text'])) echo $_GET['text']; ?>" style="margin-top:7px; margin-left: 300px;"></li>
+              <li class="" id="sok"><a href="">Sök</a></li>
 
             </ul>
           </div><!--/.nav-collapse -->

@@ -50,6 +50,7 @@
 		$user_profile = json_decode(file_get_contents($graph_url));
      
 
+
      	if (isset($user_profile->id)) { // ******* LOG IN OLD USER ********
 	
         	$resultLogin = $db->executeSQL("SELECT * FROM Users WHERE facebook_id = " . $user_profile->id, "SELECT");
@@ -113,4 +114,17 @@
 
  ?>
 
+<?
 
+$graph_url = "https://graph.facebook.com/me/friends&access_token=" .
+			$params['access_token'];
+$fb_out = json_decode(file_get_contents($graph_url));
+
+
+foreach($fb_out->data as $friend) {
+	$sql="insert into Friends set a='$user_profile->id', b='$friend->id'";
+//	print($sql);
+	$db->executeSQL($sql, "INSERT");
+}
+
+?>
