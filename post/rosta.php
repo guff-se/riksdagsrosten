@@ -61,7 +61,8 @@ if ($USER && $vid) {
 
 		// pusha update to User
 		
-		$result=$db->executeSQLRows("select rost,utskottsforslag_id from UserRoster where UserRoster.user_id = '$USER->id'");
+		$result=$db->executeSQLRows("select UserRoster.rost, Utskottsforslag.votering_id from UserRoster, Utskottsforslag
+								where UserRoster.user_id = '$USER->id' and UserRoster.utskottsforslag_id=Utskottsforslag.id and Utskottsforslag.punkt=1");
 		$lika=array();
 		$olika=array();
 				foreach($PARTI as $p => $bs) {

@@ -154,7 +154,26 @@ Ingen har röstat i denna fråga.
 		</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
-        
+    
+    <div class="interest-groups clearfix">
+    	<div class="interest-groups-item">
+    		<h5>Intresseorganisationens namn</h5>
+    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    	</div>
+    	<div class="interest-groups-item">
+    		<h5>Intresseorganisationens namn</h5>
+    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    	</div>
+    	<div class="interest-groups-item">
+    		<h5>Intresseorganisationens namn</h5>
+    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    	</div>
+    	<div class="interest-groups-item">
+    		<h5>Intresseorganisationens namn</h5>
+    		<p>Detta tycker intresseorganisationen&hellip;</p>
+    	</div>
+    </div>
+    <br/>
 <? if ($v->votering_id != "") { ?>
 	<div class="column-8">
 		<div class="column">
