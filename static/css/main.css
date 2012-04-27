@@ -1092,6 +1092,10 @@ box-shadow:            0 4px 0 #5F0E0E, 0 1px 0 rgba(255, 255, 255, .7) inset;
 	width: 281px;
 	margin-right: 12px;
 	margin-top: 10px;
+	height: 250px;
+	background-image: url('../images/quote.png');
+	background-repeat: no-repeat;
+	background-position: 10px 30px;
 }
 .interest-groups-item h5 {
 	font-weight: bold;

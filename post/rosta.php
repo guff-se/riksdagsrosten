@@ -21,8 +21,8 @@ ini_set('display_errors','On');
 	if(isset($_SESSION["user_id"])) {
 		$USER = $db->executeSQL("select * from Users where id='".$_SESSION["user_id"]."'","SELECT");
 	}
-$vid = $_GET["vid"];
-$rost = $_GET["rost"];
+$vid = mysql_real_escape_string($_GET["vid"]);
+$rost = mysql_real_escape_string($_GET["rost"]);
 
 if ($USER && $vid) {
 	$result=$db->executeSQL("select id from UserRoster where user_id='$USER->id' and utskottsforslag_id='$vid'", "SELECT");
