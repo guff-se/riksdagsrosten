@@ -31,9 +31,10 @@ if(isset($_POST["visible"])) {
 }
 
 if(isset($_POST["titel_orig"])) {
-	$titel=$_POST["titel"];
-	$bik=$_POST["bik"];
-	$SQL="update Utskottsforslag set titel='$titel', bik='$bik' where dok_id='$dok_id'";
+	$titel=htmlspecialchars($_POST["titel"]);
+	$bik=htmlspecialchars($_POST["bik"]);
+	$fraga=htmlspecialchars($_POST["fraga"]);
+	$SQL="update Utskottsforslag set titel='$titel', bik='$bik', fraga='$fraga' where dok_id='$dok_id'";
 	$db->executeSQL($SQL,"UPDATE");
 }
 ?>

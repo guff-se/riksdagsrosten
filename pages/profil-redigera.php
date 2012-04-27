@@ -41,36 +41,43 @@ include_once("includes/header.php");
             </div>        
 		</div>
 		<br />-->
-		<div class="box-frame">
-			<div class="inner">
-				Ange det parti du röstade på i senaste riksdagsvalet (2010):
-				<select>
-					<option name="">---</option>
-				<?
-				foreach($PARTI as $p => $p_namn) {
-				?>
-					<option name="<?=$p?>"><?=$p_namn?></option>
-				<? }?>
-				</select>
-				(läs vår <a href="/anvandarvillkor">integritetspolicy</a>)
-				<br/>
-            </div>
-            <br />
-            <div class="inner">
-				Typ av Profil: 
-				<select>
-					<option name="">Öppen profil</option>
-					<option name="">Stängd profil</option>
-				</select>
-				<br/>
-            </div>
-            <br/>
-		</div>
-		<br />
-		<div style="text-align:center;">
-            <a href="/profil" class="btn btn-large">Avbryt</a>
-            <a href="#" class="btn btn-large btn-success">Spara</a>
-            </div>
+		<form action="/post/edit.php" method="post">
 
+			<div class="box-frame">
+				<div class="inner">
+					Ange det parti du röstade på i senaste riksdagsvalet (2010):
+					<select name="parti_2010">
+						<option name="">---</option>
+					<?
+					foreach($PARTI as $p => $p_namn) {
+						if($p==$USER->parti2010)
+							$selected="selected";
+						else
+							$selected="";
+					?>
+						<option value="<?=$p?>" <?=$selected?>><?=$p_namn?></option>
+					<? }?>
+						<option name="O">Övriga</option>
+					</select>
+					(läs vår <a href="/anvandarvillkor">integritetspolicy</a>)
+					<br/>
+	            </div>
+	            <br />
+	            <div class="inner">
+					Typ av Profil: 
+					<select name="publik">
+						<option value="1" <?if($USER->publik) print("selected")?>>Öppen profil</option>
+						<option value="0" <?if(!$USER->publik) print("selected")?>>Stängd profil</option>
+					</select>
+					<br/>
+	            </div>
+	            <br/>
+			</div>
+			<br />
+			<div style="text-align:center;">
+            	<a href="/profil" class="btn btn-large">Avbryt</a>
+            	<input type="submit" class="btn btn-large btn-success" value="Spara">
+			</div>
+		</form>
 	</div>
 </div>

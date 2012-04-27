@@ -55,6 +55,13 @@ $row = $db->executeSQL("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, 
       </div>
     </div>
     <div class="control-group">
+      <label class="control-label" for="titel">Fråga</label>
+      <div class="controls">
+        <input type="text" class="span9 input-xlarge" id="fraga" name="fraga" value="<?=$row->fraga?>">
+      </div>
+    </div>
+
+    <div class="control-group">
       <label class="control-label">Publiceringsdatum</label>
       <div class="controls">
 	 	<p class="help-block"><?=$row->publicerad?></p>

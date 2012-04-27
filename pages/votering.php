@@ -84,38 +84,30 @@ include_once("includes/header.php");
 	</div>
 	<div id="sidebar">
 		<div id="data-box">
-		
-			<div id="leave-vote" class="clearfix">
-                        <?php if(isset($USER)) { ?>                        
-                        <?php 
-                            $ja_status = '';
-                            $nej_status = '';
-                           if(isset($din_rost->rost)) {
-                             if(strtolower($din_rost->rost) == "nej") { $nej_status = "voted"; $ja_status = "not-voted"; $selected_vote = 'voted-nej';}  
-                             if(strtolower($din_rost->rost) == "ja")  { $ja_status = "voted"; $nej_status = "not-voted"; $selected_vote = 'voted-ja'; }
-                           }
-                        ?>
-                        
-                        
-                        
+			<?if($v->fraga) {?>
+				<div class="question"><?php echo $v->fraga; ?></div>
+			<?}?>
+			
+<?if(isset($USER)) {
+        $ja_status = '';
+        $nej_status = '';
+       if(isset($din_rost->rost)) {
+         if(strtolower($din_rost->rost) == "nej") { $nej_status = "voted"; $ja_status = "not-voted"; $selected_vote = 'voted-nej';}  
+         if(strtolower($din_rost->rost) == "ja")  { $ja_status = "voted"; $nej_status = "not-voted"; $selected_vote = 'voted-ja'; }
+       }
+    ?>
+		<div id="leave-vote" class="clearfix">
 			<ul id="votebuttons" class="<?=$selected_vote; ?>">
 				<li class="<?=$ja_status; ?>"><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="voteYes log_vote button yes" href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja">JA</a></li>
 				<li class="<?=$nej_status; ?>"><a <?php print("onclick=\"clicky.goal( '1025', '1' );\""); ?> class="voteNo log_vote button no" href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">NEJ</a></li>
 			</ul>​
-                         
-                        
-                        
-                        
-                        
-			<!--<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				class="log_vote button yes <?=$nej_active; ?>" href="/post/rosta.php?vid=<?=$v->id?>&rost=Ja">Ja</a>
-			<a <?print("onclick=\"clicky.goal( '1025', '1' );\"");?>
-				class="log_vote button no  <?=$ja_active; ?> " href="/post/rosta.php?vid=<?=$v->id?>&rost=Nej">Nej</a>-->
-			
-			<!--<div class="clearer">&nbsp;</div>-->
-			<!--<a class="button next" href="#" title="Nästa fråga">&#8227;</a>-->
-                        <?php } ?>
 		</div>
+<? } else { ?>
+		<div id="vote-not-logged-in">
+			<p>Du behöver logga in för att kunna rösta.</p>
+		 	<a href="#" class="btn btn-large btn-inverse">Logga in</a>
+		</div>
+<? } ?>
 		
 		
 			<div class="group">
@@ -293,7 +285,7 @@ Ingen har röstat i denna fråga.
         <? } ?>
 <div>
 <br/>
-<!--	<div id="organisations" class="column-16 clearfix">
+	<!--<div id="organisations" class="column-16 clearfix">
 		<div class="column">
 			<h3>Organisation</h3>
 			<div class="votes">
@@ -379,7 +371,7 @@ if(isset($result))
 		<script type="text/javascript">
             //Observe that tw_url is used only
 //for testing.
-var tw_url = "http://www.dagensmedia.se/nyheter/dig/article3464812.ece";
+//var tw_url = "http://www.twingly.com";
 var tw_language = "swedish";
 var tw_useToolTip = false;
         </script>
@@ -387,11 +379,13 @@ var tw_useToolTip = false;
 		<div id="discussion" class="box-stroke clearfix">
          <div id="disqus_thread"></div>
           <div id="twingly_thread">
+          <h6>Bloggat om omröstningen</h6>
             <div id="tw_link_widget">
                 <a href="http://www.twingly.com/">
                     Twingly Blogsearch
                 </a>
             </div>
+            <a class="tw_logolink" href="http://www.twingly.se/" target="_blank"><img alt="Twingly logo" src="http://static.twingly.com/content/images/twingly-logo-mini.png"></a>
         </div>
          </div>
          

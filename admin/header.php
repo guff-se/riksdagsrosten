@@ -26,10 +26,27 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
   </head>
 
   <body>
-    <div class="navbar navbar-fixed-top">
+    
+    <script>
+        $(document).ready(function() {
+         
+         
+         alert("HEJ");  
+         
+           $("#sok").bind('on','click', function() {
+             
+           });
+     
+        });
+       
+    </script>
+      
+      <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -41,6 +58,9 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/admin">Voteringar</a></li>
+              <li><input type="text" style="margin-top:7px; margin-left: 300px;"></li>
+              <li class="" id="sok"><a href="#">Sök</a></li>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
