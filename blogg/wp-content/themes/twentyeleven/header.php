@@ -219,21 +219,16 @@ if(isset($_SESSION["user_id"])) {
 	<a href="/landning">
 <?}?>
 	Riksdagsrösten</a></div>
-		<div class="notice">
-			<strong>OBS!</strong> Just nu sker utveckling på sajten så lita inte på någon data du ser för tillfället. Ibland utgör exempeldata vissa delar av informationen.
-		</div>
   		<div id="nav-1">
   			<ul>
 <?if(isset($USER) || isset($_SESSION['OINLOGGAD'])) {?>
   				<li><a href="/votering/">Omröstningar</a></li>
   				<li><a href="/ledamot/">Ledamöter & partier</a></li>
-  				<li><a href="/om/">Om</a></li>
   				<li><a href="/blogg/">Blogg</a></li>
 				<li><a href="/profil/">Min profil</a></li>
 <?} else {?>
 	<li><a href="/landning">Omröstningar</a></li>
 	<li><a href="/landning">Ledamöter & partier</a></li>
-	<li><a href="/landning">Om</a></li>
 	<li><a href="/blogg/">Blogg</a></li>
 	<li class="facebook"><a href="/login/">Logga in</a></li>
 	

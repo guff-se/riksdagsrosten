@@ -1294,7 +1294,7 @@ margin: 10px auto 10px auto;
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
-#promotion a {
+#promotion a.fb {
 	display: block;
 	background-image: url('../images/facebook-f.png');
 	background-repeat: no-repeat;
@@ -1312,7 +1312,7 @@ margin: 10px auto 10px auto;
 	line-height: 13px;
 	font-family: Arial,'Open Sans';
 }
-#promotion a:hover {
+#promotion a.fb:hover {
 	opacity: 0.9;
 	display: block;
 	background-image: url('../images/facebook-f.png');

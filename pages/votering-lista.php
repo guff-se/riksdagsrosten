@@ -150,7 +150,7 @@ foreach($result as $v) {
 			<?php if(!isset($kategori_namn)) { ?>
 			<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 			<?php } ?>
-			<div class="pagination_front">
+			<!--<div class="pagination_front">
 				<ul>
 				    <li>«</li>
 				    <li class="active">
@@ -161,7 +161,7 @@ foreach($result as $v) {
 				    <li><a href="#">4</a></li>
 				    <li><a href="#">»</a></li>
 				  </ul>
-				</div>
+				</div>-->
 		</div>
 	</div>
 	<div id="sidebar">

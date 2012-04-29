@@ -88,6 +88,9 @@ else if($page == "parti") {
 else if($page == "om") {
         include 'pages/om.php';
 }
+else if($page == "budget") {
+        include 'pages/budget.php';
+}
 else if($page == "live") {
         include 'pages/live.php';
 }
