@@ -105,7 +105,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css" />
 	<link href="/static/css/reset.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="/static/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-	<link href="/static/css/main.css?v=2" media="screen" rel="stylesheet" type="text/css" />
+	<link href="/static/css/main.css?v=3" media="screen" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<script type="text/javascript" src="/static/js/jquery.cycle.all.js"></script>
 	<script type="text/javascript">
