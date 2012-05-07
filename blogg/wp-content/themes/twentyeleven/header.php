@@ -219,6 +219,12 @@ if(isset($_SESSION["user_id"])) {
 	<a href="/landning">
 <?}?>
 	Riksdagsrösten</a></div>
+		<?php if(isset($_SESSION['user_id'])) { ?>
+                              
+                                   <div id="promotion" style="opacity:0;visibility:hidden;"><a href="/login">Logga in med Facebook</a></div>
+                                <?php }else{ ?>
+                                   <div id="promotion"><a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a><a class="fb" href="/login">Logga in med Facebook</a></div>
+                                <?php } ?>
   		<div id="nav-1">
   			<ul>
 <?if(isset($USER) || isset($_SESSION['OINLOGGAD'])) {?>

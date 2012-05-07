@@ -68,8 +68,11 @@ footer, header, hgroup, menu, nav, section {
 /* =Structure
 ----------------------------------------------- */
 #page {
-	margin: 2em auto;
+	margin: 0em auto;
 	max-width: 1000px;
+}
+.home #header {
+	padding-bottom: 0px;
 }
 #branding hgroup {
 	margin: 0 7.6%;
@@ -313,11 +316,12 @@ footer, header, hgroup, menu, nav, section {
 body, input, textarea {
 	color: #373737;
 	font: 15px Arial, "Helvetica Neue", Helvetica, sans-serif;
-	font-weight: 300;
+	/*font-weight: 300;*/
 	line-height: 1.625;
 }
 body {
 	background: #e2e2e2;
+	border-top: 4px solid #222;
 }
 #page {
 	background: #fff;
@@ -465,7 +469,7 @@ input#searchsubmit {
 
 /* Links */
 a {
-	color: #1982d1;
+	color: #1d526f;
 	text-decoration: none;
 }
 a:focus,

@@ -6,7 +6,7 @@ include_once("includes/header.php");
 ?>
 <br/>
 <div id="terms" class="box-stroke">
-<h3 style="margin-left:0px;">Användarvillkor</h3>
+<h1 style="margin-left:0px;">Användarvillkor</h1>
 
 
 <h5>1. GODKÄNNANDE AV VILLKOR</h5>

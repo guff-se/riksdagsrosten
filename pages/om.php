@@ -6,7 +6,7 @@ include_once("includes/header.php");
 ?>
 <br/>
 <div class="box-stroke">
-<h3 style="margin-left:0px;">Riksdagsrösten - din röst i riksdagen.</h3>
+<h1 style="margin-left:0px;">Riksdagsrösten - din röst i riksdagen.</h1>
 
 <p>På riksdagsrosten.se kan du se hur våra riksdagsledamöter har röstat i tidigare omröstningar i riksdagen. Du får se statistik och kommentarer, så att du kan följa upp de frågor du är intresserad av.</p>
 <p>

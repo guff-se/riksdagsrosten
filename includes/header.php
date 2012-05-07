@@ -19,7 +19,7 @@ include("header-scripts.php");
                               
                                    <div id="promotion" style="opacity:0;visibility:hidden;"><a href="/login">Logga in med Facebook</a></div>
                                 <?php }else{ ?>
-                                   <div id="promotion"><!--<a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/"><img src="/static/images/finansiera.png" target="_blank" /></a>--><a class="fb" href="/login">Logga in med Facebook</a></div>
+                                   <div id="promotion"><a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a><a class="fb" href="/login">Logga in med Facebook</a></div>
                                 <?php } ?>
   		<div id="nav-1">
   			<ul>

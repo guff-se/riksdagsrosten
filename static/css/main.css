@@ -1294,6 +1294,9 @@ margin: 10px auto 10px auto;
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
+#promotion a {
+	float: left;
+}
 #promotion a.fb {
 	display: block;
 	background-image: url('../images/facebook-f.png');
@@ -1311,6 +1314,11 @@ margin: 10px auto 10px auto;
 	border-radius: 5px;
 	line-height: 13px;
 	font-family: Arial,'Open Sans';
+}
+#promotion a.funded img {
+	height: 55px;
+	margin-right: 15px;
+	margin-top: -2px;
 }
 #promotion a.fb:hover {
 	opacity: 0.9;
