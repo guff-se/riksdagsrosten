@@ -77,7 +77,7 @@ include_once("includes/header.php");
 	<div id="main" class="votering box-stroke">
 		<h1><?php echo $v->titel; ?></h1>
 		<p><b>Beslutsdatum:</b> <?php echo $v->beslut_datum; ?></p>
-<div class="fb-like" data-href="http://www.riksdagsrosten.se/votering/GZ01KU18/" data-send="true" data-width="450" data-show-faces="false" data-action="recommend"></div>
+<div class="fb-like" data-href="http://www.riksdagsrosten.se/votering/<?=$dokID?>/" data-send="true" data-width="450" data-show-faces="false" data-action="recommend"></div>
             <p>
               <?= nl2br($v->bik);?>
             </p>
