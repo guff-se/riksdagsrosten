@@ -12,7 +12,7 @@ include("header-scripts.php");
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
   <div id="wrapper">
-  	<!--<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a> <strong>Ge ekonomiskt stöd: </strong><a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/">Insamling via Funded By Me</a></div>-->
+  	<div class="notice"><strong>OBS!</strong> Just nu sker utveckling på sajten, vi lanserar skarpt på <strong>fredag kl. 15:00</strong>. Lita inte på några siffror du ser nu, men testa gärna och kom med feedback. <strong>Följ oss Live:</strong> <a href="http://www.riksdagsrosten.se/live">http://www.riksdagsrosten.se/live</a> <strong>Ge ekonomiskt stöd: </strong><a href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/">Insamling via Funded By Me</a></div>
   	<div id="header">
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
   		<?php if(isset($_SESSION['user_id'])) { ?>
