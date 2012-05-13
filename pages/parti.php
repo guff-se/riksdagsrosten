@@ -8,7 +8,7 @@ $piska = round($result->piska,2)*100;
 $roster_tot = $result->roster_tot;
 $roster_ejpiska = $result->roster_tot-$result->roster_piska;
 
-$ledamoter = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE parti='$partiet' AND status LIKE 'Tj%' ORDER BY efternamn");
+$ledamoter = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE parti='$partiet' AND aktiv=1 ORDER BY efternamn");
 $antal = $db->executeSQL("SELECT count(*) AS total FROM Ledamoter WHERE parti='$partiet' AND aktiv=1", "SELECT");
 if(isset($USER)) {
 	$match = $db->executeSQL("select * from PartiMatch where user_id = '$USER->id' && parti = '$partiet'","SELECT");
