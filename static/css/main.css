@@ -1340,9 +1340,22 @@ margin: 10px auto 10px auto;
 	font-family: Arial,'Open Sans';
 }
 
-
-
-
+.alert-sand {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+margin-bottom: 0px;
+margin-top: 15px;
+background-color: #EAE4D9;
+color: #333;
+border: none;
+line-height: 26px;
+}
+#stod-btn {
+	margin-right: -25px;
+}
+.pull-right {
+float: right;
+}
 
 
 
