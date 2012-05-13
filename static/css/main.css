@@ -1345,9 +1345,11 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 13px;
 margin-bottom: 0px;
 margin-top: 15px;
-background-color: #EAE4D9;
+/*background-color: #EAE4D9;*/
+background-color: #ffefc5;
 color: #333;
-border: none;
+border-radius: 10px;
+border: 3px solid #cc3816;
 line-height: 26px;
 }
 #stod-btn {

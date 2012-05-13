@@ -17,9 +17,9 @@ include("header-scripts.php");
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
   		<?php if(isset($_SESSION['user_id'])) { ?>
                               
-                                   <div id="promotion" class="clearfix"><a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a><a style="opacity:0;visibility:hidden;width:0px;height:0px;" href="/login">Logga in med Facebook</a></div>
+                                   <div id="promotion" class="clearfix"><!--<a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a>--><a style="opacity:0;visibility:hidden;width:0px;height:0px;" href="/login">Logga in med Facebook</a></div>
                                 <?php }else{ ?>
-                                   <div id="promotion" class="clearfix"><a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a><a class="fb" href="/login">Logga in med Facebook</a></div>
+                                   <div id="promotion" class="clearfix"><!--<a class="funded" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank"><img src="/static/images/finansiera.png" target="_blank" /></a>--><a class="fb" href="/login">Logga in med Facebook</a></div>
                                 <?php } ?>
   		<div id="nav-1">
   			<ul>
