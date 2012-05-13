@@ -1,5 +1,5 @@
 <?php
-$result = $db->executeSQLRows("SELECT count(*) as total, parti FROM Ledamoter WHERE status LIKE 'Tj%' group by parti");
+$result = $db->executeSQLRows("SELECT count(*) as total, parti FROM Ledamoter WHERE aktiv=1 group by parti");
 foreach($result as $r) {
 	$parti[$r->parti]=$r->total;
 }
