@@ -31,7 +31,7 @@ if ($USER && $vid) {
 			$sql = "delete from UserRoster WHERE id='$result->id'";
 			$graph_url = "https://graph.facebook.com/{$result->id}?access_token=" .
 						$_SESSION['access_token'];
-			print("graph_url: $graph_url\n");			
+			//print("graph_url: $graph_url\n");			
 			$opts = array('http'=>array('method'=>"DELETE",));
 			$context = stream_context_create($opts);
 			$file = file_get_contents($graph_url, false, $context);
@@ -40,8 +40,11 @@ if ($USER && $vid) {
 		// Facebook Open Graph
 
 	if($USER->publik) {
+			$res2 = $db->executeSQL("select dok_id from Utskottsforslag where id='$vid'", "SELECT");
+			$dok_id=$res2->dok_id;
+			print($dok_id);
 			$graph_url = "https://graph.facebook.com/me/riksdagsrosten:vote_on?method=post&access_token=" .
-						$_SESSION['access_token'] . "&vote=" . $rost . "&bill=" . $_SERVER['HTTP_REFERER'];
+						$_SESSION['access_token'] . "&vote=" . $rost . "&bill=http://www.riksdagsrosten.se/votering/$dok_id";
 	     	$fb_out = json_decode(file_get_contents($graph_url));
 	       	$sql = "insert into UserRoster set id='$fb_out->id', rost='$rost', utskottsforslag_id='$vid', user_id='$USER->id'";              
 	        $db->executeSQL($sql,"UPDATE");
