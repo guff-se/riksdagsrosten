@@ -82,7 +82,7 @@ include_once("includes/header.php");
 				<div class="column">
 					<h3>Närvaro</h3>
 					<span class="procent"><?php print(100-$l->franvarande);?>%</span>
-					<span class="description"><?php echo "$l->tilltalsnamn $l->efternamn"; ?> har varit frånvarande vid <?php print($l->franvarande); ?>% av alla omröstningar sedan förra valet.</span>
+					<span class="description"><?php echo "$l->tilltalsnamn $l->efternamn"; ?> har varit frånvarande vid <?php print($l->franvarande_antal); ?> av <?php print($l->aktiv_roster_tot); ?> omröstningar sedan förra valet.</span>
 				</div>
 				<div class="clearer">&nbsp;</div>
 			</div>
