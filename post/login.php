@@ -87,6 +87,10 @@
 				$createdId = $db->executeSQL("SELECT * FROM Users WHERE facebook_id = " . $user_profile->id, "SELECT");
 
 				$_SESSION['user_id'] = $createdId->id;
+
+				$sql=("INSERT into LogCohortRegister set week=".date("oW").", user_id='$createdId->id'");
+				$db->executeSQL($sql);				
+
 				?>
 			<html>
 			<head>
@@ -107,6 +111,8 @@
 			</html>
 			<?
 			}
+			$sql=("INSERT into LogCohortLogin set week=".date("oW").", user_id='".$_SESSION['user_id']."'");
+			$db->executeSQL($sql);
     	}
 	} else {
 		echo("The state does not match. You may be a victim of CSRF.");

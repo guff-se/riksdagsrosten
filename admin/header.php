@@ -66,11 +66,12 @@
           <a class="brand" href="/admin">Riksdagsrösten admin</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/admin">Voteringar</a></li>
-              <li><input type="text" id="titel" name="titel" value="<? if( isset($_GET['text'])) echo $_GET['text']; ?>" style="margin-top:7px; margin-left: 300px;"></li>
-              <li class="" id="sok"><a href="">Sök</a></li>
-
+              <li <?if($_SERVER['SCRIPT_NAME']=="/admin/index.php"){?>class="active"<?}?>><a href="/admin">Voteringar</a></li>
+              <li <?if($_SERVER['SCRIPT_NAME']=="/admin/cohort.php"){?>class="active"<?}?>><a href="/admin/cohort.php">Cohortanalys</a></li>
             </ul>
+			<form class="navbar-search pull-left" action="search.php">
+			  <input type="text" name="text" class="search-query" placeholder="Sök" value="<? if( isset($_GET['text'])) echo $_GET['text']; ?>">
+			</form>
           </div><!--/.nav-collapse -->
         </div>
       </div>

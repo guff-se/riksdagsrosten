@@ -174,6 +174,10 @@ if ($USER && $vid) {
 	die("HJÄÄLP!!! Vi blir hackade!!!");
 }
 
+// Logga vote
+$sql=("INSERT into LogCohortVote set week=".date("oW").", user_id='$USER->id'");
+$db->executeSQL($sql);
+
 
 header("Location: ".$_SERVER["HTTP_REFERER"]);	
 ?>
