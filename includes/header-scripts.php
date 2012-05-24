@@ -16,12 +16,12 @@
 	</script>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <title>Riksdagsrösten<?
+    <title><?
     if(isset($HEADER['title']))
-		print(" | ".$HEADER['title']);
+		print($HEADER['title']." | ");
 	else
 		$HEADER['title'] = "Riksdagsrösten";
-    ?></title>
+    ?>Riksdagsrösten</title>
 
 <meta property="og:url" content="http://<?=$_SERVER["HTTP_HOST"]?><?=$_SERVER['REQUEST_URI']?>"/>
 
@@ -59,7 +59,6 @@
 	<link rel="pingback" href="http://<?=$_SERVER["HTTP_HOST"]?><?=$_SERVER['REQUEST_URI']?>" />
 	
 	<?
-	if(!isset($USER->admin)) {
 		if(isset($USER)) {?>
 	<script type="text/javascript">
 	  var clicky_custom = {};
@@ -75,9 +74,6 @@
 	  <script src="//static.getclicky.com/js" type="text/javascript"></script>
 	        <script type="text/javascript">try{ clicky.init(66497714); }catch(e){}</script>
 	        <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/66497714ns.gif" /></p></noscript>
-	<?
-	}
-	?>
 	
     <script type="text/javascript" src="http://static.twingly.com/jsapi/1.1.1/twingly.js"></script>
 	<script type="text/javascript">
