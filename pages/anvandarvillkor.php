@@ -40,7 +40,8 @@ Om Besökaren får kännedom om att inloggningsuppgifterna kommit utomstående t
 <p>Riksdagsrösten har rätt att vidta åtgärder som påverkar ovannämnda tillgänglighet, om Riksdagsrösten anser detta vara nödvändigt av tekniska, service-, drifts- eller säkerhetsrelaterade skäl. Besökaren är också medveten om och bekräftar Besökarens möjlighet att bereda sig tillträde till Internet inte kan garanteras av Riksdagsrösten och att Riksdagsrösten inte ansvarar för bristfälligheter i Besökarens egna Internetanslutningar eller utrustning.</p>
 
 <h5>6. RÄTTELSE AV FEL</h5>
-<p>Riksdagsrösten skall åtgärda fel eller brister på ett sätt Riksdagsrösten finner lämpligt. Riksdagsrösten har rätt att stänga webbsajten och tjänsterna på denna för underhållsarbete eller uppgradering. Riksdagsrösten kan inte hållas ansvarig för direkt eller indirekt kostnad eller skada som uppstått på grund av felaktig information på webbsajten.</p>
+<p>Riksdagsrösten skall åtgärda fel eller brister på ett sätt Riksdagsrösten finner lämpligt. Riksdagsrösten har rätt att stänga webbsajten och tjänsterna på denna för underhållsarbete eller uppgradering.</p>
+<p>Riksdagsrösten kan inte hållas ansvarig för direkt eller indirekt kostnad eller skada som uppstått på grund av felaktig information på webbsajten.</p>
 
 <h5>7. ÄNDRING AV TJÄNSTERNA PÅ RIKSDAGSRÖSTEN</h5>
 <p>Tjänsterna på Riksdagsrösten kommer löpande att vidareutvecklas. Riksdagsrösten har därför rätt att från tid till annan utföra ändringar i tjänsterna och sådana ändringar kan avse vilka källor som bevakas, antalet bevakade källor, rutinerna för drift, tekniska system eller liknande.</p>
