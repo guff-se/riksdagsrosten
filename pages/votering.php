@@ -32,8 +32,10 @@ if($v->status == 0) {
  $nej_procent=round($v->roster_nej/($v->roster_ja+$v->roster_nej),2)*100;
  
  
- $result2 = $db->executeSQLRows("SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster 
-        WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND Utskottsforslag.punkt=1");
+ $sqlQ = "SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND Utskottsforslag.punkt=1";
+ 
+ 
+ $result2 = $db->executeSQLRows($sqlQ);
 
   foreach($result2 as $pr){
 	$temptotal=$pr->roster_ja+$pr->roster_nej;
@@ -335,8 +337,9 @@ Ingen har röstat i denna fråga.
 <?
 $rost_typer=array("Ja","Nej","Avstår","Frånvarande");
 foreach($rost_typer as $rt) {
-	$result=$db->executeSQLRows("select * from  Roster, Ledamoter where Ledamoter.intressent_id=Roster.intressent_id
-								AND Roster.votering_id='$v->votering_id' AND rost='$rt' order by parti, efternamn");
+        $sql = "select * from  Roster, Ledamoter where Ledamoter.intressent_id=Roster.intressent_id AND Roster.votering_id='$v->votering_id' AND rost='$rt' order by parti, efternamn";
+        
+	$result=$db->executeSQLRows($sql);
 ?>
 	<h3><?=$rt?> (<? print(count($result)); ?>)</h3>
 	<ul>
