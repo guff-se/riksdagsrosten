@@ -135,11 +135,12 @@ border-bottom-left-radius: 0;">
 						<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 					</div>
 				<div class="clearer">&nbsp;</div>
+
+*/?>
+			Riksdagen har just nu sommaruppehåll.
 			</div>
 			
 			<!--<a class="show-more-button" href="/votering">Visa fler omröstningar</a>-->
-*/?>
-			Riksdagen har just nu sommaruppehåll.
 		</div>
 	</div>
 	<div id="sidebar" style="width:320px;">
