@@ -24,12 +24,12 @@ if(!isset($v->status)) {
 }
 
 
-
-if($v->status == 0) {
- $ja_procent=round($v->roster_ja/($v->roster_ja+$v->roster_nej),2)*100;
- $ja_fill_procent=$v->roster_ja/($v->roster_ja+$v->roster_nej)*100;
- $nej_fill_procent=$v->roster_nej/($v->roster_ja+$v->roster_nej)*100;
- $nej_procent=round($v->roster_nej/($v->roster_ja+$v->roster_nej),2)*100;
+$rtot = $v->roster_ja+$v->roster_nej;
+if($v->status == 0 && $rtot) {
+ $ja_procent=round($v->roster_ja/($rtot),2)*100;
+ $ja_fill_procent=$v->roster_ja/($rtot)*100;
+ $nej_fill_procent=$v->roster_nej/($rtot)*100;
+ $nej_procent=round($v->roster_nej/($rtot),2)*100;
  
  
  $sqlQ = "SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND Utskottsforslag.punkt=1";
