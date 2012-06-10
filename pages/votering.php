@@ -32,9 +32,8 @@ if($v->status == 0 && $rtot) {
  $nej_procent=round($v->roster_nej/($rtot),2)*100;
  
  
- $sqlQ = "SELECT Utskottsforslag.*, PartiRoster.* FROM Utskottsforslag, PartiRoster WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND Utskottsforslag.punkt=1";
- 
- 
+ $sqlQ = "SELECT PartiRoster.* FROM Utskottsforslag, PartiRoster WHERE Utskottsforslag.dok_id = PartiRoster.dok_id AND Utskottsforslag.dok_id = '$dokID' AND PartiRoster.punkt=1";
+  
  $result2 = $db->executeSQLRows($sqlQ);
 
   foreach($result2 as $pr){

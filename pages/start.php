@@ -118,7 +118,6 @@ border-bottom-left-radius: 0;">
 				<div>
 					<h3>Kommande omröstningar</h3>
 			<div class="singular-vote-list">
-				<?/*
 						<ul style="padding:0px;">
                                                     <?php foreach ($kommandeOmrostningar as $k) { ?>
                                                         <li>
@@ -134,8 +133,9 @@ border-bottom-left-radius: 0;">
 						</ul>
 						<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
 
-*/?>
+<?/*
 			Riksdagen har just nu sommaruppehåll.
+*/?>
 					</div>
 				<div class="clearer">&nbsp;</div>
 
