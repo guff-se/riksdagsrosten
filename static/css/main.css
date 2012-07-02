@@ -553,15 +553,15 @@ h1.single-row {
 }
 
 .column-16 .column {
-	width: 105px;
-	text-align: left;
+	width: 128px;
+	text-align: center;
 	margin-top: 10px;
 }
 .column-16 .votes {
 	width: 80%;
 }
 .column-16 h3 {
-	font-size: 13px;
+	font-size: 12px;
 	text-align: center;
 }
 #organisations.column-16 .votes .yes-count, #organisations.columna-16 .votes .no-count {

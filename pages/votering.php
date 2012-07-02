@@ -147,12 +147,13 @@ Ingen har röstat i denna fråga.
 		</div>
 	</div>
 	<div class="clearer">&nbsp;</div>
-    
-    <!--<div class="interest-groups clearfix">
+<?/*    
+    <div class="interest-groups clearfix">
     	<div class="interest-groups-item first-child">
     		<h5>Intresseorganisationens namn</h5>
     		<p>"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text." &mdash; <b>Test Testsson</b></p>
     	</div>
+
     	<div class="interest-groups-item">
     		<h5>Intresseorganisationens namn</h5>
     		<p>"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, looked up one of the more obscure Latin words." &mdash; <b>Test Testsson</b></p>
@@ -161,7 +162,9 @@ Ingen har röstat i denna fråga.
     		<h5>Intresseorganisationens namn</h5>
     		<p>"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia." &mdash; <b>Test Testsson</b></p>
     	</div>
-    </div>-->
+    </div>
+	*/?>
+
     <br/>
 <? if ($v->votering_id != "") { ?>
 	<div class="column-8">
@@ -287,47 +290,52 @@ Ingen har röstat i denna fråga.
         <? } ?>
 <div>
 <br/>
-	<!--<div id="organisations" class="column-16 clearfix">
+<?/*
+	<div id="organisations" class="column-16 clearfix">
 		<div class="column">
-			<h3>Organisation</h3>
+			<img src="/static/images/orgs/greenpeace.png">
+			<h3>Greenpeace</h3>
 			<div class="votes">
 				<div class="org-vote-yes">Ja</div>
 			</div>
 		</div>
 		<div class="column">
-			<h3>Organisation</h3>
+			<img src="/static/images/orgs/svensktnaringsliv.png">
+			<h3>Svenskt Näringsliv</h3>
 			<div class="votes">
 				<div class="org-vote-no">Nej</div>
 			</div>
 		</div>
 		<div class="column">
-			<h3>Organisation</h3>
+			<img src="/static/images/orgs/lo.png">
+			<h3>LO</h3>
 			<div class="votes">
 				<div class="org-vote-avstod">Avstår</div>
 			</div>
 		</div>
 		<div class="column">
-			<h3>Organisation</h3>
-			<div class="org-vote-na">N/A</div>
-		</div>
-		<div class="column">
-			<h3>Organisation</h3>
+			<img src="/static/images/orgs/muf.png">
+			<h3>MUF</h3>
 			<div class="votes">
 				<div class="org-vote-no">Nej</div>
 			</div>
 		</div>
 		<div class="column">
-			<h3>Organisation</h3>
+			<img src="/static/images/orgs/tco.png">
+			<h3>TCO</h3>
 			<div class="votes">
 				<div class="org-vote-avstod">Avstår</div>
 			</div>
 		</div>
 		<div class="column">
-			<h3>Organisation</h3>
-			<div class="org-vote-na">N/A</div>
+			<img src="/static/images/orgs/sverigeselevkarer.png">
+			<h3>Sveriges Elevkårer</h3>
+			<div class="votes">
+				<div class="org-vote-yes">Ja</div>
+			</div>
 		</div>
-	</div>-->
-
+	</div>
+*/?>
     
 <?if ($v->votering_id != "") { ?>
 <?if(isset($_GET["more"])) {?>

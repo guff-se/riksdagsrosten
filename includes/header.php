@@ -12,9 +12,7 @@ include("header-scripts.php");
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
   <div id="wrapper">
-<?/*
-  <div class="alert alert-info alert-sand clearfix"><strong>Hjälp oss att ge sajten liv!</strong> Tycker du om Riksdagsrösten? Kan du tänka dig att avvara en tjuga, eller kanske en tusenlapp? <a class="btn btn-success pull-right" id="stod-btn" href="http://fundedbyme.com/projects/2012/04/riksdagsrosten/" target="_blank">Stöd Riksdagsrösten →</a></div>
-*/?>
+  <div class="alert alert-info alert-sand clearfix">Arbetar för en intresseorganisation eller inom påverkansindustrin? I höst lanserar vi <a href="/organisationer">Riksdagsrösten för Organisationer</a> <a class="btn btn-success pull-right" id="stod-btn" href="/organisationer" target="_blank">Läs mer här →</a></div>
   	<div id="header">
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
   		<?php if(isset($_SESSION['user_id'])) { ?>
