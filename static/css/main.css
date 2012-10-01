@@ -160,7 +160,7 @@ h1.single-row {
 	/*padding: 7px 7px 5px 7px;*/
 	/*padding: 7px 5px 5px 4px;*/
 	/*border: 1px solid #999;*/
-	margin: 10px auto 10px auto;
+	margin: 0px auto 10px auto;
 	-webkit-border-radius: 25px;
 	-moz-border-radius: 25px;
 	border-radius: 25px;
@@ -327,6 +327,7 @@ h1.single-row {
 	font-weight: bold;
 	font-size: 18px;
 	margin-bottom: 15px;
+	
 	line-height: 1.2em;
 	padding-bottom: 10px;
 	border-bottom: 1px dashed #999;
@@ -349,7 +350,18 @@ h1.single-row {
 }
 #list ul li a .right {
 	float: right;
-	padding-top: 20px;
+	padding-top: auto;
+}
+
+#list ul li a .didvote {
+	text-align:center;
+	margin: 0px 20px 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px #999;
+	background-color: #EAE4D9;
+	padding:5px;
 }
 /*#leave-vote .button {
 	font-size: 30px;
@@ -651,6 +663,44 @@ h1.single-row {
 	float: none;
 }
 
+.all-vote-list td {
+	margin: 5px 10px;
+}
+.all-vote-list td .answer {
+	float: right;
+	background-color: #ccc;
+	padding: 3px 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	min-width: 25px;
+	text-align: center;
+	font-size: 14px;
+}
+.all-vote-list td .title {
+	font-size: 15px;
+	line-height: 25px;
+	padding-left: 5px;
+}
+.all-vote-list td .yes {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+	background-image: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+}
+.all-vote-list td .no {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background-image: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+.all-vote-list td .franvarande {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #222;
+	background-image: -moz-linear-gradient(-90deg,#e1e1e1,#999);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#999));
+}
 
 
 .box-frame {

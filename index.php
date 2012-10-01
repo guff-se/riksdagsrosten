@@ -103,7 +103,11 @@ else if($page == "valkommen") {
 }
 else if($page == "ledamot") {
         if(isset($_GET['id'])){
-           include 'pages/ledamot.php';
+			if(isset($_GET['arg']) && $_GET['arg']=="roster") {
+				include 'pages/ledamot-roster.php';
+           	} else {
+				include 'pages/ledamot.php';
+			}
         }else{
            include 'pages/parti-lista.php';
         }

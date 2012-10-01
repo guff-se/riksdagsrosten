@@ -32,7 +32,7 @@ include_once("includes/header.php");
 
 		<div style="width:810px;">
 			<h3>Dina  röster</h3>
-		<div class="singular-vote-list">
+		<div class="all-vote-list">
 				<table class="table">
 					<tr><th>Titel</th><th>Tid</th><th>Ditt val</th>
                                     <?php if(isset($roster)) { ?>

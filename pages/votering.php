@@ -174,8 +174,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["S"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["S"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["S"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["S"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["S"]["ja"]; ?>&nbsp;Ja</div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["S"]["nej"]; ?>&nbsp;Nej</div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["S"]["avstar"]; ?> st</b></span>
@@ -187,8 +187,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["M"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["M"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["M"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["M"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["M"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["M"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["M"]["avstar"]; ?> st</b></span>
@@ -200,8 +200,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["MP"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["MP"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["MP"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["MP"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["MP"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["MP"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["MP"]["avstar"]; ?> st</b></span>
@@ -213,8 +213,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["KD"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["KD"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["KD"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["KD"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["KD"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["KD"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["KD"]["avstar"]; ?> st</b></span>
@@ -226,8 +226,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["SD"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["SD"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["SD"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["SD"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["SD"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["SD"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["SD"]["avstar"]; ?> st</b></span>
@@ -239,8 +239,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["FP"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["FP"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["FP"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["FP"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["FP"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["FP"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["FP"]["avstar"]; ?> st</b></span>
@@ -252,8 +252,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["C"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["C"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["C"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["C"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["C"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["C"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["C"]["avstar"]; ?> st</b></span>
@@ -278,8 +278,8 @@ Ingen har röstat i denna fråga.
 					<div class="yes" style="width:<?=$parti["V"]["ja_procent"]; ?>%;"></div>
 					<div class="no" style="width:<?=$parti["V"]["nej_procent"]; ?>%;"></div>
 					<div class="clearer">&nbsp;</div>
-					<div class="yes-count"><?=$parti["V"]["ja"]; ?>&nbsp;st</div>
-					<div class="no-count"><?=$parti["V"]["nej"]; ?>&nbsp;st</div>
+					<div class="yes-count">Ja:&nbsp;<?=$parti["V"]["ja"]; ?></div>
+					<div class="no-count">Nej:&nbsp;<?=$parti["V"]["nej"]; ?></div>
 					<div class="clearer">&nbsp;</div>
 				</div>
 			<span>Avstod: <b><?=$parti["V"]["avstar"]; ?> st</b></span>

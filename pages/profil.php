@@ -89,8 +89,9 @@ $i++;
 										?>
                                         <span class="answer <?php echo $answerClass; ?>"><?=$rost->rost; ?></span>
                                         </a>
-                                    </li>    
+                                    </li>
                                      <? } ?>
+									<a class="show-more-button" href="/profil/roster">Visa alla omröstningar</a> 
                                     <? }else{ echo "Inga röster lagda än"; } ?>
                                 
 				</ul>

@@ -118,9 +118,10 @@ border-bottom-left-radius: 0;">
 				<div>
 					<h3>Kommande omröstningar</h3>
 			<div class="singular-vote-list">
-				<?/*
 						<ul style="padding:0px;">
-                                                    <?php foreach ($kommandeOmrostningar as $k) { ?>
+							
+                                              <?php if(sizeof($kommandeOmrostningar)) {
+														foreach ($kommandeOmrostningar as $k) { ?>
                                                         <li>
                                                             <a href="/votering/<?= $k->dok_id ?>/">
                                                                 <span class="title"><?= $k->titel ?> <time>&mdash; <?= str_replace(" 00:00:00","",$k->beslut_datum); ?></time></span>
@@ -128,14 +129,15 @@ border-bottom-left-radius: 0;">
                                                                 <!---->
                                                             </a>
                                                         </li>
-                                                    <?php } ?>
+	                                                    <?php }?>
+														<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
+													</ul>
+													<?} else {?>
+														<li>Det finns för närvarande inga kommande omröstningar.</li>
+													<?}?>
 
 
-						</ul>
-						<a class="show-more-button" href="/votering">Visa fler omröstningar</a>
-*/?>
 
-			Riksdagen har just nu sommaruppehåll.
 
 					</div>
 				<div class="clearer">&nbsp;</div>
