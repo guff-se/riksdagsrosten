@@ -676,6 +676,7 @@ h1.single-row {
 	min-width: 25px;
 	text-align: center;
 	font-size: 14px;
+	margin-left:15px;
 }
 .all-vote-list td .title {
 	font-size: 15px;
@@ -702,6 +703,36 @@ h1.single-row {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#999));
 }
 
+.answer {
+	float: right;
+	background-color: #ccc;
+	padding: 3px 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	min-width: 25px;
+	text-align: center;
+	font-size: 14px;
+}
+.yes {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #003300;
+	text-decoration: none;
+	background-image: -moz-linear-gradient(-90deg,#61C861,#2E872E);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#61C861), to(#2E872E));
+}
+.no {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #480000;
+	background-image: -moz-linear-gradient(-90deg,#FF5C5C,#B93C3C);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5C5C), to(#B93C3C));
+}
+.franvarande {
+	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+	color: #222;
+	background-image: -moz-linear-gradient(-90deg,#e1e1e1,#999);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#999));
+}
 
 .box-frame {
 	background-color: #eae4d9;

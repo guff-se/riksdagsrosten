@@ -103,7 +103,7 @@ else if($page == "valkommen") {
 }
 else if($page == "ledamot") {
         if(isset($_GET['id'])){
-			if(isset($_GET['arg']) && $_GET['arg']=="roster") {
+			if(isset($_GET['more']) && $_GET['more']=="roster") {
 				include 'pages/ledamot-roster.php';
            	} else {
 				include 'pages/ledamot.php';
@@ -123,6 +123,9 @@ else if($page == "logout") {
 }
 else if($page == "anvandarvillkor") {
         include 'pages/anvandarvillkor.php';
+}
+else if($page == "privacypolicy") {
+        include 'pages/privacypolicy.php';
 }
 else if($page == "start") {
 		$_SESSION['OINLOGGAD']=TRUE;

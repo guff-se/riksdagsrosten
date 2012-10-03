@@ -24,6 +24,7 @@
 					</div>
 					<div class="right">
 						<ul>
+                                                        <li><a href="/privacypolicy">Sekretesspolicy</a></li>
 							<li><a href="/anvandarvillkor">Användarvillkor</a></li>
 							<li><a href="/om">Om webbplatsen</a></li>
 						</ul>

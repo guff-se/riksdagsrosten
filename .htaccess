@@ -9,6 +9,7 @@ RewriteRule ^(.*)$ http://www.riksdagsrosten.se/$1 [L,R=301]
 # ta bort kommentar nedan när bloggen skall installeras
 RewriteRule ^(blogg) - [L]
 RewriteRule ^(admin) - [L]
+RewriteRule ^([a-zA-Z0-9_\-åäöÅÄÖ]+)/([a-zA-Z0-9_\-åäöÅÄÖ]+)/([a-zA-Z0-9_\-åäöÅÄÖ]+)(/)?$ index.php?page=$1&id=$2&more=$3&arg=$4 [NC]
 RewriteRule ^([a-zA-Z0-9_\-åäöÅÄÖ]+)/([a-zA-Z0-9_\-åäöÅÄÖ]+)/([a-zA-Z0-9_\-åäöÅÄÖ]+)(/)?$ index.php?page=$1&id=$2&more=$3 [NC]
 RewriteRule ^([a-zA-Z0-9_\-åäöÅÄÖ]+)/([a-zA-Z0-9_\-åäöÅÄÖ]+)(/)?$ index.php?page=$1&id=$2 [NC]
 RewriteRule ^([a-zA-Z0-9_\-åäöÅÄÖ]+)(/)?$ index.php?page=$1 [NC]

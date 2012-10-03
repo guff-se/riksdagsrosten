@@ -28,7 +28,6 @@ foreach($result as $r) {
 		array_push($roster,$r);
 	}
 }
-$roster = array_slice($roster,0,5);
 
 if(isset($USER)) {
 $match = $db->executeSQL("SELECT * from LedamotMatch
@@ -88,53 +87,43 @@ include_once("includes/header.php");
 			</div>
 			<br/>
 			<div>
-				<div style="float:left;width:58%;">
-					<h3>Samtliga röster rösterna</h3>
-					<div class="singular-vote-list">
-						<ul>
-<?foreach($roster as $r) {?>
-							<li>
-								<a href="/votering/<?=$r->dok_id?>/">
-									<span class="title"><?php echo substr($r->titel,0,69);
-														if(strlen($r->titel)>69)
-															echo "...";
-														?></span>
-									<?php
-									if($r->rost == 'Ja') {
-										$answerClass = 'yes';
-									}
-									else if($r->rost == 'Nej') {
-										$answerClass = 'no';
-									}
-									else if($r->rost == 'Frånvarande') {
-										$answerClass = 'franvarande';
-									}
-									
-									?>
-									<span class="answer<?php if(isset($answerClass)) { echo ' '; echo $answerClass; $answerClass = false; } ?>"><?=$r->rost?></span>
-									<div class="clearer">&nbsp;</div>
-								</a>
-							</li>
-<?}?>				
-						</ul>
-					</div>
+				<div style="float:left;">
+					<h3>Samtliga röster:</h3>
+
+					<div class="all-vote-list">
+							<table class="table">
+								<tr><th>Titel</th><th>Datum</th><th>Röst</th>
+			                                    <?php if(isset($roster)) { ?>
+			                                     <?php foreach($roster as $rost) { ?>
+			                                    <tr><td>
+			                                        <a href="/votering/<?=$rost->dok_id; ?>/">
+			                                        <span class="title"><?php echo substr($rost->titel,0,109);?></span>
+												</td><td>
+													<time><?=substr($rost->beslut_datum,0,10);?></time>
+												</td><td>
+			                                        <?php
+														if($rost->rost == 'Ja') {
+														    $answerClass = 'yes';
+														}
+														else if($rost->rost == 'Nej') {
+														    $answerClass = 'no';
+														}
+														else if($rost->rost == 'Frånvarande') {
+															$answerClass = 'franvarande';
+														}
+
+													?>
+			                                        <span class="answer <?php echo $answerClass; ?>"><?=$rost->rost; ?></span>
+			                                        </a>
+			                                    </td></tr> 
+			                                     <? } ?>
+			                                    <? }else{ echo "Inga röster lagda än"; } ?>
+
+							</table>
+						</div>
+
 			</div>
 				</div>
 				<div class="clearer">&nbsp;</div>
-<?if($l->twitter) {?>
-				<div class="box-stroke" style="margin-top:15px;color:#666;padding-top:10px;">
-					<img style="position:relative;top:5px;margin-right:7px;" src="/static/images/twitter-icon.png" width="30"/><a href="http://twitter.com/<?=$l->twitter?>" target="_blank" style="color: #444;font-weight:bold;text-decoration:none;"><?=$l->tilltalsnamn?> <?=$l->efternamn?></a><b style="color:#444;font-weight:bold;">:</b> <span id="last-tweet" style="line-height:25px;"></span>
-				</div>
-<script type="text/javascript">
-$(document).ready(function(){
-var username='<?=$l->twitter?>';
-var format='json';
-var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?';
-	$.getJSON(url,function(tweet){
-		$("#last-tweet").html(tweet[0].text);
-	});
-});
-</script>
-<?}?>
 			</div>
 </div>

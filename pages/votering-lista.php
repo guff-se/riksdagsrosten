@@ -39,19 +39,21 @@ else
         $sort");
 //}
 
-
 $kategorier = $db->executeSQLRows("SELECT * FROM Organ WHERE aktiv=1 ORDER BY Beskrivning");
-/*
+
 if(isset($USER) && $result) {
-//logged in stuff //
-$dokids=$result[0]->id;
-for($i=1; $i<sizeof($result);$i++) {
-	$dokids.=",".$result[$i]->id;
+	//logged in stuff //
+	$dokids=$result[0]->id;
+	for($i=1; $i<sizeof($result);$i++) {
+		$dokids.=",".$result[$i]->id;
+	}
+	 $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE utskottsforslag_id in ($dokids) and user_id=$USER->id");
+
+	$rostresult=Array();
+	foreach($din_rost_result as $rost) {
+		$rostresult[$rost->utskottsforslag_id]=$rost;
+	}
 }
- $din_rost_result = $db->executeSQLRows("SELECT * FROM UserRoster WHERE utskottsforslag_id in ($dokids) and user_id=$USER->id");
-var_dump($din_rost_result);
-}
-*/
 
 $HEADER['title']="Omröstningar";
 $HEADER['type']="article";
@@ -143,7 +145,22 @@ foreach($result as $v) {
                                                             <div class="meta">Voteringsdag: <b><?=str_replace(" 00:00:00","",$v->beslut_datum); ?></b><br/>Kategori: <b><?=$v->beskrivning; ?></b></div>
 						</div>
 						<div class="right">
-							<div class="didvote">Röstat?</div>
+							<div class="didvote">
+								<?if(isset($rostresult[$v->id])) {
+									print("Du har röstat: ".$rostresult[$v->id]->rost);
+/*									if($rostresult[$v->id]->rost == 'Ja') {
+									    $answerClass = 'yes';
+									}
+									else if($rostresult[$v->id]->rost == 'Nej') {
+									    $answerClass = 'no';
+									}
+                                    print("<span class=\"answer $answerClass\">".$rostresult[$v->id]->rost."</span>");
+*/
+								} else {
+									print("Klicka här för att rösta.");
+								}	
+								?>
+							</div>
 							<div>Folket</div>
 							<div class="votes<?php if($folket_ja_procent + $folket_nej_procent == 0) {echo' none';} ?>">
 								<div class="yes" style="width:<?=$folket_ja_procent; ?>%;"></div>

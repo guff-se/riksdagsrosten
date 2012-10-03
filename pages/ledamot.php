@@ -2,10 +2,10 @@
 
 if(preg_match('/_/',$_GET['id'])) {
     $param = explode("_",$_GET['id']);
-    $_GET['id'] = $param[0];    
+    $lid = $param[0];    
 }
 
-$result = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE id = ".mysql_real_escape_string($_GET['id']));
+$result = $db->executeSQLRows("SELECT * FROM Ledamoter WHERE id = ".mysql_real_escape_string($lid));
 $l = $result[0];
 
 $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ 
@@ -115,7 +115,8 @@ include_once("includes/header.php");
 									<div class="clearer">&nbsp;</div>
 								</a>
 							</li>
-<?}?>				
+<?}?>
+<a class="show-more-button" href="/ledamot/<?=$_GET['id'];?>/roster">Visa alla omröstningar</a> 
 						</ul>
 					</div>
 			</div>
