@@ -18,11 +18,11 @@ Vi samlar in information från dig när du registrerar dig på vår webbplats me
 Information som vi samlar in från dig kan användas i en av följande sätt:
 </p>
 <p>
-, Att förbättra kundservicen
+* Att förbättra kundservicen
 (din information hjälper oss att mer effektivt svara på förfrågningar kundservice och behov av stöd)
 </p>
 <p>
-, Att skicka regelbundna epost-utskick
+* Att skicka regelbundna epost-utskick
 E-postadressen du anger kan användas för att skicka information, svara på frågor, och / eller andra önskemål eller frågor.
 </p>
 <h5>Hur skyddar vi dina uppgifter?</h5>
