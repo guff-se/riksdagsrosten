@@ -57,7 +57,7 @@
 ?>	
 	
 	<link rel="pingback" href="http://<?=$_SERVER["HTTP_HOST"]?><?=$_SERVER['REQUEST_URI']?>" />
-	
+	<meta name="detectify-verification" content="80eca5c9907c2ce485f5e588c9dcbc68" />
 	<?
 		if(isset($USER)) {?>
 	<script type="text/javascript">
