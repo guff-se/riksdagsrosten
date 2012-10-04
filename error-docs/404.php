@@ -1,8 +1,9 @@
 <?
 header('HTTP/1.0 404 Not Found');
 $HEADER['title'] = "404";
+$HEADER['type']="article";
 include_once("includes/header.php");
-$comment="REQUEST_URI=" . $_SERVER["REQUEST_URI"]."<br>";
+$comment=mysql_real_escape_string("REQUEST_URI=" . $_SERVER["REQUEST_URI"]."<br>");
 if(isset($_SERVER["HTTP_REFERER"]))
 	$comment=$comment."\nHTTP_REFERER=".$_SERVER["HTTP_REFERER"]."<br>";
 

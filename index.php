@@ -102,7 +102,7 @@ else if($page == "valkommen") {
         include 'pages/valkommen.php';
 }
 else if($page == "ledamot") {
-        if(isset($_GET['id'])){
+        if(isset($_GET['id'])&& $_GET['id']!=""){
 			if(isset($_GET['more']) && $_GET['more']=="roster") {
 				include 'pages/ledamot-roster.php';
            	} else {
