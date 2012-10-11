@@ -64,26 +64,4 @@ include_once("includes/header.php");
 		</div>
 		<div class="clearer">&nbsp;</div>
 	</div>
-	<!--	
-		<div id="ledamoter">
-			
-			<ul>
-
-                          <?php
-                            print(count($result));
-                            foreach ($result as $l) {
-                                ?>
-
-                                <li>
-                                    <a href="?page=ledamot&id=<?= ("$l->id"); ?>"><?= ("$l->tilltalsnamn"); ?>  <?= ("$l->efternamn"); ?></a>
-
-                                </li>
-                            <?php } ?>
-			</ul>
-		</div>
-	</div>
-	<div id="sidebar">
-		<iframe width="345" height="600" src="http://live.twingly.com/riksdagsrosten?css=http://riksdagsrosten.se/static/css/twingly-live.css" style="border:0;outline:0" frameborder="0" scrolling="no"></iframe>
-	</div>
-	<div class="clearer">&nbsp;</div>-->
 </div>
