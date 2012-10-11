@@ -1,8 +1,6 @@
 <?php
 if(isset($_GET['id']))
-	$dokID=mysql_real_escape_string($_GET['id']);
-        
-        
+	$dokID=mysql_real_escape_string($_GET['id']);    
 else
 	die("hack!");
 
@@ -58,6 +56,10 @@ if($folket_tot) {
 }
 
 $folket_total = $v->folket_ja + $v->folket_nej;
+
+if($v->pingback) {
+	$pingbacks=unserialize($v->pingback);
+}
 
 
 $HEADER['title'] ="$v->titel";
@@ -378,30 +380,31 @@ if(isset($result))
 <?}?>
         
 <?}?>
+<?/*
+Länkar:
 
-		<script type="text/javascript">
-            //Observe that tw_url is used only
-//for testing.
-//var tw_url = "http://www.twingly.com";
-var tw_language = "swedish";
-var tw_useToolTip = false;
-        </script>
+foreach($pingbacks as $URL) {
+	print($URL);
+}
+*/
+?>
 
 		<div id="discussion" class="box-stroke clearfix">
          <div id="disqus_thread"></div>
+
           <div id="twingly_thread">
-          <h6>Bloggat om omröstningen</h6>
-            <div id="tw_link_widget">
-                <a href="http://www.twingly.com/">
-                    Twingly Blogsearch
-                </a>
+
+				<h3 style="background-image:url('http://static.twingly.com/content/images/twingly-logo-mini.png');background-position: right center;background-repeat:no-repeat;">Bloggat om omröstningen</h3>
+
+            <div class="twingly_widget">
+				<a href="http://www.twingly.com">Twingly Blog Search</a>
+				<span class="query">datalagringsdirektivet</span>
+				<span class="title">Bloggat om <?=$v->titel;?></span>
+
             </div>
-            <a class="tw_logolink" href="http://www.twingly.se/" target="_blank"><img alt="Twingly logo" src="http://static.twingly.com/content/images/twingly-logo-mini.png"></a>
         </div>
          </div>
-         
-         <script type="text/javascript" src="http://eu.widgetdata.twingly.com/scripts/widget/twingly.widget.2.0.3.min.js">
-        </script>
+
 <script type="text/javascript">
     var disqus_shortname = 'riksdagsrosten';
 
