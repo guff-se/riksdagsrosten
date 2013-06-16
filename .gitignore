@@ -1,3 +1,4 @@
 .DS_Store
 nbproject/
 robots.txt
+classes/Database.class.php
