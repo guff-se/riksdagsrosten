@@ -93,12 +93,15 @@ $result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsfo
 						<i>
 							<?=$row->beslut_datum?>
 						</i>
-	<?							if(abs($row->roster_ja-$row->roster_nej)<10) { ?>
+	<?					if($row->status==99) { ?>
+							(acklamation)
+	<?					} else {
+								if(abs($row->roster_ja-$row->roster_nej)<10) { ?>
 							<font style="color:red;">
 	<?							} ?>
 							( ja:<?=$row->roster_ja?> / nej:<?=$row->roster_nej?> /
 								avstår:<?=$row->roster_avstar?> / frånvaro:<?=$row->roster_franvarande?>)</font>
-
+						<? } ?>
 	
 					</td>
 				</tr>

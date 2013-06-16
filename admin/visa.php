@@ -21,11 +21,11 @@ $parameters="";
 if(!isset($_GET['showAll']))
 	$parameters="AND Utskottsforslag.visible = 1";
 
-$row = $db->executeSQL("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ
-        WHERE Utskottsforslag.punkt = 1
-        AND Utskottsforslag.organ = Organ.organ
+$result = $db->executeSQLRows("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, Organ
+        WHERE Utskottsforslag.organ = Organ.organ
 		AND Utskottsforslag.dok_id = '$dok_id'","SELECT");
 
+$row = $result[0];
 ?>
 
 <form class="form-horizontal" id="postform" method="post" action="post.php">
@@ -77,11 +77,16 @@ $row = $db->executeSQL("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, 
       <label class="control-label">Riksdagens röster</label>
       <div class="controls">
 	 	<p class="help-block">
-<?			if(abs($row->roster_ja-$row->roster_nej)<10) { ?>
-				<font style="color:red;">
-<?			} ?>
-				Ja: <?=$row->roster_ja?> / Nej: <?=$row->roster_nej?> /
-				Avstår: <?=$row->roster_avstar?> / Frånvaro: <?=$row->roster_franvarande?></font>
+			<?					if($row->status==99) { ?>
+									(acklamation)
+			<?					} else {
+										if(abs($row->roster_ja-$row->roster_nej)<10) { ?>
+									<font style="color:red;">
+			<?							} ?>
+									Ja: <?=$row->roster_ja?> / Nej: <?=$row->roster_nej?> /
+									Avstår: <?=$row->roster_avstar?> / Frånvaro: <?=$row->roster_franvarande?></font>
+								<? } ?>
+				
 		</p>
       </div>
     </div>
@@ -98,6 +103,23 @@ $row = $db->executeSQL("SELECT Utskottsforslag.*, Organ.* FROM Utskottsforslag, 
       <div class="controls">
         <textarea name="bik" class="input-xlarge span9" id="bik" rows="9"><?=$row->bik?></textarea>
 		<input class="btn" type="button" id="bik_ater" value="&Aring;terst&auml;ll">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="punkter">Punkter</label>
+      <div class="controls">
+
+<?
+	foreach($result as $punkt) {?>
+		<label class="radio">
+		  <input type="radio" name="punkter" id="punkt<?=$punkt->punkt?>" value="<?=$punkt->punkt?>" <?
+		  	if($punkt->valdpunkt)
+				print("checked");
+		  ?>>
+		  Punkt <?=$punkt->punkt?> - <?=$punkt->rubrik?>
+		</label>
+	<?}
+?>
       </div>
     </div>
     <div class="form-actions">

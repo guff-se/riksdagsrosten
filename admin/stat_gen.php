@@ -22,9 +22,28 @@ ini_set('display_errors','On');
 	$db=new Database();
 	$db->connectSQL();
 
-// Hittar voteringar som inte har något förlsag
+?>
+<table>
+<?
 /*
-$result = $db->executeSQLRows("select * from Voteringar");
+$result = $db->executeSQLRows("select * from Roster where intressent_id=401968752713");
+print("<tr><td>count:".count($result)."</td></tr>");
+foreach($result as $rost) {
+	$result2 = $db->executeSQLRows("select * from PartiRoster where votering_id='$rost->votering_id' AND parti='MP'");
+	if($result2) {
+		$partirost = $result2[0];
+		print("<tr><td>$rost->votering_id</td><td>$rost->rost</td><td>$partirost->roster_ja</td></tr>");
+	}
+	else
+		print("<tr><td>no match</td></tr>");
+}*/
+?>
+</table>
+
+<?
+// Hittar voteringar som inte har något förlsag
+
+$result = $db->executeSQLRows("select * from Utskottsforslag");
 foreach($result as $votering) {
 	$result2 = $db->executeSQLRows("select * from Utskottsforslag where dok_id='$votering->dok_id'");
 	print(mysql_error());
@@ -32,7 +51,7 @@ foreach($result as $votering) {
 		print("shit is fucked up!!!<br>");
 }
 print("fin.");
-*/
+/**/
 
 // Hittar förslag utan några voteringar
 /*
@@ -97,7 +116,7 @@ foreach($result as $votering) {
 
 // denna koden uppdaterar "PartiRöster", baserat på de individuella rösterna.
 /*
-$result = $db->executeSQLRows("select * from Voteringar order by id desc");
+$result = $db->executeSQLRows("select * from Utskottsforslag order by id desc");
 foreach($result as $votering) {
 	$result2 = $db->executeSQLRows("select Roster.rost, Ledamoter.parti from Roster, Ledamoter where Roster.intressent_id=Ledamoter.intressent_id and votering_id='$votering->votering_id'");
 	print(mysql_error());
@@ -126,10 +145,10 @@ foreach($result as $votering) {
 		}
 	}
 	foreach($PARTI as $symbol => $name) {
-		$db->executeSQL("insert into PartiRoster set votering_id='$votering->votering_id',
+		print("insert into PartiRoster set votering_id='$votering->votering_id',
 								roster_ja='$ja[$symbol]', roster_nej='$nej[$symbol]',
 								roster_avstar='$avstar[$symbol]', roster_franvarande='$franvarande[$symbol]',
-								dok_id='$votering->dok_id', parti='$symbol', punkt='$votering->punkt'", "UPDATE");
+								dok_id='$votering->dok_id', parti='$symbol', punkt='$votering->punkt'");//, "UPDATE");
 		print(mysql_error());
 	}
 	print("\narray_sum->");
