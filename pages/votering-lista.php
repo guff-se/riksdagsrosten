@@ -33,10 +33,9 @@ else
 } else {
 */
 	$result = $db->executeSQLRows("SELECT Organ.*, Utskottsforslag.*  FROM Utskottsforslag, Organ
-        WHERE Utskottsforslag.punkt = 1
-        AND Utskottsforslag.visible = 1
+        WHERE Utskottsforslag.punkt = 1 
         AND Utskottsforslag.organ = Organ.organ
-        $sort");
+        $sort"); // AND Utskottsforslag.visible = 1
 //}
 
 $kategorier = $db->executeSQLRows("SELECT * FROM Organ WHERE aktiv=1 ORDER BY Beskrivning");

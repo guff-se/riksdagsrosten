@@ -27,7 +27,7 @@ ini_set('display_errors','On');
 <?
 // denna koden uppdaterar frånvaro i "Ledamöter", baserat på de individuella rösterna.
 // eftersom vi inte använder "avstår" nånstans, så skippar vi det så länge
-
+/*
 $result = $db->executeSQLRows("select * from Ledamoter");
 foreach($result as $ledamot) {
 //	print("$ledamot->tilltalsnamn $ledamot->efternamn ($ledamot->intressent_id) ->");
@@ -56,7 +56,7 @@ foreach($result as $ledamot) {
 // UPDATE Parti
 // Beräkna frånvaro per parti
 
-
+/*
 foreach($PARTI as $symbol => $name) {
 //	print("nu kollar vi frånvaro och totalröster på $name<br>");
 	$result = $db->executeSQLRows("select * from Ledamoter where parti='$symbol'");
@@ -127,11 +127,19 @@ foreach($vot_id_res as $votering) {
 		else
 			$piska="-";
 
-		$query="insert into PartiRoster set parti='$symbol', votering_id='$votering->votering_id', dok_id='$votering->dok_id', piska='$piska',
-			roster_ja='$ja[$symbol]', roster_nej='$nej[$symbol]', roster_avstar='$avstar[$symbol]', roster_franvarande='$franvarande[$symbol]'";
-//		print("$query<br>");
-		$db->executeSQL($query, "UPDATE");
-
+		$punktresult=$db->executeSQL("select punkt from Utskottsforslag where votering_id='$votering->votering_id'","SELECT");
+		if($punktresult) {
+			$query="insert into PartiRoster set parti='$symbol', votering_id='$votering->votering_id',
+				dok_id='$votering->dok_id', punkt='$punktresult->punkt', piska='$piska',
+				roster_ja='$ja[$symbol]', roster_nej='$nej[$symbol]', roster_avstar='$avstar[$symbol]', roster_franvarande='$franvarande[$symbol]'";
+		}
+		else {
+			$query="insert into PartiRoster set parti='$symbol', votering_id='$votering->votering_id', dok_id='$votering->dok_id', piska='$piska',
+				roster_ja='$ja[$symbol]', roster_nej='$nej[$symbol]', roster_avstar='$avstar[$symbol]', roster_franvarande='$franvarande[$symbol]'";
+		}
+//			print("$query<br>");
+			$db->executeSQL($query, "UPDATE");
+			
 //// Detta är för att kolla istället för att sätta in.
 
 /*		$result2 = $db->executeSQLRows("select * from PartiRoster where votering_id='$votering->votering_id' AND parti='$symbol'");
@@ -156,7 +164,7 @@ foreach($vot_id_res as $votering) {
 // UPDATE Ledamoter
 // Här beräknas partipiskan för varje ledamot och uppdaterar tabellen Ledamoter.
 // Detta är beroende av att förra scriptbiten (skapandet PartirRoster) har körts.
-
+/*
 $result = $db->executeSQLRows("select id, parti, intressent_id from Ledamoter");
 foreach($result as $l) {
 	$result2 = $db->executeSQLRows("select PartiRoster.piska, Roster.rost, Roster.votering_id from PartiRoster, Roster
@@ -199,7 +207,7 @@ foreach($result as $l) {
 // UPDATE Parti
 // Denna summerar partipiskerösterna och uppdaterar tablen Parti.
 // Detta användersig av den individuella partipiskan och är beroende av att föregående script (ovan) körts.
-
+/*
 foreach($PARTI as $p => $namn) {
 	$result = $db->executeSQL("select sum(roster_tot) as tot, sum(roster_piska) as piska from Ledamoter where parti='$p' and aktiv=1","SELECT");
 	$piska = $result->piska/$result->tot;

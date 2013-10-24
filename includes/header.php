@@ -12,8 +12,14 @@ include("header-scripts.php");
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
   <div id="wrapper">
-<?/*  <div class="alert alert-info alert-sand clearfix">Arbetar du för en intresseorganisation eller med public affairs? I höst lanserar vi <a href="/organisationer">Riksdagsrösten för Organisationer</a> <a class="btn btn-success pull-right" id="stod-btn" href="/organisationer" target="_blank">Läs mer här →</a></div>
-*/?>
+  <div class="alert alert-info alert-sand clearfix" style="height:300px">	Riksdagsrösten ligger i dvala.
+	Det tekniska teamet bakom Riksdagsrösten har under en tid tappat styrfart och energi. Vi älskar idén, men har alla haft för många åtaganden och andra projekt. Till sist har vi varit tvungna att ta beslutet att stänga ner sajten tills vidare.
+
+	Vill du ta över? Hör av dig till guff@guff.se.
+
+	/ Gustaf Josefsson
+</div>
+
   	<div id="header">
   		<div id="logo"><a href="/">Riksdagsrösten</a></div>
   		<?php if(isset($_SESSION['user_id'])) { ?>
