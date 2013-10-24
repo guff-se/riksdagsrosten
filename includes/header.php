@@ -12,11 +12,11 @@ include("header-scripts.php");
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
   <div id="wrapper">
-  <div class="alert alert-info alert-sand clearfix" style="height:300px">	Riksdagsrösten ligger i dvala.
-	Det tekniska teamet bakom Riksdagsrösten har under en tid tappat styrfart och energi. Vi älskar idén, men har alla haft för många åtaganden och andra projekt. Till sist har vi varit tvungna att ta beslutet att stänga ner sajten tills vidare.
-
-	Vill du ta över? Hör av dig till guff@guff.se.
-
+  <div class="alert alert-info alert-sand clearfix" style="padding:20px;">	<b>Riksdagsrösten ligger i dvala.</b><br>
+	Det tekniska teamet bakom Riksdagsrösten har under en tid tappat styrfart och energi. Vi älskar idén, men har alla haft för många åtaganden och andra projekt, för att kunna prioritera detta. Just nu sker ingen utveckling och vi kan därför inte heller garantera att sajten är korrekt och buggfri.
+<br>
+	Vill du hjälpa till att dra igång igen? Hör av dig till <a href="mailto:guff@guff.se">guff@guff.se</a>
+<br>
 	/ Gustaf Josefsson
 </div>
 

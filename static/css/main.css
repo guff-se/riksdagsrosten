@@ -1587,8 +1587,9 @@ iframe.twitter-follow-button {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	position: relative;
-	top: -120px;
+	position:relative;
+	top: 170px;
+	left: 40px;
 	float: left;
 	margin-bottom: -120px;
 	color: #999;
@@ -1615,10 +1616,11 @@ iframe.twitter-follow-button {
 	margin-left: 10px;
 }
 #skip-signup {
+	padding:10px;
 	padding-top: 35px;
+	text-align:right;
 	clear: both;
-	/*width: 600px;
-	float: right;*/
+	float: right;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	color: #333;
@@ -1630,10 +1632,10 @@ iframe.twitter-follow-button {
 	font-weight: bold;
 }
 .screenshot {
-	position: relative;
-	top: -280px;
-	left: 50px;
-	margin-bottom: -300px;
+	position:relative;
+	top: 25px;
+	left: 60px;
+	margin-bottom: -10px;
 }
 
 
