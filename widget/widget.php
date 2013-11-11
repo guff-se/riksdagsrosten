@@ -1,5 +1,5 @@
 <?
-require_once '../classes/Database.class.php';
+require_once 'classes/Database.class.php';
 
 $db=new Database();
 $db->connectSQL();

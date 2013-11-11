@@ -6,7 +6,7 @@
 
    if(preg_match('/login.php/',$_SERVER['REQUEST_URI'])) {
        // include the database Class //
-        require_once '../classes/Database.class.php';
+        require_once 'classes/Database.class.php';
         session_start();
    }else{
         // include the database Class //

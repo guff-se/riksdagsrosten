@@ -14,7 +14,7 @@ ini_set('display_errors','On');
 session_start();
 
   // include the database Class //
-  require_once '../classes/Database.class.php';
+  require_once 'classes/Database.class.php';
 	$db=new Database();
 	$db->connectSQL();
 
